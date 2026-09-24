@@ -1,0 +1,22 @@
+{
+  "paper": "P064",
+  "problems": [
+    19
+  ],
+  "historical_verification": "STRICT_LEAN_4_30_RESEARCH_RECEIPT",
+  "challenge": "PREPARED_NOT_CHECKED",
+  "solution": "DRAFT_NOT_VERIFIED",
+  "target_compilation": "NOT_RUN",
+  "comparator": "NOT_RUN",
+  "independent_kernels": "NOT_RUN",
+  "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
+  "metadata_review": "AGENT_PREPARED",
+  "scope_gap": false,
+  "publication": "NOT_AUTHORIZED",
+  "submission": "NOT_AUTHORIZED",
+  "selected_declarations": [
+    "ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf"
+  ],
+  "source_import": "preparation/P064-ALL-SITE-IMPORT.json",
+  "claim_evidence": "entries/P064/CLAIM-EVIDENCE.md"
+}

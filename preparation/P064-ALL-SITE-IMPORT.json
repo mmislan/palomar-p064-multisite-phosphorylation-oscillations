@@ -1,0 +1,1484 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "STATIC_SOURCE_IMPORT_NO_LEAN",
+  "entry": "P064",
+  "literature_problem": 19,
+  "date": "2026-09-24",
+  "research_receipt": {
+    "path": "<research workspace>/problem_workspaces/RAF_hopf_ bifurcation_three-site_phosphorylation_cycle/all_site_attracting_family.verify.json",
+    "verified": true,
+    "exit_code": 0,
+    "warning_as_error": true,
+    "requested_declarations": [
+      "ThreeSitePhosphorylation.AllSiteAttractingFamily.hopf_attracting_family",
+      "ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf"
+    ],
+    "target_module": "proofs.ThreeSitePhosphorylation.AllSiteAttractingFamily",
+    "target_source_sha256": "355bdf1029558fd8a1268f40dfe9ab621b7498dc3a8bfe4b9da3b5471251333c",
+    "declaration_interfaces_hash": "sha256:9abb7fc951e12c9ff8ca9a45bed67c0554c60317d3c82a3d35ef320e66334fa7",
+    "dependency_materialization_status": "complete",
+    "dependency_count": 141,
+    "research_lean_toolchain": "leanprover/lean4:v4.30.0",
+    "research_lake_manifest_sha256": "a8df0b606ec258561c226df89856884be433c19b49fb0a27335d69bb2b6e9fac",
+    "reported_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "handoff": "<research workspace>/problem_workspaces/RAF_hopf_ bifurcation_three-site_phosphorylation_cycle/ALL_SITE_INTEGRATION_HANDOFF.md"
+  },
+  "target_environment": {
+    "lean_toolchain": "leanprover/lean4:v4.35.0-rc2",
+    "lake_manifest_sha256": "55fc50a5113a34e1c25ea37ebf7e9b4348e034659e1398662052237fbb351c81",
+    "mathlib_rev": "065356127b1dc0016f66b7283ce0ce2c4055aa55"
+  },
+  "counts": {
+    "modules_total": 142,
+    "dependencies": 141,
+    "targets": 1,
+    "new_copied": 135,
+    "unchanged_identical": 7,
+    "conflicting": 0,
+    "research_source_mismatching_receipt": 0
+  },
+  "import_closure_complete": true,
+  "import_closure_note": "Every non-Mathlib import of every listed module is itself listed (static parse of import lines).",
+  "static_grep": {
+    "patterns": [
+      "sorry",
+      "admit",
+      "axiom",
+      "native_decide",
+      "implemented_by",
+      "extern",
+      "unsafe",
+      "skipKernelTC"
+    ],
+    "hits": 0
+  },
+  "copy_method": "cp -p -n (byte-preserving, no-clobber)",
+  "lean_executed": false,
+  "note": "Hashes only. The research receipt is a Lean 4.30 strict compilation in the research workspace; nothing has been compiled or checked on the Lean 4.35.0-rc2 target in this repository.",
+  "modules": [
+    {
+      "module": "proofs.PhosphorylationSharpness.Source",
+      "path": "proofs/PhosphorylationSharpness/Source.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "50b31d6d69dac67887c4da9018c52082ca87895f4ef0888ddf736ddd167ae821",
+      "research_source_sha256": "50b31d6d69dac67887c4da9018c52082ca87895f4ef0888ddf736ddd167ae821",
+      "repo_sha256_before": "50b31d6d69dac67887c4da9018c52082ca87895f4ef0888ddf736ddd167ae821",
+      "repo_sha256_after": "50b31d6d69dac67887c4da9018c52082ca87895f4ef0888ddf736ddd167ae821",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteChart",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteChart.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3c2f2cef7035b0d3c835940128b6d85fe8efe50f80f8a91e3e9eca8ae90bf2c0",
+      "research_source_sha256": "3c2f2cef7035b0d3c835940128b6d85fe8efe50f80f8a91e3e9eca8ae90bf2c0",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3c2f2cef7035b0d3c835940128b6d85fe8efe50f80f8a91e3e9eca8ae90bf2c0",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSite",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSite.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "085681c3a78cbda02b2d4d5475035729afad94ae86729d3ce7756ca08fa7feb3",
+      "research_source_sha256": "085681c3a78cbda02b2d4d5475035729afad94ae86729d3ce7756ca08fa7feb3",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "085681c3a78cbda02b2d4d5475035729afad94ae86729d3ce7756ca08fa7feb3",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteSource",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteSource.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "bf0421147968635e1e8b56fc598d5ba2a410b4e783f8958ec578a4338159ad79",
+      "research_source_sha256": "bf0421147968635e1e8b56fc598d5ba2a410b4e783f8958ec578a4338159ad79",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "bf0421147968635e1e8b56fc598d5ba2a410b4e783f8958ec578a4338159ad79",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteCenteredFace",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteCenteredFace.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "4f16700af0ca92d90478c505abdba0d22a14ce032eccc9759ee599518ff32383",
+      "research_source_sha256": "4f16700af0ca92d90478c505abdba0d22a14ce032eccc9759ee599518ff32383",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "4f16700af0ca92d90478c505abdba0d22a14ce032eccc9759ee599518ff32383",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledMultisiteSource",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledMultisiteSource.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2852c908f1a7c20e2852bb06601be4af3fef6e188e1db3effab70a3759c61afd",
+      "research_source_sha256": "2852c908f1a7c20e2852bb06601be4af3fef6e188e1db3effab70a3759c61afd",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2852c908f1a7c20e2852bb06601be4af3fef6e188e1db3effab70a3759c61afd",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledAffineFamily",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledAffineFamily.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "6ef9cf6fcbd11b8fe99bfaa9d267f3d597009adf5ddf46a69abcbed28bdf07cc",
+      "research_source_sha256": "6ef9cf6fcbd11b8fe99bfaa9d267f3d597009adf5ddf46a69abcbed28bdf07cc",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "6ef9cf6fcbd11b8fe99bfaa9d267f3d597009adf5ddf46a69abcbed28bdf07cc",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteTaylor",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteTaylor.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "4fb67ff9e889b7bc3341e28282e4138afd68f883c580fde52cbc4d76969ab931",
+      "research_source_sha256": "4fb67ff9e889b7bc3341e28282e4138afd68f883c580fde52cbc4d76969ab931",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "4fb67ff9e889b7bc3341e28282e4138afd68f883c580fde52cbc4d76969ab931",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteCoordinates",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteCoordinates.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d13ccb2e38625dad065be6f0ed111d65e1a2dff2880825370cbe36513430506d",
+      "research_source_sha256": "d13ccb2e38625dad065be6f0ed111d65e1a2dff2880825370cbe36513430506d",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d13ccb2e38625dad065be6f0ed111d65e1a2dff2880825370cbe36513430506d",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.Volterra",
+      "path": "proofs/ThreeSitePhosphorylation/Volterra.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "042e17323cb1d0ba43e3f3a5f97b41d3b196085a510aae7be8973807850e8953",
+      "research_source_sha256": "042e17323cb1d0ba43e3f3a5f97b41d3b196085a510aae7be8973807850e8953",
+      "repo_sha256_before": "042e17323cb1d0ba43e3f3a5f97b41d3b196085a510aae7be8973807850e8953",
+      "repo_sha256_after": "042e17323cb1d0ba43e3f3a5f97b41d3b196085a510aae7be8973807850e8953",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.PolynomialPathLift",
+      "path": "proofs/ThreeSitePhosphorylation/PolynomialPathLift.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "49c458cd08700db2d607069f22dcaddb7b92a4f3fc68e5435d77fb0ec16ce97c",
+      "research_source_sha256": "49c458cd08700db2d607069f22dcaddb7b92a4f3fc68e5435d77fb0ec16ce97c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "49c458cd08700db2d607069f22dcaddb7b92a4f3fc68e5435d77fb0ec16ce97c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.VariableVolterra",
+      "path": "proofs/ThreeSitePhosphorylation/VariableVolterra.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "83dc4599c2bc96f1ea751cdaf38d91718cdd4f4fc6a47369b808d3b6db4bd0eb",
+      "research_source_sha256": "83dc4599c2bc96f1ea751cdaf38d91718cdd4f4fc6a47369b808d3b6db4bd0eb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "83dc4599c2bc96f1ea751cdaf38d91718cdd4f4fc6a47369b808d3b6db4bd0eb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.NonlinearPathIFT",
+      "path": "proofs/ThreeSitePhosphorylation/NonlinearPathIFT.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2ec88b3d9710764dc56ac52a7b64ba84c22efcfd7b65c0ebf8e1f69d25e66833",
+      "research_source_sha256": "2ec88b3d9710764dc56ac52a7b64ba84c22efcfd7b65c0ebf8e1f69d25e66833",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2ec88b3d9710764dc56ac52a7b64ba84c22efcfd7b65c0ebf8e1f69d25e66833",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPolynomialFlow",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPolynomialFlow.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d24998a01ba49a29a655326e36c73778796a05d1d4602331099de1b91efbf792",
+      "research_source_sha256": "d24998a01ba49a29a655326e36c73778796a05d1d4602331099de1b91efbf792",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d24998a01ba49a29a655326e36c73778796a05d1d4602331099de1b91efbf792",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericQuadraticTensor",
+      "path": "proofs/ThreeSitePhosphorylation/GenericQuadraticTensor.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "339cc5da76ed21c44bc101a8b8341f67f4f91f13af4cefafbdd0e5070980a07e",
+      "research_source_sha256": "339cc5da76ed21c44bc101a8b8341f67f4f91f13af4cefafbdd0e5070980a07e",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "339cc5da76ed21c44bc101a8b8341f67f4f91f13af4cefafbdd0e5070980a07e",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericComplexification",
+      "path": "proofs/ThreeSitePhosphorylation/GenericComplexification.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d8b79edb33d00705cff78abd6b428c71cd89a85d5883e574e276c47c40e6785c",
+      "research_source_sha256": "d8b79edb33d00705cff78abd6b428c71cd89a85d5883e574e276c47c40e6785c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d8b79edb33d00705cff78abd6b428c71cd89a85d5883e574e276c47c40e6785c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericTensorBilinear",
+      "path": "proofs/ThreeSitePhosphorylation/GenericTensorBilinear.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2677cdf979b1cb60c10191b876aa1b0bdc11e122398733c39d2db7dffda20f51",
+      "research_source_sha256": "2677cdf979b1cb60c10191b876aa1b0bdc11e122398733c39d2db7dffda20f51",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2677cdf979b1cb60c10191b876aa1b0bdc11e122398733c39d2db7dffda20f51",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteTensor",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteTensor.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3693a453f0dfb82d3e32523abbac052fcd531abc6c6c43ba2bed14a180062353",
+      "research_source_sha256": "3693a453f0dfb82d3e32523abbac052fcd531abc6c6c43ba2bed14a180062353",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3693a453f0dfb82d3e32523abbac052fcd531abc6c6c43ba2bed14a180062353",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteHessianTransport",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteHessianTransport.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d9cd9e9387258038fd61ae0dbf201d74df4f440998888591851440c4e68f3f7b",
+      "research_source_sha256": "d9cd9e9387258038fd61ae0dbf201d74df4f440998888591851440c4e68f3f7b",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d9cd9e9387258038fd61ae0dbf201d74df4f440998888591851440c4e68f3f7b",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericShootingMap",
+      "path": "proofs/ThreeSitePhosphorylation/GenericShootingMap.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "91fd2f23519fb0806a4510225155519a6e48e90f1a0039ab83f3bbe5c08847d2",
+      "research_source_sha256": "91fd2f23519fb0806a4510225155519a6e48e90f1a0039ab83f3bbe5c08847d2",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "91fd2f23519fb0806a4510225155519a6e48e90f1a0039ab83f3bbe5c08847d2",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericVariationalODE",
+      "path": "proofs/ThreeSitePhosphorylation/GenericVariationalODE.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "0daa1239f264d6561c9798255d5b32c3c75b2d4a8f06ba581fd94095cf27edee",
+      "research_source_sha256": "0daa1239f264d6561c9798255d5b32c3c75b2d4a8f06ba581fd94095cf27edee",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "0daa1239f264d6561c9798255d5b32c3c75b2d4a8f06ba581fd94095cf27edee",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAffinePathResidual",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAffinePathResidual.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "dc49396cd3db9ee608fa4341045b71769305e4d872cc9355ad3f1b6bbac40360",
+      "research_source_sha256": "dc49396cd3db9ee608fa4341045b71769305e4d872cc9355ad3f1b6bbac40360",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "dc49396cd3db9ee608fa4341045b71769305e4d872cc9355ad3f1b6bbac40360",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAffinePathExistence",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAffinePathExistence.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "700699601c023eef449ed8d866f04f4b6cfbd20b7809a3fc55c04f0a955852bd",
+      "research_source_sha256": "700699601c023eef449ed8d866f04f4b6cfbd20b7809a3fc55c04f0a955852bd",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "700699601c023eef449ed8d866f04f4b6cfbd20b7809a3fc55c04f0a955852bd",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericLinearOrbit",
+      "path": "proofs/ThreeSitePhosphorylation/GenericLinearOrbit.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "c78e5dde83e98cce63ca6f23e6d0a619c871d8b20e037110739508cfe09566e1",
+      "research_source_sha256": "c78e5dde83e98cce63ca6f23e6d0a619c871d8b20e037110739508cfe09566e1",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "c78e5dde83e98cce63ca6f23e6d0a619c871d8b20e037110739508cfe09566e1",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScalarODE",
+      "path": "proofs/ThreeSitePhosphorylation/ScalarODE.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3af9e829a3b8f271a786f3e6de10d493e4821b4e944157d6604f6046942a3743",
+      "research_source_sha256": "3af9e829a3b8f271a786f3e6de10d493e4821b4e944157d6604f6046942a3743",
+      "repo_sha256_before": "3af9e829a3b8f271a786f3e6de10d493e4821b4e944157d6604f6046942a3743",
+      "repo_sha256_after": "3af9e829a3b8f271a786f3e6de10d493e4821b4e944157d6604f6046942a3743",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.HarmonicForcing",
+      "path": "proofs/ThreeSitePhosphorylation/HarmonicForcing.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5dc320636f75d66402d4c5222a69c3fda68cb8affd3f79d1cb35135ae24d8259",
+      "research_source_sha256": "5dc320636f75d66402d4c5222a69c3fda68cb8affd3f79d1cb35135ae24d8259",
+      "repo_sha256_before": "5dc320636f75d66402d4c5222a69c3fda68cb8affd3f79d1cb35135ae24d8259",
+      "repo_sha256_after": "5dc320636f75d66402d4c5222a69c3fda68cb8affd3f79d1cb35135ae24d8259",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ResonantKernel",
+      "path": "proofs/ThreeSitePhosphorylation/ResonantKernel.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f0fd6d4679cfec5b91ffcce767d1e1a552a5bb40015d07f7c9adcc1eb98a7a3a",
+      "research_source_sha256": "f0fd6d4679cfec5b91ffcce767d1e1a552a5bb40015d07f7c9adcc1eb98a7a3a",
+      "repo_sha256_before": "f0fd6d4679cfec5b91ffcce767d1e1a552a5bb40015d07f7c9adcc1eb98a7a3a",
+      "repo_sha256_after": "f0fd6d4679cfec5b91ffcce767d1e1a552a5bb40015d07f7c9adcc1eb98a7a3a",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.QuadraticHarmonics",
+      "path": "proofs/ThreeSitePhosphorylation/QuadraticHarmonics.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "a41fd017d1c688829d6285f7a20fc428cc5274f9686a74298cda21262a179083",
+      "research_source_sha256": "a41fd017d1c688829d6285f7a20fc428cc5274f9686a74298cda21262a179083",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "a41fd017d1c688829d6285f7a20fc428cc5274f9686a74298cda21262a179083",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ResonantBalance",
+      "path": "proofs/ThreeSitePhosphorylation/ResonantBalance.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "e4d95f8d3574c60d77df40cc6ef032ae463debdc8a52c949322192009d3aa4bb",
+      "research_source_sha256": "e4d95f8d3574c60d77df40cc6ef032ae463debdc8a52c949322192009d3aa4bb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "e4d95f8d3574c60d77df40cc6ef032ae463debdc8a52c949322192009d3aa4bb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericResonantKernel",
+      "path": "proofs/ThreeSitePhosphorylation/GenericResonantKernel.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "aa896cbee6d9598d4b5fdf9f8695a0d13a16358c276c32619d070f36f9693672",
+      "research_source_sha256": "aa896cbee6d9598d4b5fdf9f8695a0d13a16358c276c32619d070f36f9693672",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "aa896cbee6d9598d4b5fdf9f8695a0d13a16358c276c32619d070f36f9693672",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericCriticalOrbit",
+      "path": "proofs/ThreeSitePhosphorylation/GenericCriticalOrbit.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "45e9cbe8fb8ea02a00fd224e867c33a4ac1cc311d227f985b503218694a1501a",
+      "research_source_sha256": "45e9cbe8fb8ea02a00fd224e867c33a4ac1cc311d227f985b503218694a1501a",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "45e9cbe8fb8ea02a00fd224e867c33a4ac1cc311d227f985b503218694a1501a",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPeriodicKernel",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPeriodicKernel.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "6eb0eb520629ed804a0f2bcded42865ff9899fadfa084be8025d4232e796d4b8",
+      "research_source_sha256": "6eb0eb520629ed804a0f2bcded42865ff9899fadfa084be8025d4232e796d4b8",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "6eb0eb520629ed804a0f2bcded42865ff9899fadfa084be8025d4232e796d4b8",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPeriodicVariation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPeriodicVariation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "7cbe10980757acb67bb363e26fdceba55b33be948f2af1b98266d1853a25e380",
+      "research_source_sha256": "7cbe10980757acb67bb363e26fdceba55b33be948f2af1b98266d1853a25e380",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "7cbe10980757acb67bb363e26fdceba55b33be948f2af1b98266d1853a25e380",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPathKernel",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPathKernel.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "efd73f0e70b51d449646daffcc8f327e36919a3953e81759cb5c0de879658964",
+      "research_source_sha256": "efd73f0e70b51d449646daffcc8f327e36919a3953e81759cb5c0de879658964",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "efd73f0e70b51d449646daffcc8f327e36919a3953e81759cb5c0de879658964",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericShootingInvertibility",
+      "path": "proofs/ThreeSitePhosphorylation/GenericShootingInvertibility.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "7b882adae4be6fea259bbfcfe9cc6cfcf55eb61f5c5b751de0285e07e7cdf517",
+      "research_source_sha256": "7b882adae4be6fea259bbfcfe9cc6cfcf55eb61f5c5b751de0285e07e7cdf517",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "7b882adae4be6fea259bbfcfe9cc6cfcf55eb61f5c5b751de0285e07e7cdf517",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericClosedPaths",
+      "path": "proofs/ThreeSitePhosphorylation/GenericClosedPaths.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "e38615dcb2f5b8fdbd855f46c371bca234656ab9607fede1fb145515f5a41b4f",
+      "research_source_sha256": "e38615dcb2f5b8fdbd855f46c371bca234656ab9607fede1fb145515f5a41b4f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "e38615dcb2f5b8fdbd855f46c371bca234656ab9607fede1fb145515f5a41b4f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAmplitudeVariation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2df562a8ff7f6ae8dd01d9f92d73f0c3a712e32883eda34f0fd092122e2d28e8",
+      "research_source_sha256": "2df562a8ff7f6ae8dd01d9f92d73f0c3a712e32883eda34f0fd092122e2d28e8",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2df562a8ff7f6ae8dd01d9f92d73f0c3a712e32883eda34f0fd092122e2d28e8",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericClosedBranchFirstVariation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericClosedBranchFirstVariation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ee455be6a6a7b6736b5524b5521940faebb4bdf23443714dd264719367bb2079",
+      "research_source_sha256": "ee455be6a6a7b6736b5524b5521940faebb4bdf23443714dd264719367bb2079",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ee455be6a6a7b6736b5524b5521940faebb4bdf23443714dd264719367bb2079",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericTensorDerivative",
+      "path": "proofs/ThreeSitePhosphorylation/GenericTensorDerivative.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b28d8a65dbf90742717d49d3d55ec2d8e1299aab3863431ab560fa02b2fdc21b",
+      "research_source_sha256": "b28d8a65dbf90742717d49d3d55ec2d8e1299aab3863431ab560fa02b2fdc21b",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b28d8a65dbf90742717d49d3d55ec2d8e1299aab3863431ab560fa02b2fdc21b",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericTensorSecondVariation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericTensorSecondVariation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "077b77859063880a7e439ebb6effa3e73a83e3fe1fe126b4433e3aaa1d736e34",
+      "research_source_sha256": "077b77859063880a7e439ebb6effa3e73a83e3fe1fe126b4433e3aaa1d736e34",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "077b77859063880a7e439ebb6effa3e73a83e3fe1fe126b4433e3aaa1d736e34",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericClosedBranchVariations",
+      "path": "proofs/ThreeSitePhosphorylation/GenericClosedBranchVariations.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "a9e3be8969818a8b2900cdbad8db8749955d38bd78566b35724a6e8ed3a918eb",
+      "research_source_sha256": "a9e3be8969818a8b2900cdbad8db8749955d38bd78566b35724a6e8ed3a918eb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "a9e3be8969818a8b2900cdbad8db8749955d38bd78566b35724a6e8ed3a918eb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.FourierMoment",
+      "path": "proofs/ThreeSitePhosphorylation/FourierMoment.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ff5fffeda7aadd4807069279e1d0717bbca156de0b4ac17da9dccbb477c5ded0",
+      "research_source_sha256": "ff5fffeda7aadd4807069279e1d0717bbca156de0b4ac17da9dccbb477c5ded0",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ff5fffeda7aadd4807069279e1d0717bbca156de0b4ac17da9dccbb477c5ded0",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericMixedFourierMoment",
+      "path": "proofs/ThreeSitePhosphorylation/GenericMixedFourierMoment.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5897662e034131cf1993ffbbf9c9c940eef076cc4ec98bc201d522ce2f8ea60f",
+      "research_source_sha256": "5897662e034131cf1993ffbbf9c9c940eef076cc4ec98bc201d522ce2f8ea60f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5897662e034131cf1993ffbbf9c9c940eef076cc4ec98bc201d522ce2f8ea60f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericQuadraticFourier",
+      "path": "proofs/ThreeSitePhosphorylation/GenericQuadraticFourier.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f155a5bf016aa98e89e77786ffda404c2e2323667c0cb46e8eefb0f79dbb7e8f",
+      "research_source_sha256": "f155a5bf016aa98e89e77786ffda404c2e2323667c0cb46e8eefb0f79dbb7e8f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f155a5bf016aa98e89e77786ffda404c2e2323667c0cb46e8eefb0f79dbb7e8f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericClosedBranchCurvature",
+      "path": "proofs/ThreeSitePhosphorylation/GenericClosedBranchCurvature.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d97e168c7980f516acf2244cd191d7db675d6c6f35bc4e8c1aa0e9178fa3bb4b",
+      "research_source_sha256": "d97e168c7980f516acf2244cd191d7db675d6c6f35bc4e8c1aa0e9178fa3bb4b",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d97e168c7980f516acf2244cd191d7db675d6c6f35bc4e8c1aa0e9178fa3bb4b",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericResolvents",
+      "path": "proofs/ThreeSitePhosphorylation/GenericResolvents.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "625972d7d51a6aa9350abeedf944dfbc7fd51cf57a3b2efafd6595f5c289ed5c",
+      "research_source_sha256": "625972d7d51a6aa9350abeedf944dfbc7fd51cf57a3b2efafd6595f5c289ed5c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "625972d7d51a6aa9350abeedf944dfbc7fd51cf57a3b2efafd6595f5c289ed5c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteInverseTransport",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteInverseTransport.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "af749c227a5a4d0846451821c71b54ed786b3328ea54bb1f32f1cc1eeff1432f",
+      "research_source_sha256": "af749c227a5a4d0846451821c71b54ed786b3328ea54bb1f32f1cc1eeff1432f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "af749c227a5a4d0846451821c71b54ed786b3328ea54bb1f32f1cc1eeff1432f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteCoefficientTransport",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteCoefficientTransport.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "67b80bb0fb3914ca2f63d9d3dfbce96d1f86be63c1f20a99c72ea021eb72658c",
+      "research_source_sha256": "67b80bb0fb3914ca2f63d9d3dfbce96d1f86be63c1f20a99c72ea021eb72658c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "67b80bb0fb3914ca2f63d9d3dfbce96d1f86be63c1f20a99c72ea021eb72658c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteCoefficientContinuity",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteCoefficientContinuity.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f585395754479dfc704a7279303e83c5fac09bc4241993385b46dc9894e819e7",
+      "research_source_sha256": "f585395754479dfc704a7279303e83c5fac09bc4241993385b46dc9894e819e7",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f585395754479dfc704a7279303e83c5fac09bc4241993385b46dc9894e819e7",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteCrossingTransport",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteCrossingTransport.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "20801a4cdc28b6270d64841dd0a12ebee0591ef95d9ab68bc0bb1595e0191364",
+      "research_source_sha256": "20801a4cdc28b6270d64841dd0a12ebee0591ef95d9ab68bc0bb1595e0191364",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "20801a4cdc28b6270d64841dd0a12ebee0591ef95d9ab68bc0bb1595e0191364",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteNormalDerivative",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteNormalDerivative.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5ad62cbe54274968b40829d20d10111e301f0af75bd2db8723c139e423608623",
+      "research_source_sha256": "5ad62cbe54274968b40829d20d10111e301f0af75bd2db8723c139e423608623",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5ad62cbe54274968b40829d20d10111e301f0af75bd2db8723c139e423608623",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledMultisiteCenteredFace",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledMultisiteCenteredFace.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "967e6548ea512a1b017c7d38dd5f3689084ba012bd546fe151398d2fd68876fe",
+      "research_source_sha256": "967e6548ea512a1b017c7d38dd5f3689084ba012bd546fe151398d2fd68876fe",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "967e6548ea512a1b017c7d38dd5f3689084ba012bd546fe151398d2fd68876fe",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteSmoothField",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteSmoothField.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b8b0063e7ff50d11da5a5532b5d1903043ff18e8d57553c82d440ada034f7f92",
+      "research_source_sha256": "b8b0063e7ff50d11da5a5532b5d1903043ff18e8d57553c82d440ada034f7f92",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b8b0063e7ff50d11da5a5532b5d1903043ff18e8d57553c82d440ada034f7f92",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteSplit",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteSplit.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b2eec7fa5d170564c4f82f0455e4045fe06baa86571b5d8f2551d0ff72413bed",
+      "research_source_sha256": "b2eec7fa5d170564c4f82f0455e4045fe06baa86571b5d8f2551d0ff72413bed",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b2eec7fa5d170564c4f82f0455e4045fe06baa86571b5d8f2551d0ff72413bed",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledNormalJacobian",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledNormalJacobian.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "45c9a17b59091fc0f8235a3bfd97971777da15d7e0ea813eaa6f342d5d0d935f",
+      "research_source_sha256": "45c9a17b59091fc0f8235a3bfd97971777da15d7e0ea813eaa6f342d5d0d935f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "45c9a17b59091fc0f8235a3bfd97971777da15d7e0ea813eaa6f342d5d0d935f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledJacobianBlock",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledJacobianBlock.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f0abd15db676e742ee9758f9b9eb2a00c48111fe5ce8671af8a686d8f8da9daa",
+      "research_source_sha256": "f0abd15db676e742ee9758f9b9eb2a00c48111fe5ce8671af8a686d8f8da9daa",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f0abd15db676e742ee9758f9b9eb2a00c48111fe5ce8671af8a686d8f8da9daa",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledJointSource",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledJointSource.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2b8d6de6cfd8f23e4cfda55372d0cc9e9857c1690f347d753737cf513b4ad6ce",
+      "research_source_sha256": "2b8d6de6cfd8f23e4cfda55372d0cc9e9857c1690f347d753737cf513b4ad6ce",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2b8d6de6cfd8f23e4cfda55372d0cc9e9857c1690f347d753737cf513b4ad6ce",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteSourceMatrix",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteSourceMatrix.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "cffb85ef6b4077e3801c07d086923f9d154f85e21353f4569a138dff12ededdc",
+      "research_source_sha256": "cffb85ef6b4077e3801c07d086923f9d154f85e21353f4569a138dff12ededdc",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "cffb85ef6b4077e3801c07d086923f9d154f85e21353f4569a138dff12ededdc",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.CriticalSpectrum",
+      "path": "proofs/ThreeSitePhosphorylation/CriticalSpectrum.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b110842ce2629aea7a392933707f28b88559737b53f444c3e058d8872bff4cde",
+      "research_source_sha256": "b110842ce2629aea7a392933707f28b88559737b53f444c3e058d8872bff4cde",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b110842ce2629aea7a392933707f28b88559737b53f444c3e058d8872bff4cde",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ScaledNormalSpectrum",
+      "path": "proofs/ThreeSitePhosphorylation/ScaledNormalSpectrum.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "8de14c59e3ab7f4a60ffe5287869614f6c4a6f98ea21db1efe0e95e978fdb19a",
+      "research_source_sha256": "8de14c59e3ab7f4a60ffe5287869614f6c4a6f98ea21db1efe0e95e978fdb19a",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "8de14c59e3ab7f4a60ffe5287869614f6c4a6f98ea21db1efe0e95e978fdb19a",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.NormalEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/NormalEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "418726dd346a0146eb101587fe4f4b326628259a02c43e80922a7db3287e9279",
+      "research_source_sha256": "418726dd346a0146eb101587fe4f4b326628259a02c43e80922a7db3287e9279",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "418726dd346a0146eb101587fe4f4b326628259a02c43e80922a7db3287e9279",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.UpperTriangularEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/UpperTriangularEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "91cdded3847554074aa2f1767bb156c5a62c6c56254c13f1c9ff3a2a866a8006",
+      "research_source_sha256": "91cdded3847554074aa2f1767bb156c5a62c6c56254c13f1c9ff3a2a866a8006",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "91cdded3847554074aa2f1767bb156c5a62c6c56254c13f1c9ff3a2a866a8006",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.RealResolventSolution",
+      "path": "proofs/ThreeSitePhosphorylation/RealResolventSolution.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "bc18094f43dc854d8c14f5cb2d45c2d4f8b6d843c4c3284b4a9a9eb7152de084",
+      "research_source_sha256": "bc18094f43dc854d8c14f5cb2d45c2d4f8b6d843c4c3284b4a9a9eb7152de084",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "bc18094f43dc854d8c14f5cb2d45c2d4f8b6d843c4c3284b4a9a9eb7152de084",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteZeroLoadBasis",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteZeroLoadBasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "12dc46bdc1b07cec17e64efa87d99cb544bfe81763943da127d694e6fdbc9c27",
+      "research_source_sha256": "12dc46bdc1b07cec17e64efa87d99cb544bfe81763943da127d694e6fdbc9c27",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "12dc46bdc1b07cec17e64efa87d99cb544bfe81763943da127d694e6fdbc9c27",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.SimpleComplexEigenpair",
+      "path": "proofs/ThreeSitePhosphorylation/SimpleComplexEigenpair.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b5210680cfb3b97042148a2dc02222625b55bda7f89f0797496a26c4e4ca2860",
+      "research_source_sha256": "b5210680cfb3b97042148a2dc02222625b55bda7f89f0797496a26c4e4ca2860",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b5210680cfb3b97042148a2dc02222625b55bda7f89f0797496a26c4e4ca2860",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ComplexNearbyEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/ComplexNearbyEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "930c09ec4b448fd35668ef075acb054b5913b72e42f8bfa8b6ce176d5b7e1b01",
+      "research_source_sha256": "930c09ec4b448fd35668ef075acb054b5913b72e42f8bfa8b6ce176d5b7e1b01",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "930c09ec4b448fd35668ef075acb054b5913b72e42f8bfa8b6ce176d5b7e1b01",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.RealEigenpairPersistence",
+      "path": "proofs/ThreeSitePhosphorylation/RealEigenpairPersistence.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ce2b26496e1cd33b733e8125e0f25e7eb280856690b2ce52b130a0f358c85d31",
+      "research_source_sha256": "ce2b26496e1cd33b733e8125e0f25e7eb280856690b2ce52b130a0f358c85d31",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ce2b26496e1cd33b733e8125e0f25e7eb280856690b2ce52b130a0f358c85d31",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.RealEigenfunctional",
+      "path": "proofs/ThreeSitePhosphorylation/RealEigenfunctional.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "e21f93f690adbc36c33fce71b3c3c74188976058c5a1345ff0a218eb00b84248",
+      "research_source_sha256": "e21f93f690adbc36c33fce71b3c3c74188976058c5a1345ff0a218eb00b84248",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "e21f93f690adbc36c33fce71b3c3c74188976058c5a1345ff0a218eb00b84248",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.CriticalParameterCurve",
+      "path": "proofs/ThreeSitePhosphorylation/CriticalParameterCurve.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b2f55ccf34449545bd289f78e4f183c415b98772b67c081fd028076410fffb3c",
+      "research_source_sha256": "b2f55ccf34449545bd289f78e4f183c415b98772b67c081fd028076410fffb3c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b2f55ccf34449545bd289f78e4f183c415b98772b67c081fd028076410fffb3c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteCriticalContinuation",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteCriticalContinuation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f2f228923da64bdff388a7a9b66385af83fdc6373025a79226cafa7940689b90",
+      "research_source_sha256": "f2f228923da64bdff388a7a9b66385af83fdc6373025a79226cafa7940689b90",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f2f228923da64bdff388a7a9b66385af83fdc6373025a79226cafa7940689b90",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteSpectralStep",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteSpectralStep.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "c2459650de938ddd4474978e951b3d777472651ccd473ccf9f5c8f6f61a7880f",
+      "research_source_sha256": "c2459650de938ddd4474978e951b3d777472651ccd473ccf9f5c8f6f61a7880f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "c2459650de938ddd4474978e951b3d777472651ccd473ccf9f5c8f6f61a7880f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AddedSiteHopfStep",
+      "path": "proofs/ThreeSitePhosphorylation/AddedSiteHopfStep.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "bdc7befdba223b62c1f5d20ef6114a8a4eea7100812b2da0e408fc4e03ede0e4",
+      "research_source_sha256": "bdc7befdba223b62c1f5d20ef6114a8a4eea7100812b2da0e408fc4e03ede0e4",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "bdc7befdba223b62c1f5d20ef6114a8a4eea7100812b2da0e408fc4e03ede0e4",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.Source",
+      "path": "proofs/ThreeSitePhosphorylation/Source.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5830a65bb1c831c5ba5b80313b37ff99a7ac2607c2cb76d7227665c5819858b5",
+      "research_source_sha256": "5830a65bb1c831c5ba5b80313b37ff99a7ac2607c2cb76d7227665c5819858b5",
+      "repo_sha256_before": "5830a65bb1c831c5ba5b80313b37ff99a7ac2607c2cb76d7227665c5819858b5",
+      "repo_sha256_after": "5830a65bb1c831c5ba5b80313b37ff99a7ac2607c2cb76d7227665c5819858b5",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.Jacobian",
+      "path": "proofs/ThreeSitePhosphorylation/Jacobian.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f904dde2c8327ee0c111dfba7e0d1b0d06a82728a67882aa62b8bf1e1dcf1e7b",
+      "research_source_sha256": "f904dde2c8327ee0c111dfba7e0d1b0d06a82728a67882aa62b8bf1e1dcf1e7b",
+      "repo_sha256_before": "f904dde2c8327ee0c111dfba7e0d1b0d06a82728a67882aa62b8bf1e1dcf1e7b",
+      "repo_sha256_after": "f904dde2c8327ee0c111dfba7e0d1b0d06a82728a67882aa62b8bf1e1dcf1e7b",
+      "status": "UNCHANGED_IDENTICAL"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingSource",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingSource.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ce1e48757ffecb9c92debe6f752e5a0aaa27a8172357c5a1f619368f9f376b30",
+      "research_source_sha256": "ce1e48757ffecb9c92debe6f752e5a0aaa27a8172357c5a1f619368f9f376b30",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ce1e48757ffecb9c92debe6f752e5a0aaa27a8172357c5a1f619368f9f376b30",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.MultisiteThreeSiteBridge",
+      "path": "proofs/ThreeSitePhosphorylation/MultisiteThreeSiteBridge.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "fd94459b3b5617d0131a86c3f1ec9b93a6f1c67a963c407f3b7b45fe8e004471",
+      "research_source_sha256": "fd94459b3b5617d0131a86c3f1ec9b93a6f1c67a963c407f3b7b45fe8e004471",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "fd94459b3b5617d0131a86c3f1ec9b93a6f1c67a963c407f3b7b45fe8e004471",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingJet",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingJet.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "4b5bfaa1d1920067e15efa6b59edccda47569fa38160f894fe6fd6bbdcfea935",
+      "research_source_sha256": "4b5bfaa1d1920067e15efa6b59edccda47569fa38160f894fe6fd6bbdcfea935",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "4b5bfaa1d1920067e15efa6b59edccda47569fa38160f894fe6fd6bbdcfea935",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingFrequency",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingFrequency.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d260653220dafc6fbb142cb61ce70cd69d16d7515cad26ad905b6214db57e222",
+      "research_source_sha256": "d260653220dafc6fbb142cb61ce70cd69d16d7515cad26ad905b6214db57e222",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d260653220dafc6fbb142cb61ce70cd69d16d7515cad26ad905b6214db57e222",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingSpectral",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingSpectral.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b39e66ec79ef4ce3e0fc7def70b471e036e39afb9272924ac3d1df3fd5372326",
+      "research_source_sha256": "b39e66ec79ef4ce3e0fc7def70b471e036e39afb9272924ac3d1df3fd5372326",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b39e66ec79ef4ce3e0fc7def70b471e036e39afb9272924ac3d1df3fd5372326",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "33bd31ed9aea3b893f8653869c3eb2db5d5ed843552594a9c28b6a0956f93166",
+      "research_source_sha256": "33bd31ed9aea3b893f8653869c3eb2db5d5ed843552594a9c28b6a0956f93166",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "33bd31ed9aea3b893f8653869c3eb2db5d5ed843552594a9c28b6a0956f93166",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingResolvent",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingResolvent.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d7cf9ebb4dd5fe0968a225495ee275988bd855f7642a5a143e2191c100fb1dd8",
+      "research_source_sha256": "d7cf9ebb4dd5fe0968a225495ee275988bd855f7642a5a143e2191c100fb1dd8",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d7cf9ebb4dd5fe0968a225495ee275988bd855f7642a5a143e2191c100fb1dd8",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovH20Pilot",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovH20Pilot.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "66869611a11a461eff61036e45b204df0201c5be1eed222ded957b9eab6448e7",
+      "research_source_sha256": "66869611a11a461eff61036e45b204df0201c5be1eed222ded957b9eab6448e7",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "66869611a11a461eff61036e45b204df0201c5be1eed222ded957b9eab6448e7",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingHessian",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingHessian.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "c459abe18ecde933044ff08fb827f0a825dec4fba36459ee28ab5ec291c284be",
+      "research_source_sha256": "c459abe18ecde933044ff08fb827f0a825dec4fba36459ee28ab5ec291c284be",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "c459abe18ecde933044ff08fb827f0a825dec4fba36459ee28ab5ec291c284be",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovH20",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovH20.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d71b1926ac9e0e18fa02a585eff100d9105b54514d06c7ac51edd24fb296dc15",
+      "research_source_sha256": "d71b1926ac9e0e18fa02a585eff100d9105b54514d06c7ac51edd24fb296dc15",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d71b1926ac9e0e18fa02a585eff100d9105b54514d06c7ac51edd24fb296dc15",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovH11",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovH11.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "dfb3c4e6cc5b7bf78c3f179b2e8b8c1570053aa90d64ca207d05a0c7f5d07707",
+      "research_source_sha256": "dfb3c4e6cc5b7bf78c3f179b2e8b8c1570053aa90d64ca207d05a0c7f5d07707",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "dfb3c4e6cc5b7bf78c3f179b2e8b8c1570053aa90d64ca207d05a0c7f5d07707",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingCrossing",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingCrossing.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d120c9b861dd0e4cbdaf349873a598af3dee4fec14a290c980780189e10bae34",
+      "research_source_sha256": "d120c9b861dd0e4cbdaf349873a598af3dee4fec14a290c980780189e10bae34",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d120c9b861dd0e4cbdaf349873a598af3dee4fec14a290c980780189e10bae34",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.SpectralPairing",
+      "path": "proofs/ThreeSitePhosphorylation/SpectralPairing.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "1ab91a0e6cad9c5aa47c36bd662885c6cd84a8ce96475a23a3afc004966c2269",
+      "research_source_sha256": "1ab91a0e6cad9c5aa47c36bd662885c6cd84a8ce96475a23a3afc004966c2269",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "1ab91a0e6cad9c5aa47c36bd662885c6cd84a8ce96475a23a3afc004966c2269",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingPairing",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingPairing.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "638943a06b551914f454478d79549f100cb5fba5badb5fb085ac27e19af28934",
+      "research_source_sha256": "638943a06b551914f454478d79549f100cb5fba5badb5fb085ac27e19af28934",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "638943a06b551914f454478d79549f100cb5fba5badb5fb085ac27e19af28934",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovLeft",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovLeft.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "2db97c7b047ac4ca37f25f9e056fe08fd7a78ac924b18f55c1db7868a8402c37",
+      "research_source_sha256": "2db97c7b047ac4ca37f25f9e056fe08fd7a78ac924b18f55c1db7868a8402c37",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "2db97c7b047ac4ca37f25f9e056fe08fd7a78ac924b18f55c1db7868a8402c37",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovSign",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovSign.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "bbc27ac96b0ec5f23101125aaae25cc9dd62ab4543b778157d4e4a1558f0d4d8",
+      "research_source_sha256": "bbc27ac96b0ec5f23101125aaae25cc9dd62ab4543b778157d4e4a1558f0d4d8",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "bbc27ac96b0ec5f23101125aaae25cc9dd62ab4543b778157d4e4a1558f0d4d8",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovScalarPilot",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovScalarPilot.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "d265501140ca2d601fdfd1f80b397ccb380880c36a89cc2954b47f25e19b0e8c",
+      "research_source_sha256": "d265501140ca2d601fdfd1f80b397ccb380880c36a89cc2954b47f25e19b0e8c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "d265501140ca2d601fdfd1f80b397ccb380880c36a89cc2954b47f25e19b0e8c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLyapunovSource",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLyapunovSource.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "b26b9e2226418bd48745d1ee8ab92685a56d055d7f4ffe11526f060c2eb76d50",
+      "research_source_sha256": "b26b9e2226418bd48745d1ee8ab92685a56d055d7f4ffe11526f060c2eb76d50",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "b26b9e2226418bd48745d1ee8ab92685a56d055d7f4ffe11526f060c2eb76d50",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingFlow",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingFlow.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "fc350fb03ddc0ef1d5a326d9cbfb216e9774d5ef47c5b1b03ae266355b20433c",
+      "research_source_sha256": "fc350fb03ddc0ef1d5a326d9cbfb216e9774d5ef47c5b1b03ae266355b20433c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "fc350fb03ddc0ef1d5a326d9cbfb216e9774d5ef47c5b1b03ae266355b20433c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLinearFlow",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLinearFlow.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5fc89fb794b6a9a85adea1226a198e2b120a4bd9925614c18bf05559634961e3",
+      "research_source_sha256": "5fc89fb794b6a9a85adea1226a198e2b120a4bd9925614c18bf05559634961e3",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5fc89fb794b6a9a85adea1226a198e2b120a4bd9925614c18bf05559634961e3",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingComplexOrbit",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingComplexOrbit.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "e74fc41be0b191baea21dd6072cb1acfe078c2d7ba9b915a53dd59805058562a",
+      "research_source_sha256": "e74fc41be0b191baea21dd6072cb1acfe078c2d7ba9b915a53dd59805058562a",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "e74fc41be0b191baea21dd6072cb1acfe078c2d7ba9b915a53dd59805058562a",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingShootingMap",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingShootingMap.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5a936cbae5319ccd5a507f099cd64b9200f67b07ef9f590d06e56372ce5e4138",
+      "research_source_sha256": "5a936cbae5319ccd5a507f099cd64b9200f67b07ef9f590d06e56372ce5e4138",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5a936cbae5319ccd5a507f099cd64b9200f67b07ef9f590d06e56372ce5e4138",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingVariationalFlow",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingVariationalFlow.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "9d7590fbe32286f7341cfc6cb186f2ddc2c788e6ace4a641c74fe28999d4fdab",
+      "research_source_sha256": "9d7590fbe32286f7341cfc6cb186f2ddc2c788e6ace4a641c74fe28999d4fdab",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "9d7590fbe32286f7341cfc6cb186f2ddc2c788e6ace4a641c74fe28999d4fdab",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingVariationalODE",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingVariationalODE.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "649aa88a4e68b555436295fb37cfa129365b89b035dc308001dcb15deea86890",
+      "research_source_sha256": "649aa88a4e68b555436295fb37cfa129365b89b035dc308001dcb15deea86890",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "649aa88a4e68b555436295fb37cfa129365b89b035dc308001dcb15deea86890",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingPathKernel",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingPathKernel.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "dbe946718f25eb273fb6312fa9ced5ceda2b2df63091ba7345a90c8003ccb2cd",
+      "research_source_sha256": "dbe946718f25eb273fb6312fa9ced5ceda2b2df63091ba7345a90c8003ccb2cd",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "dbe946718f25eb273fb6312fa9ced5ceda2b2df63091ba7345a90c8003ccb2cd",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingClosedPaths",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingClosedPaths.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "1257d9930acc0f4c9d525628686f3240a0307d5fcb3a2433695ed07a3ae06795",
+      "research_source_sha256": "1257d9930acc0f4c9d525628686f3240a0307d5fcb3a2433695ed07a3ae06795",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "1257d9930acc0f4c9d525628686f3240a0307d5fcb3a2433695ed07a3ae06795",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingLeftUnique",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingLeftUnique.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3c2ac24320a669a9d9d7ef3ad56b90807599a463dd9d3bbea5d24cbf25b2277f",
+      "research_source_sha256": "3c2ac24320a669a9d9d7ef3ad56b90807599a463dd9d3bbea5d24cbf25b2277f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3c2ac24320a669a9d9d7ef3ad56b90807599a463dd9d3bbea5d24cbf25b2277f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AllSiteHopfInvariant",
+      "path": "proofs/ThreeSitePhosphorylation/AllSiteHopfInvariant.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "9fefd30524b7fa2a1ca9b42768ad4f256faa72cc119aba35b4f925618a60e68c",
+      "research_source_sha256": "9fefd30524b7fa2a1ca9b42768ad4f256faa72cc119aba35b4f925618a60e68c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "9fefd30524b7fa2a1ca9b42768ad4f256faa72cc119aba35b4f925618a60e68c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnTime",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnTime.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "17ab839a002f06a85b98eb1a683b7c63445aeb518c3e9fef0eef5739516f2b1b",
+      "research_source_sha256": "17ab839a002f06a85b98eb1a683b7c63445aeb518c3e9fef0eef5739516f2b1b",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "17ab839a002f06a85b98eb1a683b7c63445aeb518c3e9fef0eef5739516f2b1b",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnIFT",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnIFT.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5c8beca80d62c71679bfba8039926b9ffef8666228e940ee93e41c9931a30fbb",
+      "research_source_sha256": "5c8beca80d62c71679bfba8039926b9ffef8666228e940ee93e41c9931a30fbb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5c8beca80d62c71679bfba8039926b9ffef8666228e940ee93e41c9931a30fbb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPathContinuation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPathContinuation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ef69693321792fe15dd04db07bd1ef355b0610888b61df54392fb31b902ff483",
+      "research_source_sha256": "ef69693321792fe15dd04db07bd1ef355b0610888b61df54392fb31b902ff483",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ef69693321792fe15dd04db07bd1ef355b0610888b61df54392fb31b902ff483",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericQuadraticDynamics",
+      "path": "proofs/ThreeSitePhosphorylation/GenericQuadraticDynamics.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f9e4d68a441f34b5d2e57329b8936f2b0032863a6ac1bad42979394789827ba6",
+      "research_source_sha256": "f9e4d68a441f34b5d2e57329b8936f2b0032863a6ac1bad42979394789827ba6",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f9e4d68a441f34b5d2e57329b8936f2b0032863a6ac1bad42979394789827ba6",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.OrbitalStability",
+      "path": "proofs/ThreeSitePhosphorylation/OrbitalStability.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "df6f560c861b05735d89ac3221fd26afd801b1eb50ef8401a7793808ac103998",
+      "research_source_sha256": "df6f560c861b05735d89ac3221fd26afd801b1eb50ef8401a7793808ac103998",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "df6f560c861b05735d89ac3221fd26afd801b1eb50ef8401a7793808ac103998",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ReturnMapContraction",
+      "path": "proofs/ThreeSitePhosphorylation/ReturnMapContraction.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "37436b9fedf332bb20c4f25891da00a359d88114b096fcbb35fb0e3ddf7933a3",
+      "research_source_sha256": "37436b9fedf332bb20c4f25891da00a359d88114b096fcbb35fb0e3ddf7933a3",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "37436b9fedf332bb20c4f25891da00a359d88114b096fcbb35fb0e3ddf7933a3",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.RealEigenbasisContraction",
+      "path": "proofs/ThreeSitePhosphorylation/RealEigenbasisContraction.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3c8e2134fac7015abbe5cda384b0ab25e830aeba86454bf107362ddaf73b62c5",
+      "research_source_sha256": "3c8e2134fac7015abbe5cda384b0ab25e830aeba86454bf107362ddaf73b62c5",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3c8e2134fac7015abbe5cda384b0ab25e830aeba86454bf107362ddaf73b62c5",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ReturnIterateControl",
+      "path": "proofs/ThreeSitePhosphorylation/ReturnIterateControl.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "cdba57f574f0cd7974b2074aafd3795501f26f06df3179ffe4124e1364f7ca21",
+      "research_source_sha256": "cdba57f574f0cd7974b2074aafd3795501f26f06df3179ffe4124e1364f7ca21",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "cdba57f574f0cd7974b2074aafd3795501f26f06df3179ffe4124e1364f7ca21",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.NonZenoReturns",
+      "path": "proofs/ThreeSitePhosphorylation/NonZenoReturns.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "94efb581aaca9f8eb9018eb17eb5bfb07f905d2245e457e2da8797ad5a2e7ada",
+      "research_source_sha256": "94efb581aaca9f8eb9018eb17eb5bfb07f905d2245e457e2da8797ad5a2e7ada",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "94efb581aaca9f8eb9018eb17eb5bfb07f905d2245e457e2da8797ad5a2e7ada",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ReturnArcConcatenation",
+      "path": "proofs/ThreeSitePhosphorylation/ReturnArcConcatenation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "95a0ee883130ca1cc307153bf12444b11b0f0e1fa1945787d4a999a619f3bdf4",
+      "research_source_sha256": "95a0ee883130ca1cc307153bf12444b11b0f0e1fa1945787d4a999a619f3bdf4",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "95a0ee883130ca1cc307153bf12444b11b0f0e1fa1945787d4a999a619f3bdf4",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericLocalAttraction",
+      "path": "proofs/ThreeSitePhosphorylation/GenericLocalAttraction.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "1ffdb30b94f4855764b6e361ec36d097a7992631173aad0a11e6227f4d587d38",
+      "research_source_sha256": "1ffdb30b94f4855764b6e361ec36d097a7992631173aad0a11e6227f4d587d38",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "1ffdb30b94f4855764b6e361ec36d097a7992631173aad0a11e6227f4d587d38",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.LinearEndpointInjective",
+      "path": "proofs/ThreeSitePhosphorylation/LinearEndpointInjective.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "8478562ac929be49d74366262fced81400a8dbee91554fd1c7eaeaf034fb1fa1",
+      "research_source_sha256": "8478562ac929be49d74366262fced81400a8dbee91554fd1c7eaeaf034fb1fa1",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "8478562ac929be49d74366262fced81400a8dbee91554fd1c7eaeaf034fb1fa1",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.PhaseImageNeighborhood",
+      "path": "proofs/ThreeSitePhosphorylation/PhaseImageNeighborhood.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "0bae68489aed2be6f3c2c47f4d8847e45688e58b8d8b7294b3fdbb3063bf8fd4",
+      "research_source_sha256": "0bae68489aed2be6f3c2c47f4d8847e45688e58b8d8b7294b3fdbb3063bf8fd4",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "0bae68489aed2be6f3c2c47f4d8847e45688e58b8d8b7294b3fdbb3063bf8fd4",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.SmoothForwardUniqueness",
+      "path": "proofs/ThreeSitePhosphorylation/SmoothForwardUniqueness.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "e6d348151d61a1b4fe568ca787923fc8be4452c6328458495aae2dd29b6335ec",
+      "research_source_sha256": "e6d348151d61a1b4fe568ca787923fc8be4452c6328458495aae2dd29b6335ec",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "e6d348151d61a1b4fe568ca787923fc8be4452c6328458495aae2dd29b6335ec",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.ForwardSolutionShift",
+      "path": "proofs/ThreeSitePhosphorylation/ForwardSolutionShift.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ca7e7bd21157528286f07b928fa4f3f7a67834a3e453c48ed469bb55c7f12e83",
+      "research_source_sha256": "ca7e7bd21157528286f07b928fa4f3f7a67834a3e453c48ed469bb55c7f12e83",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ca7e7bd21157528286f07b928fa4f3f7a67834a3e453c48ed469bb55c7f12e83",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericWholeOrbit",
+      "path": "proofs/ThreeSitePhosphorylation/GenericWholeOrbit.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "714c67654409a88010d7be8e53ced9f061caa613706e46af9fe0d28069b8d58f",
+      "research_source_sha256": "714c67654409a88010d7be8e53ced9f061caa613706e46af9fe0d28069b8d58f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "714c67654409a88010d7be8e53ced9f061caa613706e46af9fe0d28069b8d58f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAffinePathUniqueness",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAffinePathUniqueness.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3088b2b8b7be02328b585d8a6acdffe436cdd107e3d35d4357b50222698ba4e3",
+      "research_source_sha256": "3088b2b8b7be02328b585d8a6acdffe436cdd107e3d35d4357b50222698ba4e3",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3088b2b8b7be02328b585d8a6acdffe436cdd107e3d35d4357b50222698ba4e3",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnScaling",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnScaling.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "a5d32e721eb845d1fa3f8220b90836a0c15aef88aa824a1909686564003fa4d3",
+      "research_source_sha256": "a5d32e721eb845d1fa3f8220b90836a0c15aef88aa824a1909686564003fa4d3",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "a5d32e721eb845d1fa3f8220b90836a0c15aef88aa824a1909686564003fa4d3",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnDerivative",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnDerivative.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "add49155c0ec94aed5b725c5807ff47d1e0e1fdedfcea8d2b4297bdf7fdf5e05",
+      "research_source_sha256": "add49155c0ec94aed5b725c5807ff47d1e0e1fdedfcea8d2b4297bdf7fdf5e05",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "add49155c0ec94aed5b725c5807ff47d1e0e1fdedfcea8d2b4297bdf7fdf5e05",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnBaseVariation",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnBaseVariation.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "45d097ef55bff154e909236a4ec4c3868e555f12dba52f517551ae69aac9b62f",
+      "research_source_sha256": "45d097ef55bff154e909236a4ec4c3868e555f12dba52f517551ae69aac9b62f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "45d097ef55bff154e909236a4ec4c3868e555f12dba52f517551ae69aac9b62f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnBaseDerivative",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnBaseDerivative.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "69613f593015793a3a26cd22bc5d0f6e8d92f5aff609393479a50536d8c0ff03",
+      "research_source_sha256": "69613f593015793a3a26cd22bc5d0f6e8d92f5aff609393479a50536d8c0ff03",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "69613f593015793a3a26cd22bc5d0f6e8d92f5aff609393479a50536d8c0ff03",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnParameterPairing",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnParameterPairing.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "58db09c967d930e592418d4a2da1f1540aa7af60a97912ef7190a6bc491de127",
+      "research_source_sha256": "58db09c967d930e592418d4a2da1f1540aa7af60a97912ef7190a6bc491de127",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "58db09c967d930e592418d4a2da1f1540aa7af60a97912ef7190a6bc491de127",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnBranch",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnBranch.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "6cc5e5054f63767fbfe1f2f3c6f77ec622ebc859442780c7f90cc031985e85cb",
+      "research_source_sha256": "6cc5e5054f63767fbfe1f2f3c6f77ec622ebc859442780c7f90cc031985e85cb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "6cc5e5054f63767fbfe1f2f3c6f77ec622ebc859442780c7f90cc031985e85cb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnContracts",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnContracts.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "283aba432c529d47a226a4c5d29f12f344876f90a7182b4bc96bcac9095cb661",
+      "research_source_sha256": "283aba432c529d47a226a4c5d29f12f344876f90a7182b4bc96bcac9095cb661",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "283aba432c529d47a226a4c5d29f12f344876f90a7182b4bc96bcac9095cb661",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnBaseModes",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnBaseModes.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "5353ec8d3999e5cc790c6eae8aa4b0d65afa23008ee31697900ccca8dc21ccd4",
+      "research_source_sha256": "5353ec8d3999e5cc790c6eae8aa4b0d65afa23008ee31697900ccca8dc21ccd4",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "5353ec8d3999e5cc790c6eae8aa4b0d65afa23008ee31697900ccca8dc21ccd4",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericRealCriticalBasis",
+      "path": "proofs/ThreeSitePhosphorylation/GenericRealCriticalBasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "c4a75ab1934eec10e51a7e3341c268131857cbc6b5cf9ef3ee8a2d6b65638ef2",
+      "research_source_sha256": "c4a75ab1934eec10e51a7e3341c268131857cbc6b5cf9ef3ee8a2d6b65638ef2",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "c4a75ab1934eec10e51a7e3341c268131857cbc6b5cf9ef3ee8a2d6b65638ef2",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnBaseEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnBaseEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "a088df5d0434961b8b62c9c1692868a651f5f11f7cd27e6a5f511cacede77fe8",
+      "research_source_sha256": "a088df5d0434961b8b62c9c1692868a651f5f11f7cd27e6a5f511cacede77fe8",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "a088df5d0434961b8b62c9c1692868a651f5f11f7cd27e6a5f511cacede77fe8",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericReturnLinearization",
+      "path": "proofs/ThreeSitePhosphorylation/GenericReturnLinearization.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "f0128a1531a30e2ac45ef44976f8d54c7af1d4912a37a955f256cb4e95f3abbb",
+      "research_source_sha256": "f0128a1531a30e2ac45ef44976f8d54c7af1d4912a37a955f256cb4e95f3abbb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "f0128a1531a30e2ac45ef44976f8d54c7af1d4912a37a955f256cb4e95f3abbb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.SimpleEigenpair",
+      "path": "proofs/ThreeSitePhosphorylation/SimpleEigenpair.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "ff31657bd4f1fc4ab79d16a090179fbc0d97415da49cd4b0031b4aeaccf3faeb",
+      "research_source_sha256": "ff31657bd4f1fc4ab79d16a090179fbc0d97415da49cd4b0031b4aeaccf3faeb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "ff31657bd4f1fc4ab79d16a090179fbc0d97415da49cd4b0031b4aeaccf3faeb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.NearbyEigenbasis",
+      "path": "proofs/ThreeSitePhosphorylation/NearbyEigenbasis.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "7e25a99eb87e28a7855f32db5814e2647fe8aa407a8e68a9988f11383de9111d",
+      "research_source_sha256": "7e25a99eb87e28a7855f32db5814e2647fe8aa407a8e68a9988f11383de9111d",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "7e25a99eb87e28a7855f32db5814e2647fe8aa407a8e68a9988f11383de9111d",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingScaling",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingScaling.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "3b94e167c56c912c40c6c10d7a1a4eea48606ed795fdca806f437e4a8f90e3cb",
+      "research_source_sha256": "3b94e167c56c912c40c6c10d7a1a4eea48606ed795fdca806f437e4a8f90e3cb",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "3b94e167c56c912c40c6c10d7a1a4eea48606ed795fdca806f437e4a8f90e3cb",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AttractingRadialMultiplier",
+      "path": "proofs/ThreeSitePhosphorylation/AttractingRadialMultiplier.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "704b16b7b2ba0235ca8c17e06b2f6252732ba94e08d88e130d20f3d70f3b554f",
+      "research_source_sha256": "704b16b7b2ba0235ca8c17e06b2f6252732ba94e08d88e130d20f3d70f3b554f",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "704b16b7b2ba0235ca8c17e06b2f6252732ba94e08d88e130d20f3d70f3b554f",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericQuadraticClosedPaths",
+      "path": "proofs/ThreeSitePhosphorylation/GenericQuadraticClosedPaths.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "588f21e1c45bb0ed7af5995887f16c493c6a62982da66c2e46920bb42c251bac",
+      "research_source_sha256": "588f21e1c45bb0ed7af5995887f16c493c6a62982da66c2e46920bb42c251bac",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "588f21e1c45bb0ed7af5995887f16c493c6a62982da66c2e46920bb42c251bac",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericBranchMultipliers",
+      "path": "proofs/ThreeSitePhosphorylation/GenericBranchMultipliers.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "39f7e13eaf926d59af38dae6bb6c9f91437974329988833d3bdcf11709583080",
+      "research_source_sha256": "39f7e13eaf926d59af38dae6bb6c9f91437974329988833d3bdcf11709583080",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "39f7e13eaf926d59af38dae6bb6c9f91437974329988833d3bdcf11709583080",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericPeriodicExtension",
+      "path": "proofs/ThreeSitePhosphorylation/GenericPeriodicExtension.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "9cc6ebc0e37fa387d06a491f412c49ccd5cfa092198206cc549605e198ebe518",
+      "research_source_sha256": "9cc6ebc0e37fa387d06a491f412c49ccd5cfa092198206cc549605e198ebe518",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "9cc6ebc0e37fa387d06a491f412c49ccd5cfa092198206cc549605e198ebe518",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAttractingFamily",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAttractingFamily.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "6bf6ab23d8c197e9a4cd74573490bbfa0e3a7634f7b07a26fa92c3b2f45af775",
+      "research_source_sha256": "6bf6ab23d8c197e9a4cd74573490bbfa0e3a7634f7b07a26fa92c3b2f45af775",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "6bf6ab23d8c197e9a4cd74573490bbfa0e3a7634f7b07a26fa92c3b2f45af775",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericAttractingHopf",
+      "path": "proofs/ThreeSitePhosphorylation/GenericAttractingHopf.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "42397b47c5dc1fc5099cd0336747f578289a1bd12d734536963de4aea55070fe",
+      "research_source_sha256": "42397b47c5dc1fc5099cd0336747f578289a1bd12d734536963de4aea55070fe",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "42397b47c5dc1fc5099cd0336747f578289a1bd12d734536963de4aea55070fe",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericChartTransport",
+      "path": "proofs/ThreeSitePhosphorylation/GenericChartTransport.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "221ec884fd4e59383f9b8cf93fd09a4a874e5a7e76a8e4551c090e780fd65b11",
+      "research_source_sha256": "221ec884fd4e59383f9b8cf93fd09a4a874e5a7e76a8e4551c090e780fd65b11",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "221ec884fd4e59383f9b8cf93fd09a4a874e5a7e76a8e4551c090e780fd65b11",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.GenericChartAttractingHopf",
+      "path": "proofs/ThreeSitePhosphorylation/GenericChartAttractingHopf.lean",
+      "role": "dependency",
+      "receipt_source_sha256": "75a864b3915410f75986685b8dd6cbea8d3c0cbaa6df03ec8e46ca7d24d8995c",
+      "research_source_sha256": "75a864b3915410f75986685b8dd6cbea8d3c0cbaa6df03ec8e46ca7d24d8995c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "75a864b3915410f75986685b8dd6cbea8d3c0cbaa6df03ec8e46ca7d24d8995c",
+      "status": "NEW_COPIED"
+    },
+    {
+      "module": "proofs.ThreeSitePhosphorylation.AllSiteAttractingFamily",
+      "path": "proofs/ThreeSitePhosphorylation/AllSiteAttractingFamily.lean",
+      "role": "target",
+      "receipt_source_sha256": "355bdf1029558fd8a1268f40dfe9ab621b7498dc3a8bfe4b9da3b5471251333c",
+      "research_source_sha256": "355bdf1029558fd8a1268f40dfe9ab621b7498dc3a8bfe4b9da3b5471251333c",
+      "repo_sha256_before": null,
+      "repo_sha256_after": "355bdf1029558fd8a1268f40dfe9ab621b7498dc3a8bfe4b9da3b5471251333c",
+      "status": "NEW_COPIED"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "challenge_module": "Registry.P064.Challenge",
+  "solution_module": "Registry.P064.Solution",
+  "theorem_names": ["ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

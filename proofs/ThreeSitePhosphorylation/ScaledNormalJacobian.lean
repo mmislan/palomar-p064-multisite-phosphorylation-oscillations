@@ -39,7 +39,7 @@ theorem centeredField_smooth {n : ℕ} (Et Ft St : ℝ)
     (fun _ : ℝ => k) Et Ft St hk
   have ht : ContDiff ℝ ⊤ (fun y : ReducedState n => ((0 : ℝ),zstar+y)) :=
     contDiff_const.prodMk (contDiff_const.add contDiff_id)
-  simpa only [Function.comp_def] using hj.comp ht
+  simpa only [Function.comp_def] using! hj.comp ht
 
 /-- Every direction is split into its old and new coordinates. The actual
 Frechet derivative agrees with the previously derived line derivative;
@@ -58,7 +58,7 @@ theorem scaled_centered_normal_fderiv_apply {n : ℕ} (Et Ft St : ℝ)
   have hd : HasFDerivAt F (fderiv ℝ F 0) 0 :=
     (hs.differentiable (by simp)).differentiableAt.hasFDerivAt
   have hline : HasDerivAt (fun t : ℝ => t • v) v 0 := by
-    simpa using (hasDerivAt_id (0 : ℝ)).smul_const v
+    simpa using! (hasDerivAt_id (0 : ℝ)).smul_const v
   have hfield := hd.comp_hasDerivAt_of_eq 0 hline (by simp)
   have hactual := (normalProjectionCLM n).hasFDerivAt.comp_hasDerivAt 0 hfield
   have hexact := scaled_centered_normal_hasDerivAt Et Ft St k κ zstar
@@ -67,7 +67,7 @@ theorem scaled_centered_normal_fderiv_apply {n : ℕ} (Et Ft St : ℝ)
   rw [append_coordinates] at hexact
   have hsame : HasDerivAt (fun t : ℝ => normalProjection (F (t • v)))
       (normalProjectionCLM n (fderiv ℝ F 0 v)) 0 := hactual
-  simpa only [F,normalProjectionCLM_apply,normalBlock_apply] using hsame.unique hexact
+  simpa only [F,normalProjectionCLM_apply,normalBlock_apply] using! hsame.unique hexact
 
 /-- Bundled bottom-row identity; the upper-right coupling is unrestricted. -/
 theorem scaled_centered_normal_fderiv {n : ℕ} (Et Ft St : ℝ)

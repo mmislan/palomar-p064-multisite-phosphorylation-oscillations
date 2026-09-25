@@ -105,10 +105,10 @@ theorem left_unique (A : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w) (roots : σ → 
       simp [spectralValues] at hr
       linarith [hn i]
     simp only [Module.Basis.coord_apply,Module.Basis.repr_self,Finsupp.single_apply,
-      reduceCtorEq,if_false]
+      reduceCtorEq,ite_false]
     exact (mul_eq_zero.mp hz).resolve_left hne
   · fin_cases i
-    · simpa [Module.Basis.coord_apply,Module.Basis.repr_self] using hv
+    · simpa [Module.Basis.coord_apply,Module.Basis.repr_self] using! hv
     · have hne : spectralValues roots w (Sum.inr 1)-Complex.I*(w:ℂ) ≠ 0 := by
         intro h0
         have hi := congrArg Complex.im h0
@@ -116,7 +116,7 @@ theorem left_unique (A : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w) (roots : σ → 
         linarith
       simp only [Fin.mk_one,Module.Basis.coord_apply,Module.Basis.repr_self,
         Finsupp.single_apply,Sum.inr.injEq,Fin.one_eq_zero_iff]
-      simpa using (mul_eq_zero.mp hz).resolve_left hne
+      simpa using! (mul_eq_zero.mp hz).resolve_left hne
 
 omit [DecidableEq ι] [DecidableEq ι'] in
 /-- The actual child left functional restricts to the parent functional

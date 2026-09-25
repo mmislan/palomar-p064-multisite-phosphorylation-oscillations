@@ -103,7 +103,7 @@ theorem closed_branch_strict_return_multipliers
         (∀ i, branchDerivative R a (c i)=eig i • c i) ∧ ∀ i, |eig i|<1 := by
   have hev : (GenericComplexification.complexMatrix (A0+r • D)).mulVec (b (Sum.inr 0))=
       (Complex.I*(w:ℂ)) • b (Sum.inr 0) := by
-    simpa [GenericPeriodicKernel.spectralValues] using he (Sum.inr 0)
+    simpa [GenericPeriodicKernel.spectralValues] using! he (Sum.inr 0)
   have hleq := left_eq_coord (A0+r • D) w hw roots hn b he C.left C.left_eigen C.left_normalized
   obtain ⟨c,hcv,hce,hinjv⟩ := GenericReturnBaseEigenbasis.actual_return_base_eigenbasis A0 D _ r w
     hw roots hinj hn b hreal hpair he C.left C.left_eigen C.left_normalized R.ψ R.τ
@@ -199,7 +199,7 @@ theorem source_strict_return_branch
             (∀ i, branchDerivative R a (c i)=eig i • c i) ∧ ∀ i, |eig i|<1 := by
   have hev : (GenericComplexification.complexMatrix (A0+r • D)).mulVec (b (Sum.inr 0))=
       (Complex.I*(w:ℂ)) • b (Sum.inr 0) := by
-    simpa [GenericPeriodicKernel.spectralValues] using he (Sum.inr 0)
+    simpa [GenericPeriodicKernel.spectralValues] using! he (Sum.inr 0)
   obtain ⟨C⟩ := GenericQuadraticClosedPaths.closed_path_family_exists A0 D K hK r w hw roots hn b
     he hcross
   obtain ⟨R⟩ := returnFlow_exists hK hw hev C

@@ -49,7 +49,7 @@ theorem mulVec_hasDerivAt (J : ℝ → ι → ι → ℝ) (D : ι → ι → ℝ
   have hs : HasDerivAt (fun r => ∑ j, (J r i j : ℂ)*g r j)
       (∑ j, ((D i j : ℂ)*g r0 j+(J r0 i j : ℂ)*g' j)) r0 :=
     HasDerivAt.fun_sum fun j _ => ((hJ i j).ofReal_comp).mul (hasDerivAt_pi.1 hg j)
-  simpa [complexMatrix,Matrix.mulVec,dotProduct,Finset.sum_add_distrib] using hs
+  simpa [complexMatrix,Matrix.mulVec,dotProduct,Finset.sum_add_distrib] using! hs
 
 /-- Derivative of a continued simple eigenvalue: pairing the actual
 parameter derivative with the normalized left eigenfunctional. -/
@@ -120,7 +120,7 @@ theorem loaded_face (κ r : ℝ) (hx : x.F ≠ 0) (y : CoordinateIndex n → ℂ
     change (parentOp k x r y+coupling k x κ r 0,normalOp κ 0) = _
     simp
   rw [hb] at h
-  simpa only [loadedOp,parentOp,Matrix.mulVecLin_apply] using h
+  simpa only [loadedOp,parentOp,Matrix.mulVecLin_apply] using! h
 
 /-- Differentiating the face identity: the actual kinetic derivative of the
 loaded source restricts on the face to the parent kinetic derivative. -/
@@ -133,7 +133,7 @@ theorem face_kinetic (κ : ℝ) (hk : MultisiteSmoothField.RatesSmooth k) (hx : 
   have hJ : ∀ i j, HasDerivAt (fun r => jointMatrix k x κ (0,r) i j)
       (kineticDerivative k x κ (0,0) i j) 0 := by
     intro i j
-    simpa only [zero_add] using kineticDerivative_hasDerivAt k x κ hk 0 0 i j
+    simpa only [zero_add] using! kineticDerivative_hasDerivAt k x κ hk 0 0 i j
   have hL := mulVec_hasDerivAt (fun r => fun i j => jointMatrix k x κ (0,r) i j)
     (kineticDerivative k x κ (0,0)) 0 hJ (fun _ => siteEquiv ℂ n (y,0)) 0
     (hasDerivAt_const _ _)
@@ -151,7 +151,7 @@ theorem face_kinetic (κ : ℝ) (hk : MultisiteSmoothField.RatesSmooth k) (hx : 
     exact loaded_face k x κ r hx y
   rw [heq] at hL
   have hu := hL.unique hR
-  simpa [T,Matrix.mulVec_zero] using hu
+  simpa [T,Matrix.mulVec_zero] using! hu
 
 omit [DecidableEq σ] in
 /-- Zero-load crossing equality: the actual loaded kinetic pairing at the
@@ -252,7 +252,7 @@ theorem critical_continuation (hk : MultisiteSmoothField.RatesSmooth k) (hx : x.
   have hslice : HasDerivAt (fun r => μ (0,r) (Sum.inr 0)) (crossing d M1) 0 := by
     have hsl : Tendsto (fun r : ℝ => ((0:ℝ),r)) (𝓝 0) (𝓝 (0:ℝ × ℝ)) := by
       have hc : Continuous (fun r : ℝ => ((0:ℝ),r)) := continuous_const.prodMk continuous_id
-      simpa using hc.tendsto 0
+      simpa using! hc.tendsto 0
     have hfd : DifferentiableAt ℝ (fun r : ℝ => μ (0,r) (Sum.inr 0)) 0 := by
       have h1 : DifferentiableAt ℝ (fun a : ℝ × ℝ => μ a (Sum.inr 0)) ((0:ℝ),(0:ℝ)) :=
         (hμ (Sum.inr 0)).differentiableAt (by simp)
@@ -264,7 +264,7 @@ theorem critical_continuation (hk : MultisiteSmoothField.RatesSmooth k) (hx : x.
     have hJ : ∀ i j, HasDerivAt (fun r => jointMatrix k x κ (0,r) i j)
         (kineticDerivative k x κ (0,0) i j) 0 := by
       intro i j
-      simpa only [zero_add] using kineticDerivative_hasDerivAt k x κ hk 0 0 i j
+      simpa only [zero_add] using! kineticDerivative_hasDerivAt k x κ hk 0 0 i j
     have hes : ∀ᶠ r in 𝓝 (0:ℝ),
         (complexMatrix (fun i j => jointMatrix k x κ (0,r) i j)).mulVec (v (0,r) (Sum.inr 0)) =
           μ (0,r) (Sum.inr 0) • v (0,r) (Sum.inr 0) := by
@@ -292,7 +292,7 @@ theorem critical_continuation (hk : MultisiteSmoothField.RatesSmooth k) (hx : x.
     exact hfd.hasDerivAt
   have hre : HasDerivAt (fun r => (μ (0,r) (Sum.inr 0)).re) (crossing d M1).re 0 := by
     have h := Complex.reCLM.hasFDerivAt.comp_hasDerivAt (0:ℝ) hslice
-    simpa using h
+    simpa using! h
   have hf0 : μ (0,0) (Sum.inr 0) = Complex.I*(d.freq:ℂ) := hμi _
   obtain ⟨R,hR,hR0,hcurve,-⟩ := CriticalParameterCurve.complex_curve
     (fun e => μ e (Sum.inr 0)) 0 d.freq (crossing d M1).re (hμ (Sum.inr 0)) hf0 d.freq_pos
@@ -337,7 +337,7 @@ theorem critical_continuation (hk : MultisiteSmoothField.RatesSmooth k) (hx : x.
       Complex.continuous_re.continuousAt.comp (hμc _)
     have h0 : (μ (γ 0) (Sum.inl s)).re < 0 := by
       rw [hγ0,hμi]
-      simpa [heig,hd0] using d0.stable_neg s
+      simpa [heig,hd0] using! d0.stable_neg s
     exact hrc.eventually (gt_mem_nhds h0)
   have hdist : ∀ s t, s ≠ t → ∀ᶠ ε in 𝓝 (0:ℝ),
       (μ (γ ε) (Sum.inl s)).re ≠ (μ (γ ε) (Sum.inl t)).re := by
@@ -384,10 +384,10 @@ theorem critical_continuation (hk : MultisiteSmoothField.RatesSmooth k) (hx : x.
       intro s
       apply Complex.ext
       · simp
-      · simpa using (Complex.conj_eq_iff_im.mp (hrε s).1)
+      · simpa using! (Complex.conj_eq_iff_im.mp (hrε s).1)
     have hμcrit : μ (γ ε) (Sum.inr 0) = Complex.I*((μ (γ ε) (Sum.inr 0)).im : ℂ) := by
       apply Complex.ext
-      · simpa using hcε.1
+      · simpa using! hcε.1
       · simp
     let dε : Data (σ ⊕ Fin 3) (jointMatrix k x κ (ε,R ε)) :=
       { basis := c

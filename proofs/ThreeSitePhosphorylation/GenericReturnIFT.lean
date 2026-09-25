@@ -114,14 +114,14 @@ theorem smooth_poincare_time (A0 D : Matrix ι ι ℝ)
   have hτ : ContDiffAt ℝ ⊤ τ d0 := hs.contDiffAt_implicitFunction (by simp) hi
   have hτ0 : τ d0=T0 := hs.implicitFunction_apply_self (by simp) hi
   have hphase : ∀ᶠ d in 𝓝 d0, F (d,τ d)=0 := by
-    simpa only [hzero] using hs.eventually_apply_implicitFunction (by simp) hi
+    simpa only [hzero] using! hs.eventually_apply_implicitFunction (by simp) hi
   have huniq : ∀ᶠ d in 𝓝 (d0,T0), F d=0 ↔ τ d.1=d.2 := by
-    simpa only [hzero] using hs.eventually_apply_eq_iff_implicitFunction (by simp) hi
+    simpa only [hzero] using! hs.eventually_apply_eq_iff_implicitFunction (by simp) hi
   have htend : Filter.Tendsto (fun d => returnArgument (d,τ d)) (𝓝 d0)
       (𝓝 ((0,(r,T0)),GenericComplexification.realPart v)) := by
     have hc := returnArgument_smooth.continuous.continuousAt.comp
       (continuousAt_id.prodMk hτ.continuousAt)
-    simpa [hτ0,returnArgument,d0] using hc.tendsto
+    simpa [hτ0,returnArgument,d0] using! hc.tendsto
   have hpos : ∀ᶠ d in 𝓝 d0, 0<τ d := by
     have hh : 0<τ d0 := by rw [hτ0]; dsimp [T0]; positivity
     exact hτ.continuousAt.eventually (isOpen_Ioi.mem_nhds hh)

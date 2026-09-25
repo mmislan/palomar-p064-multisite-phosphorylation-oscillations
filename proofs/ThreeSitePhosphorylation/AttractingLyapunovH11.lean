@@ -75,7 +75,7 @@ theorem source_h11_resolvent (r w : ℝ)
         (fun j => (lyapunovH11 (w^2) j : ℂ)) i -
         complexHessian r (adjugateVector (Complex.I*(w:ℂ)))
           (fun j => star (adjugateVector (Complex.I*(w:ℂ)) j)) i) = 0 := by
-    simpa [hf,hp] using h
+    simpa [hf,hp] using! h
   have hec : (even1 (w^2) : ℂ) ≠ 0 := by exact_mod_cast he
   exact sub_eq_zero.mp ((mul_eq_zero.mp hz).resolve_left hec)
 

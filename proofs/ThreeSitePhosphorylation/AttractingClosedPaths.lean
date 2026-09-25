@@ -28,7 +28,7 @@ theorem shooting_partial_invertible (r w : ℝ) (hw : 0<w)
   let F := shootingMap ψ (sourceGauge (basis.coord (Sum.inr 0))) x
   let A := fderiv ℝ F (0,s0) ∘L ContinuousLinearMap.inr ℝ ℝ ShootingState
   have hs : ContDiffAt ℝ ⊤ F (0,s0) :=
-    shootingMap_smooth ψ (sourceGauge (basis.coord (Sum.inr 0))) x (0,s0) (by simpa [shootingArgument,s0] using hψ)
+    shootingMap_smooth ψ (sourceGauge (basis.coord (Sum.inr 0))) x (0,s0) (by simpa [shootingArgument,s0] using! hψ)
   have hker (d : ShootingState) (had : A d=0) : d=0 := by
     let q := fderiv ℝ ψ ((0,(r,T)),x) ((0,(d.2.re,d.2.im)),d.1)
     have hline := flowLine_derivative r T d.2.re d.2.im x d.1
@@ -107,7 +107,7 @@ theorem closed_path_family_exists (r w : ℝ) (hw : 0<w)
     (source_reference_solution r w T v hev)
   have hi := shooting_partial_invertible r w hw hp roots hn basis hbasis heigen ψ hψ hψ0 hres
   have hs := shootingMap_smooth ψ (sourceGauge (basis.coord (Sum.inr 0))) x (0,s0)
-    (by simpa [shootingArgument,s0] using hψ)
+    (by simpa [shootingArgument,s0] using! hψ)
   have hzero : shootingMap ψ (sourceGauge (basis.coord (Sum.inr 0))) x (0,s0)=0 := by
     apply shootingMap_zero
     rw [hψ0]
@@ -116,7 +116,7 @@ theorem closed_path_family_exists (r w : ℝ) (hw : 0<w)
   have hb : ContDiffAt ℝ ⊤ b 0 := hs.contDiffAt_implicitFunction (by simp) hi
   have hb0 : b 0=s0 := hs.implicitFunction_apply_self (by simp) hi
   have hclosed : ∀ᶠ a in 𝓝 (0:ℝ), shootingMap ψ (sourceGauge (basis.coord (Sum.inr 0))) x (a,b a)=0 := by
-    simpa only [hzero] using hs.eventually_apply_implicitFunction (by simp) hi
+    simpa only [hzero] using! hs.eventually_apply_implicitFunction (by simp) hi
   have harg : ContDiffAt ℝ ⊤ (fun a => shootingArgument (a,b a)) 0 :=
     shootingArgument_smooth.contDiffAt.comp 0 (contDiffAt_id.prodMk hb)
   have harg0 : shootingArgument (0,b 0)=((0,(r,T)),x) := by
@@ -131,7 +131,7 @@ theorem closed_path_family_exists (r w : ℝ) (hw : 0<w)
     left_normalized := by
       have h := (source_left_eigenfunctional r w roots basis heigen).1
       rw [hbasis] at h
-      simpa [spectralValues] using h
+      simpa [spectralValues] using! h
     parameters := b
     paths := fun a => ψ (shootingArgument (a,b a))
     parameters_smooth := hb

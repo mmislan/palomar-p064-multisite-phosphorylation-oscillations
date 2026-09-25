@@ -66,8 +66,7 @@ theorem coordinate_vectors (b : Module.Basis (σ ⊕ Fin 2) ℂ (ι → ℂ))
       · simp [realCoordinate,vectors,complexCoordinate,hs,Module.Basis.coord_apply,hij]
     | inr j =>
       fin_cases j <;>
-        norm_num [realCoordinate,vectors,complexCoordinate,hr,hi,Module.Basis.coord_apply,Finsupp.single_apply] <;>
-        simp
+        norm_num [realCoordinate,vectors,complexCoordinate,hr,hi,Module.Basis.coord_apply,Finsupp.single_apply]
   | inr i =>
     cases j with
     | inl j =>
@@ -85,7 +84,7 @@ theorem vectors_independent (b : Module.Basis (σ ⊕ Fin 2) ℂ (ι → ℂ))
   intro a ha i
   have hh := congrArg (realCoordinate b i) ha
   simp only [map_sum,map_smul,map_zero,coordinate_vectors b hreal hpair,
-    smul_eq_mul,mul_ite,mul_one,mul_zero,Finset.sum_ite_eq,Finset.mem_univ,if_true] at hh
+    smul_eq_mul,mul_ite,mul_one,mul_zero,Finset.sum_ite_eq,Finset.mem_univ,ite_true] at hh
   exact hh
 
 omit [DecidableEq σ] in

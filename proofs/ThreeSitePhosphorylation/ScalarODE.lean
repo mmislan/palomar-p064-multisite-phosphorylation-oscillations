@@ -13,9 +13,9 @@ theorem scalar_integrating_factor (a : ℂ) (u f : ℝ → ℂ) (T : ℝ)
       HasDerivAt (fun s : ℝ => Complex.exp (-a*(s:ℂ))*u s)
         (Complex.exp (-a*(t:ℂ))*f t) t := by
     have hi : HasDerivAt (fun s : ℝ => -a*(s:ℂ)) (-a) t := by
-      simpa only [mul_one] using ((hasDerivAt_id (t:ℂ)).const_mul (-a)).comp_ofReal
+      simpa only [mul_one] using! ((hasDerivAt_id (t:ℂ)).const_mul (-a)).comp_ofReal
     have he := (Complex.hasDerivAt_exp (-a*(t:ℂ))).scomp t hi
-    convert he.mul (hu t ht) using 1
+    convert! he.mul (hu t ht) using 1
     simp only [Function.comp_apply, smul_eq_mul]
     ring
   have hc : Continuous (fun t : ℝ => Complex.exp (-a*(t:ℂ))*f t) := by fun_prop

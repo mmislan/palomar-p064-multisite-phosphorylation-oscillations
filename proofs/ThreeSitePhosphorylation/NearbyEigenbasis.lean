@@ -17,7 +17,7 @@ def columnMap (b : Module.Basis ι ℝ E) (v : ι → E) : E →L[ℝ] E :=
 
 theorem columnMap_basis (b : Module.Basis ι ℝ E) (v : ι → E) (i : ι) :
     columnMap b v (b i)=v i := by
-  simp [columnMap,ContinuousLinearMap.sum_apply,Module.Basis.coord_apply,Finsupp.single_apply]
+  simp [columnMap,sum_apply,Module.Basis.coord_apply,Finsupp.single_apply]
 
 theorem columnMap_self (b : Module.Basis ι ℝ E) : columnMap b b=1 := by
   apply ContinuousLinearMap.coe_injective
@@ -34,8 +34,8 @@ theorem columnMap_continuousAt (b : Module.Basis ι ℝ E) (v : ℝ → ι → E
   have hs (s : Finset ι) : ContinuousAt
       (fun a => ∑ i ∈ s, (b.coord i).toContinuousLinearMap.smulRight (v a i)) 0 := by
     induction s using Finset.induction_on with
-    | empty => simpa using (continuousAt_const : ContinuousAt (fun _ : ℝ => (0 : E →L[ℝ] E)) 0)
-    | @insert i s hi ih => simpa only [Finset.sum_insert hi] using (hterm i).add ih
+    | empty => simpa using! (continuousAt_const : ContinuousAt (fun _ : ℝ => (0 : E →L[ℝ] E)) 0)
+    | @insert i s hi ih => simpa only [Finset.sum_insert hi] using! (hterm i).add ih
   exact hs Finset.univ
 
 theorem eventually_columnMap_isUnit (b : Module.Basis ι ℝ E) (v : ℝ → ι → E)
@@ -61,7 +61,7 @@ theorem inverseCoordinate_continuousAt (b : Module.Basis ι ℝ E) (v : ℝ → 
   have hi : ContinuousAt (Ring.inverse : (E →L[ℝ] E) → (E →L[ℝ] E))
       (columnMap b (v 0)) := by
     rw [hzero,columnMap_self]
-    simpa using NormedRing.inverse_continuousAt (1 : (E →L[ℝ] E)ˣ)
+    simpa using! NormedRing.inverse_continuousAt (1 : (E →L[ℝ] E)ˣ)
   have hcomp : ContinuousAt (fun a : ℝ => Ring.inverse (columnMap b (v a))) 0 :=
     ContinuousAt.comp (f := fun a : ℝ => columnMap b (v a)) hi (columnMap_continuousAt b v hv)
   exact ContinuousAt.comp (f := fun a : ℝ => Ring.inverse (columnMap b (v a)))
@@ -72,7 +72,7 @@ theorem inverseCoordinate_columns (b : Module.Basis ι ℝ E) (v : ι → E)
     inverseCoordinate b v i (v j)=if i=j then 1 else 0 := by
   have hh := DFunLike.congr_fun (Ring.inverse_mul_cancel (columnMap b v) hu) (b j)
   have hinv : Ring.inverse (columnMap b v) (v j)=b j := by
-    simpa only [ContinuousLinearMap.mul_apply,columnMap_basis,ContinuousLinearMap.one_apply] using hh
+    simpa only [mul_apply_eq_comp,columnMap_basis,one_apply_eq_self] using! hh
   simp [inverseCoordinate,hinv,Module.Basis.coord_apply,Finsupp.single_apply,eq_comm]
 
 theorem exists_basis_of_columnMap_isUnit (b : Module.Basis ι ℝ E) (v : ι → E)

@@ -15,7 +15,7 @@ theorem linearOrbit_derivative (A : E →L[ℝ] E)
     HasDerivAt (linearOrbit a b w) (A (linearOrbit a b w t)) t := by
   have hc := ((Real.hasDerivAt_cos (w*t)).comp t ((hasDerivAt_id t).const_mul w)).smul_const a
   have hs := ((Real.hasDerivAt_sin (w*t)).comp t ((hasDerivAt_id t).const_mul w)).smul_const b
-  convert hc.sub hs using 1
+  convert! hc.sub hs using 1
   simp only [linearOrbit,map_sub,map_smul,ha,hb,smul_smul]
   module
 

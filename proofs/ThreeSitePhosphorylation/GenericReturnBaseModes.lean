@@ -16,10 +16,10 @@ theorem realEigenPath_integral (A : Matrix ι ι ℝ) (T eig : ℝ) (v : (ι →
   let g := fun t : ℝ => Real.exp (T*eig*t) • v
   have hd (t : ℝ) : HasDerivAt g ((T • A.mulVecLin.toContinuousLinearMap) (g t)) t := by
     have ht : HasDerivAt (fun s : ℝ => T*eig*s) (T*eig) t := by
-      simpa using (hasDerivAt_id t).const_mul (T*eig)
+      simpa using! (hasDerivAt_id t).const_mul (T*eig)
     have hh := ((Real.hasDerivAt_exp (T*eig*t)).comp t ht).smul_const v
-    convert hh using 1
-    simp only [g,ContinuousLinearMap.smul_apply,map_smul,hv,smul_smul]
+    convert! hh using 1
+    simp only [g,smul_apply,map_smul,hv,smul_smul]
   have hc : Continuous (fun t => (T • A.mulVecLin.toContinuousLinearMap) (g t)) := by dsimp [g]; fun_prop
   apply ContinuousMap.ext
   intro t
@@ -132,7 +132,7 @@ theorem actual_return_stable_mode (eig : ℝ) (heig : eig<0)
     (realEigenPath_integral (A0+r • D) (2*Real.pi/w) eig x hx)
   rw [realEigenPath_endpoint] at hh
   have hz := real_stable_pairing_zero (A0+r • D) w p hleft eig heig x hx
-  simpa [map_smul,LinearMap.map_smul_of_tower,hz] using hh
+  simpa [map_smul,LinearMap.map_smul_of_tower,hz] using! hh
 
 /-- The radial critical direction has actual return eigenvalue one. -/
 theorem actual_return_radial_mode :
@@ -146,7 +146,7 @@ theorem actual_return_radial_mode :
   rw [(GenericLinearOrbit.referencePath_endpoints (GenericComplexification.realPart v)
     (GenericComplexification.imagPart v) w (ne_of_gt hw)).2,
     GenericReturnTime.normalized_eigen_real_pairing (A0+r • D) w (ne_of_gt hw) v p he hleft hnorm] at hh
-  simpa using hh
+  simpa using! hh
 
 /-- Phase correction kills the actual phase direction. -/
 theorem actual_return_phase_mode :

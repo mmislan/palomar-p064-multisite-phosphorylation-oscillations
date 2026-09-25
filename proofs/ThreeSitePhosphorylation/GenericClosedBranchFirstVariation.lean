@@ -31,7 +31,7 @@ theorem amplitude_variational_ode (A D : Matrix ι ι ℝ)
   rw [pathExtension,Set.projIcc_of_mem _ ht] at hd
   rw [integralVariation_eq x _ q he ⟨t,ht⟩]
   simpa only [amplitudeVariationField,ContinuousMap.add_apply,ContinuousMap.smul_apply,
-    variationField_apply,GenericQuadraticTensor.pathField_apply] using hd
+    variationField_apply,GenericQuadraticTensor.pathField_apply] using! hd
 
 /-- Actual quadratic amplitude forcing has no resonant first harmonic. -/
 theorem amplitude_periodic_path_parameters (A D : Matrix ι ι ℝ)
@@ -76,7 +76,7 @@ theorem amplitude_periodic_path_parameters (A D : Matrix ι ι ℝ)
     have hh := GenericComplexification.complexify.hasFDerivAt.comp_hasDerivAt t
       (amplitude_variational_ode A D H r T dr dT dx u0 q hq t ht)
     simp only [map_add,map_smul,GenericComplexification.complexify_action,hquadratic,hbase] at hh
-    convert hh using 1
+    convert! hh using 1
     ext i
     simp [u,B,smul_smul,Complex.real_smul]
     ring
@@ -135,7 +135,7 @@ theorem closed_branch_parameter_derivatives (A0 D : Matrix ι ι ℝ)
       (amplitudeVariationField (A0+r • D) D H r (2*Real.pi/w) d.2.re d.2.im
         (GenericLinearOrbit.referencePath (GenericComplexification.realPart v) (GenericComplexification.imagPart v) w (2*Real.pi/w)) q) := by
     simpa [C.parameters_zero,C.paths_zero,amplitudeVariationField,
-      GenericShootingInvertibility.matrix_operator_affine] using hq
+      GenericShootingInvertibility.matrix_operator_affine] using! hq
   have hev := (ContinuousMap.evalCLM (R := ℝ) (M := ι → ℝ)
     (⟨1,by norm_num⟩:UnitTime)).hasFDerivAt.comp_hasDerivAt 0 hu
   have h1 : q ⟨1,by norm_num⟩=d.1 :=
@@ -145,7 +145,7 @@ theorem closed_branch_parameter_derivatives (A0 D : Matrix ι ι ℝ)
       (integralVariation_initial d.1 _)
   obtain ⟨hdr,hdt⟩ := amplitude_periodic_path_parameters (A0+r • D) D H r w hw v hv
     C.left C.left_eigen C.left_normalized hcross d.2.re d.2.im d.1 q hq' (h1.trans h0.symm)
-  exact ⟨by simpa only [hdr] using hr, by simpa only [hdt] using ht⟩
+  exact ⟨by simpa only [hdr] using! hr, by simpa only [hdt] using! ht⟩
 
 end
 end ThreeSitePhosphorylation.GenericClosedBranchFirstVariation

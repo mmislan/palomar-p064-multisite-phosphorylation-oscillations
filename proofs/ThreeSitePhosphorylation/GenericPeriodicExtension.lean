@@ -42,7 +42,7 @@ theorem periodicCurve_source_zero (P : ℝ) (hP : 0 < P)
     exact periodicCurve_eq P hP f s ⟨hnonneg,hs⟩
   have hp : HasDerivAt (fun s => f (s+P)) (F (f 0)) 0 := by
     have hh := h1.scomp_of_eq 0 ((hasDerivAt_id (0:ℝ)).add_const P) (by simp)
-    simpa only [id_eq,one_smul,← he] using hh
+    simpa only [Function.comp_def,id_eq,one_smul,← he] using hh
   have hl : HasDerivWithinAt g (F (f 0)) (Set.Iic 0) 0 := by
     apply hp.hasDerivWithinAt.congr_of_eventuallyEq _ (by simpa only [zero_add] using hg0.trans he)
     have hn : -P < (0:ℝ) := by linarith

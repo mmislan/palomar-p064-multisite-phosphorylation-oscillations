@@ -19,7 +19,7 @@ theorem source (F : E → E) (v : ℝ → E) (σ : ℝ) (hσ : 0≤σ)
     (((hasDerivAt_id t).add_const σ).hasDerivWithinAt)
     (show Set.MapsTo (fun s : ℝ => s+σ) (Set.Ici 0) (Set.Ici 0) from
       fun s hs => add_nonneg hs hσ)
-  simpa only [Function.comp_apply,one_smul] using hh
+  simpa only [Function.comp_def,id_eq,one_smul] using hh
 
 theorem add_tendsto_atTop (σ : ℝ) :
     Tendsto (fun t : ℝ => t+σ) atTop atTop := by

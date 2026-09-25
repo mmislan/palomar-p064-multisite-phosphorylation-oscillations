@@ -9,7 +9,7 @@ theorem nonzero_integer_harmonic_integral (k : ℤ) (hk : k ≠ 0) :
   have hkn : (k:ℂ) ≠ 0 := by exact_mod_cast hk
   rw [integral_exp_mul_complex (mul_ne_zero hkn turnFrequency_nonzero)]
   have he : Complex.exp ((k:ℂ)*turnFrequency)=1 := by
-    simpa [turnFrequency,mul_assoc] using Complex.exp_int_mul_two_pi_mul_I k
+    simpa [turnFrequency,mul_assoc] using! Complex.exp_int_mul_two_pi_mul_I k
   simp [he]
 
 theorem weighted_quadratic_harmonics

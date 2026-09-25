@@ -45,7 +45,7 @@ theorem sourceRow_continuousAt {n : ℕ} (i j : Fin n) {A B C D : X → ℝ} {x0
     ContinuousAt (fun a => sourceRow i j (A a) (B a) (C a) (D a)) x0 := by
   unfold sourceRow
   by_cases h1 : i.castSucc=j.succ <;> by_cases h2 : i.succ=j.succ <;>
-    simp only [h1,h2,if_true,if_false,add_zero,zero_add]
+    simp only [h1,h2,ite_true,ite_false,add_zero,zero_add]
   · exact (hA.neg.add hD).add (hC.sub hB)
   · exact hA.neg.add hD
   · exact hC.sub hB
@@ -74,16 +74,16 @@ theorem linearTerm_continuousAt {n : ℕ} {k : X → Rates n}
   apply assemble_continuousAt
   · intro i
     unfold linearKinase
-    exact ((hk i).1.mul ((continuousAt_const.mul hE).add ((hS _).mul continuousAt_const))).sub
-      ((hk i).2.1.mul continuousAt_const)
+    exact ((hk i).1.fun_mul ((continuousAt_const.fun_mul hE).fun_add ((hS _).fun_mul continuousAt_const))).fun_sub
+      ((hk i).2.1.fun_mul continuousAt_const)
   · intro i
     unfold linearPhosphatase
-    exact ((hk i).2.2.2.1.mul ((continuousAt_const.mul hF).add ((hS _).mul continuousAt_const))).sub
-      ((hk i).2.2.2.2.1.mul continuousAt_const)
+    exact ((hk i).2.2.2.1.fun_mul ((continuousAt_const.fun_mul hF).fun_add ((hS _).fun_mul continuousAt_const))).fun_sub
+      ((hk i).2.2.2.2.1.fun_mul continuousAt_const)
   · intro i
-    exact (hk i).2.2.1.mul continuousAt_const
+    exact (hk i).2.2.1.fun_mul continuousAt_const
   · intro i
-    exact (hk i).2.2.2.2.2.mul continuousAt_const
+    exact (hk i).2.2.2.2.2.fun_mul continuousAt_const
 
 theorem bilinearTerm_continuousAt {n : ℕ} {k : X → Rates n} {x0 : X}
     (hk : RatesContinuousAt k x0) (u v : ReducedState n) :
@@ -91,9 +91,9 @@ theorem bilinearTerm_continuousAt {n : ℕ} {k : X → Rates n} {x0 : X}
   unfold bilinearTerm
   apply assemble_continuousAt
   · intro i
-    exact (hk i).1.mul continuousAt_const
+    exact (hk i).1.fun_mul continuousAt_const
   · intro i
-    exact (hk i).2.2.2.1.mul continuousAt_const
+    exact (hk i).2.2.2.1.fun_mul continuousAt_const
   · intro i
     exact continuousAt_const
   · intro i
@@ -166,7 +166,7 @@ theorem childOffset_continuous {n : ℕ} (offset : Rates n)
   intro i
   refine Fin.lastCases ?_ (fun j => ?_) i
   · simp only [childOffset,appendScaledRates,Fin.lastCases_last,loadRate]
-    exact ⟨((continuousAt_const.mul continuousAt_id).div_const _),continuousAt_const,
+    exact ⟨((continuousAt_const.fun_mul continuousAt_id).div_const _),continuousAt_const,
       continuousAt_const,continuousAt_const,continuousAt_const,continuousAt_const⟩
   · simp only [childOffset,appendScaledRates,Fin.lastCases_castSucc]
     exact ⟨continuousAt_const,continuousAt_const,continuousAt_const,continuousAt_const,
@@ -183,7 +183,7 @@ theorem childState_continuous {n : ℕ} (x : PhosphorylationSharpness.State n) (
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
     · simp only [childState,appendState,Fin.lastCases_last]
-      exact continuousAt_const.mul continuousAt_id
+      exact continuousAt_const.fun_mul continuousAt_id
     · simp only [childState,appendState,Fin.lastCases_castSucc]
       exact continuousAt_const
   · intro i
@@ -246,8 +246,8 @@ theorem childTensor_continuousAt {n : ℕ} (offset slope : Rates n)
     (x : PhosphorylationSharpness.State n) (κ : ℝ) {R : ℝ → ℝ} (hR : ContinuousAt R 0) :
     ContinuousAt (fun ε => childTensor offset slope x κ ε (R ε)) 0 := by
   unfold childTensor
-  exact (sourceTensor_continuousAt (childOffset_continuous offset x κ 0)).add
-    (hR.smul continuousAt_const)
+  exact (sourceTensor_continuousAt (childOffset_continuous offset x κ 0)).fun_add
+    (hR.fun_smul continuousAt_const)
 
 /-! ### Zero-load docking -/
 
@@ -300,7 +300,7 @@ theorem zero_load_coefficient {n : ℕ} {σ : Type*} [DecidableEq σ]
       (Complex.I*(w:ℂ))*b.coord (Sum.inr 0) y := by
     intro y
     have := basis_coord_eigen b _ (spectralValues roots w) he (Sum.inr 0) y
-    simpa [spectralValues] using this
+    simpa [spectralValues] using! this
   have hres (y : CoordinateIndex n → ℂ) :
       p.toLinearMap ((complexRect (faceMatrix n)).mulVec y)=b.coord (Sum.inr 0) y :=
     left_restriction _ _ (faceMatrix n) hA w hw roots hn b he (b.coord (Sum.inr 0)) hcoord
@@ -465,14 +465,14 @@ theorem normal_linear_rows {n : ℕ} (k : Rates n) (κ α : ℝ)
     rw [Finset.sum_eq_single (Fin.last n)]
     · have h1 : (Fin.last n).castSucc ≠ (Fin.last n).succ := by
         rw [Fin.succ_last]; exact Fin.castSucc_ne_last _
-      simp only [sourceRow,if_neg h1,zero_add,linearPhosphatase,hS,hT]
+      simp only [sourceRow,ite_eq_right h1,zero_add,linearPhosphatase,hS,hT]
       simp [zeroRates,appendScaledRates,zeroState,appendState,tangent,chart]
       ring
     · intro i _ hi
       have h1 : i.castSucc ≠ (Fin.last n).succ := by
         rw [Fin.succ_last]; exact Fin.castSucc_ne_last _
       have h2 : i.succ ≠ (Fin.last n).succ := fun h => hi (Fin.succ_inj.mp h)
-      simp only [sourceRow,if_neg h1,if_neg h2,add_zero]
+      simp only [sourceRow,ite_eq_right h1,ite_eq_right h2,add_zero]
     · intro h; exact absurd (Finset.mem_univ _) h
   · simp only [linearTerm,assemble,linearPhosphatase,hS,hT]
     simp [zeroRates,appendScaledRates,zeroState,appendState,tangent,chart]
@@ -605,13 +605,13 @@ theorem zero_load_child_injective {n : ℕ} {σ : Type*} [Fintype σ]
   · rw [← LinearMap.ker_eq_bot,LinearMap.ker_eq_bot']
     intro z hz
     apply child_shift_injective offset slope x κ r hF 0
-    · simpa using mul_ne_zero two_ne_zero hκc
-    · simpa using pow_ne_zero 2 hκc
+    · simpa using! mul_ne_zero two_ne_zero hκc
+    · simpa using! pow_ne_zero 2 hκc
     · intro u hu
       apply hB0.1
       simp only [Matrix.mulVecLin_apply,map_zero]
-      simpa using hu
-    · simpa using hz
+      simpa using! hu
+    · simpa using! hz
   · rw [← LinearMap.ker_eq_bot,LinearMap.ker_eq_bot']
     intro z hz
     apply child_shift_injective offset slope x κ r hF (2*Complex.I*(w:ℂ))
@@ -633,7 +633,7 @@ theorem zero_load_child_injective {n : ℕ} {σ : Type*} [Fintype σ]
         LinearMap.id_apply,Matrix.mulVecLin_apply,map_zero]
       exact hu
     · simpa only [LinearMap.sub_apply,LinearMap.smul_apply,LinearMap.id_apply,
-        Matrix.mulVecLin_apply] using hz
+        Matrix.mulVecLin_apply] using! hz
 
 /-- Final actual-source export: zero-load child invertibility is now proved,
 and only the continued critical data (B's supplier) remain as inputs. -/

@@ -31,21 +31,21 @@ theorem pathLinear_direction (A0 D : E →L[ℝ] E) (r dr : ℝ)
     HasDerivAt (fun s => pathLinear A0 D (r+s*dr) (u s))
       (pathLinear A0 D r q+dr • D.compLeftContinuous ℝ UnitTime (u 0)) 0 := by
   have hr : HasDerivAt (fun s : ℝ => r+s*dr) dr 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const dr).const_add r
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const dr).const_add r
   have h0 := (A0.compLeftContinuous ℝ UnitTime).hasFDerivAt.comp_hasDerivAt 0 hu
   have hd := (D.compLeftContinuous ℝ UnitTime).hasFDerivAt.comp_hasDerivAt 0 hu
   have hh := h0.add (hr.smul hd)
-  simpa only [pathLinear_decompose,ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.smul_apply,zero_mul,add_zero,Function.comp_def,add_assoc] using hh
+  simpa only [pathLinear_decompose,add_apply,
+    smul_apply,zero_mul,add_zero,Function.comp_def,add_assoc] using! hh
 
 theorem duration_linear_direction (A0 D : E →L[ℝ] E) (r T dr dT : ℝ)
     (u : ℝ → ContinuousPath E) (q : ContinuousPath E) (hu : HasDerivAt u q 0) :
     HasDerivAt (fun s => (T+s*dT) • pathLinear A0 D (r+s*dr) (u s))
       (variationField (A0+r • D) D T dr dT (u 0) q) 0 := by
   have ht : HasDerivAt (fun s : ℝ => T+s*dT) dT 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const dT).const_add T
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const dT).const_add T
   have hh := ht.smul (pathLinear_direction A0 D r dr u q hu)
-  convert hh using 1
+  convert! hh using 1
   simp only [variationField,pathLinear,zero_mul,add_zero,smul_add]
   abel
 
@@ -60,7 +60,7 @@ theorem variational_path_equation (A0 D : E →L[ℝ] E)
     q=constantPath dx+linearPicard (ContinuousLinearMap.id ℝ E)
       (variationField (A0+r • D) D T dr dT (u 0) q) := by
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   have hc := (constantPath (E := E)).hasFDerivAt.comp_hasDerivAt 0 hx
   have hf := (linearPicard (ContinuousLinearMap.id ℝ E)).hasFDerivAt.comp_hasDerivAt 0
     (duration_linear_direction A0 D r T dr dT u q hu)
@@ -68,7 +68,7 @@ theorem variational_path_equation (A0 D : E →L[ℝ] E)
       (fun s => pathResidual A0 D B (((0,(r+s*dr,T+s*dT)),x+s • dx),u s))
       (q-constantPath dx-linearPicard (ContinuousLinearMap.id ℝ E)
         (variationField (A0+r • D) D T dr dT (u 0) q)) 0 := by
-    simpa only [pathResidual,zero_smul,add_zero,Function.comp_def,map_smul] using (hu.sub hc).sub hf
+    simpa only [pathResidual,zero_smul,add_zero,Function.comp_def,map_smul] using! (hu.sub hc).sub hf
   have hz : HasDerivAt
       (fun s => pathResidual A0 D B (((0,(r+s*dr,T+s*dT)),x+s • dx),u s)) 0 0 :=
     (hasDerivAt_const (x := (0:ℝ)) (c := (0:ContinuousPath E))).congr_of_eventuallyEq he

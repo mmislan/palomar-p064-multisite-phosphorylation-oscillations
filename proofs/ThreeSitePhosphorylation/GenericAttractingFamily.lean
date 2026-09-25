@@ -38,14 +38,14 @@ theorem reference_regular {C : ClosedPathFamily A0 D (GenericQuadraticTensor.pat
   let e : ℝ → GenericShootingMap.FlowData (ι → ℝ) := fun a => returnArgument (d a,R.τ (d a))
   have hd0 : d 0=((0,r),GenericComplexification.realPart v) := branchReturnData_zero C
   have hd : ContDiffAt ℝ ⊤ d 0 := branchReturnData_smooth C
-  have hτ : ContDiffAt ℝ ⊤ R.τ (d 0) := by simpa only [hd0] using R.τ_smooth
+  have hτ : ContDiffAt ℝ ⊤ R.τ (d 0) := by simpa only [hd0] using! R.τ_smooth
   have hτd := hτ.comp 0 hd
   have he : ContDiffAt ℝ ⊤ e 0 := returnArgument_smooth.contDiffAt.comp 0 (hd.prodMk hτd)
   have he0 : e 0=((0,(r,2*Real.pi/w)),GenericComplexification.realPart v) := by
     simp only [e,hd0,R.τ_zero,returnArgument]
-  have hψ : ContDiffAt ℝ ⊤ R.ψ (e 0) := by simpa only [he0] using R.ψ_smooth
+  have hψ : ContDiffAt ℝ ⊤ R.ψ (e 0) := by simpa only [he0] using! R.ψ_smooth
   have hres : ∀ᶠ z in 𝓝 (e 0), residual A0 D K (z,R.ψ z)=0 := by
-    simpa only [he0] using R.residual
+    simpa only [he0] using! R.residual
   have hpos : 0<R.τ (d 0) := by rw [hd0,R.τ_zero]; positivity
   filter_upwards [hd.continuousAt.tendsto.eventually (hτ.eventually (by simp)),
     he.continuousAt.tendsto.eventually (hψ.eventually (by simp)),
@@ -78,8 +78,8 @@ theorem return_state_slice_fderiv
     fderiv ℝ (fun x => returnPoint ψ τ ((a,r),x)) p=
       GenericReturnBaseEigenbasis.stateDerivative ψ τ ((a,r),p) := by
   have hi : HasFDerivAt (fun x : ι → ℝ => ((a,r),x))
-      (ContinuousLinearMap.inr ℝ (ℝ×ℝ) (ι → ℝ)) p := by
-    simpa using (hasFDerivAt_const (a,r) p).prodMk (hasFDerivAt_id p)
+      (ContinuousLinearMap.inr ℝ (ℝ×ℝ) (ι → ℝ)) p :=
+    hasFDerivAt_prodMk_right (a,r) p
   exact (hd.hasFDerivAt.comp p hi).fderiv
 
 omit [DecidableEq σ] in
@@ -226,7 +226,7 @@ theorem periodicOrbit_properties (C : ClosedPathFamily A0 D (GenericQuadraticTen
     have hh' : HasDerivAt (fun s => g (s/T))
         (rescaledField A0 D K a (C.parameters a).2.re (g (t/T))) t := by
       simpa only [id_eq,one_div,smul_smul,inv_mul_cancel₀ hT0,one_smul,Function.comp_def]
-        using hh
+        using! hh
     have hs := hh'.const_smul a
     have hfe : GenericQuadraticDynamics.field A0 D K (C.parameters a).2.re (a • g (t/T))=
         a • rescaledField A0 D K a (C.parameters a).2.re (g (t/T)) := by

@@ -15,8 +15,8 @@ theorem scalar_curve (F : ℝ × ℝ → ℝ) (r0 c : ℝ)
       ∀ᶠ d in 𝓝 ((0:ℝ),r0), F d=0 ↔ R d.1=d.2 := by
   let J := fderiv ℝ F (0,r0) ∘L ContinuousLinearMap.inr ℝ ℝ ℝ
   have hi : HasFDerivAt (fun r : ℝ => ((0:ℝ),r))
-      (ContinuousLinearMap.inr ℝ ℝ ℝ) r0 := by
-    convert (hasFDerivAt_const (0:ℝ) r0).prodMk (hasFDerivAt_id r0) using 1
+      (ContinuousLinearMap.inr ℝ ℝ ℝ) r0 :=
+    hasFDerivAt_prodMk_right (0:ℝ) r0
   have hslice : HasFDerivAt (fun r => F (0,r)) J r0 :=
     (hF.differentiableAt (by simp)).hasFDerivAt.comp r0 hi
   have hJ1 : J 1=c := hslice.hasDerivAt.unique hd

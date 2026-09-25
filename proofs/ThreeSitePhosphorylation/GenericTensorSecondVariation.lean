@@ -41,7 +41,7 @@ theorem second_deriv_smul (a : ℝ → ℝ) (f : ℝ → E)
   rw [he.deriv_eq]
   have hh := (((ha.differentiableAt (by simp)).hasDerivAt).smul (smooth_second_deriv hf)).add
     ((smooth_second_deriv ha).smul ((hf.differentiableAt (by simp)).hasDerivAt))
-  convert hh.deriv using 1
+  convert! hh.deriv using 1
   module
 
 theorem second_deriv_clm {G : Type*} [NormedAddCommGroup G] [NormedSpace ℝ G]
@@ -83,7 +83,7 @@ theorem pathQuadratic_curve_stationary_parameter
     ((GenericQuadraticTensor.pathField_smooth H hH).differentiable (by simp) _).hasFDerivAt
   have hd : HasDerivAt (fun s => GenericQuadraticTensor.pathField H (R s) (u s))
       (J (0,v)) 0 := by
-    simpa only [F,Function.comp_def] using hF.comp_hasDerivAt 0 (hR.prodMk hu)
+    simpa only [F,Function.comp_def] using! hF.comp_hasDerivAt 0 (hR.prodMk hu)
   have he : J (0,v)=pathHessian (H (R 0)) (u 0) v := by
     apply ContinuousMap.ext
     intro t
@@ -92,7 +92,7 @@ theorem pathQuadratic_curve_stationary_parameter
       ev.hasFDerivAt.comp_hasDerivAt 0 hu
     have hev : HasDerivAt
         (fun s => GenericQuadraticTensor.field H (R s) (u s t)) (J (0,v) t) 0 := by
-      simpa only [ev,ContinuousMap.evalCLM_apply,Function.comp_def,GenericQuadraticTensor.pathField_apply] using
+      simpa only [ev,ContinuousMap.evalCLM_apply,Function.comp_def,GenericQuadraticTensor.pathField_apply] using!
         ev.hasFDerivAt.comp_hasDerivAt 0 hd
     let G := fun p : ℝ × (ι → ℝ) => GenericQuadraticTensor.field H p.1 p.2
     let K := fderiv ℝ G (R 0,u 0 t)
@@ -100,10 +100,10 @@ theorem pathQuadratic_curve_stationary_parameter
       ((GenericQuadraticTensor.field_smooth H hH).differentiable (by simp) _).hasFDerivAt
     have hvar : HasDerivAt (fun s => GenericQuadraticTensor.field H (R s) (u s t))
         (K (0,v t)) 0 := by
-      simpa only [G,Function.comp_def] using hG.comp_hasDerivAt 0 (hR.prodMk hu')
+      simpa only [G,Function.comp_def] using! hG.comp_hasDerivAt 0 (hR.prodMk hu')
     have hfixed : HasDerivAt (fun s => GenericQuadraticTensor.field H (R 0) (u s t))
         (K (0,v t)) 0 := by
-      simpa only [G,Function.comp_def] using
+      simpa only [G,Function.comp_def] using!
         hG.comp_hasDerivAt 0 ((hasDerivAt_const (x := (0:ℝ)) (c := R 0)).prodMk hu')
     have hb := (GenericTensorDerivative.field_hasFDerivAt H (R 0) hsym (u 0 t)).comp_hasDerivAt 0 hu'
     exact (hev.unique hvar).trans (hfixed.unique hb)
@@ -142,11 +142,11 @@ theorem pathField_curve_second_derivative (A0 D : (ι → ℝ) →L[ℝ] (ι →
     rw [second_deriv_add (fun s => L (u s)) (fun s => R s • Δ (u s)) hL (hR.smul hd),second_deriv_clm L u hu,
       second_deriv_smul R (fun s => Δ (u s)) hR hd,second_deriv_clm Δ u hu,hR0]
     simp only [mul_zero,zero_smul,add_zero,pathLinear_decompose,
-      ContinuousLinearMap.add_apply,ContinuousLinearMap.smul_apply,L,Δ]
+      add_apply,smul_apply,L,Δ]
     module
   have hq1 : deriv q 0=pathHessian (H (R 0)) (u 0) (deriv u 0) :=
     (pathQuadratic_curve_stationary_parameter H hH R u (deriv u 0)
-      (by simpa only [hR0] using (hR.differentiableAt (by simp)).hasDerivAt)
+      (by simpa only [hR0] using! (hR.differentiableAt (by simp)).hasDerivAt)
       (hu.differentiableAt (by simp)).hasDerivAt hsym).deriv
   have hs : ContDiffAt ℝ ⊤ (fun s : ℝ => s) 0 := contDiffAt_id
   have hi : ContDiffAt ℝ ⊤ (fun s => l s+s • q s) 0 := hl.add (hs.smul hq)
@@ -155,15 +155,15 @@ theorem pathField_curve_second_derivative (A0 D : (ι → ℝ) →L[ℝ] (ι →
       (fun s => T s • (l s+s • q s)) := by
     funext s
     simp only [pathField,l,q,L,Δ,pathLinear_decompose,
-      ContinuousLinearMap.add_apply,ContinuousLinearMap.smul_apply]
+      add_apply,smul_apply]
   rw [hfun]
-  convert smooth_second_deriv hf using 1
+  convert! smooth_second_deriv hf using 1
   rw [second_deriv_smul T _ hT hi,hT0,second_deriv_add l (fun s : ℝ => s • q s) hl (hs.smul hq),
     second_deriv_smul (fun s : ℝ => s) q hs hq,hl2,hq1]
   simp only [deriv_id'',deriv_const,zero_smul,zero_add,mul_zero,add_zero,mul_one]
   have hl0 : l 0=pathLinear A0 D (R 0) (u 0) := by
-    simp only [l,L,Δ,pathLinear_decompose,ContinuousLinearMap.add_apply,
-      ContinuousLinearMap.smul_apply]
+    simp only [l,L,Δ,pathLinear_decompose,add_apply,
+      smul_apply]
   rw [hl0]
   module
 
@@ -191,8 +191,8 @@ theorem second_variational_curve_equation (A0 D : (ι → ℝ) →L[ℝ] (ι →
     have hL := (A0.compLeftContinuous ℝ UnitTime).contDiff.contDiffAt.comp 0 hu
     have hD := (D.compLeftContinuous ℝ UnitTime).contDiff.contDiffAt.comp 0 hu
     have hQ := (GenericQuadraticTensor.pathField_smooth H hH).contDiffAt.comp 0 (hR.prodMk hu)
-    simpa only [f,pathField,pathLinear_decompose,ContinuousLinearMap.add_apply,
-      ContinuousLinearMap.smul_apply] using
+    simpa only [f,pathField,pathLinear_decompose,add_apply,
+      smul_apply] using!
       hT.smul ((hL.add (hR.smul hD)).add (contDiffAt_id.smul hQ))
   have hc := (constantPath (E := ι → ℝ)).contDiff.contDiffAt.comp 0 hx
   have hP := P.contDiff.contDiffAt.comp 0 hf

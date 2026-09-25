@@ -30,7 +30,7 @@ theorem harmonic_endpoint_pairing
           Complex.exp (turnFrequency*(t:ℂ))*(((dT:ℂ)*z+(T:ℂ)*L (D v))/2)+
           Complex.exp (-turnFrequency*(t:ℂ))*((T:ℂ)*L (D vm)/2)) t := by
     have hh := Lc.hasFDerivAt.comp_hasDerivAt t (hu t ht)
-    convert hh using 1
+    convert! hh using 1
     change _=L ((T:ℂ) • A (u t)+(dT:ℂ) • A (GenericResonantKernel.harmonicVector v vm t)+
       (T:ℂ) • D (GenericResonantKernel.harmonicVector v vm t))
     simp only [map_add,map_smul,smul_eq_mul,hL,GenericResonantKernel.harmonicVector,hv,hm,
@@ -40,10 +40,10 @@ theorem harmonic_endpoint_pairing
   have hh := scalar_integrating_factor turnFrequency (fun t => L (u t))
     (fun t => Complex.exp (turnFrequency*(t:ℂ))*(((dT:ℂ)*z+(T:ℂ)*L (D v))/2)+
       Complex.exp (-turnFrequency*(t:ℂ))*((T:ℂ)*L (D vm)/2)) 1
-    (by simpa only [Set.uIcc_of_le (by norm_num : (0:ℝ) ≤ 1),add_assoc] using hd)
+    (by simpa only [Set.uIcc_of_le (by norm_num : (0:ℝ) ≤ 1),add_assoc] using! hd)
     (by fun_prop)
   rw [weighted_harmonic_integral] at hh
-  simpa [turnFrequency_exp,hzero] using hh.symm
+  simpa [turnFrequency_exp,hzero] using! hh.symm
 
 theorem conjugate_left_zero (A : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w)
     (v : ι → ℂ) (he : (complexMatrix A).mulVec v=(Complex.I*(w:ℂ)) • v)
@@ -96,7 +96,7 @@ theorem variation_parameter_pairing (A D : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w
         T 1 dT 0 u0 q hq t ht)
     simp only [map_add,map_smul,one_smul,LinearMap.coe_toContinuousLinearMap',
       Matrix.mulVecLin_apply,complexify_action,hbase] at hh
-    convert hh using 1
+    convert! hh using 1
   have hm := conjugate_left_zero A w hw v he p hleft
   have ht : (T:ℂ)*(Complex.I*(w:ℂ))=turnFrequency := by
     dsimp [T,turnFrequency]
@@ -143,13 +143,13 @@ theorem return_parameter_pairing (A0 D : Matrix ι ι ℝ)
   let e : ℝ → GenericShootingMap.FlowData (ι → ℝ) := fun s => ((0,(r+s,S s)),x)
   let u := fun s : ℝ => ψ (e s)
   have hrs : HasDerivAt (fun s : ℝ => r+s) 1 0 := by
-    simpa using (hasDerivAt_id (0:ℝ)).const_add r
+    simpa using! (hasDerivAt_id (0:ℝ)).const_add r
   have hd : HasDerivAt d (((0:ℝ),1),(0:ι → ℝ)) 0 :=
     ((hasDerivAt_const 0 (0:ℝ)).prodMk hrs).prodMk (hasDerivAt_const 0 x)
   let dT := fderiv ℝ τ ((0,r),x) ((0,1),0)
   have hS : HasDerivAt S dT 0 :=
     (hτ.differentiableAt (by simp)).hasFDerivAt.comp_hasDerivAt_of_eq 0 hd (by simp [d,x])
-  have hS0 : S 0=T := by simpa [S,d,x,T] using hτ0
+  have hS0 : S 0=T := by simpa [S,d,x,T] using! hτ0
   have he' : HasDerivAt e (((0:ℝ),(1,dT)),(0:ι → ℝ)) 0 :=
     ((hasDerivAt_const 0 (0:ℝ)).prodMk (hrs.prodMk hS)).prodMk (hasDerivAt_const 0 x)
   let q := fderiv ℝ ψ ((0,(r,T)),x) ((0,(1,dT)),0)
@@ -160,7 +160,7 @@ theorem return_parameter_pairing (A0 D : Matrix ι ι ℝ)
       GenericAffinePathResidual.pathResidual A0.mulVecLin.toContinuousLinearMap
         D.mulVecLin.toContinuousLinearMap B (e s,u s)=0 := by
     have hh : Filter.Tendsto e (𝓝 0) (𝓝 ((0,(r,T)),x)) := by
-      simpa only [e,add_zero,hS0] using he'.continuousAt.tendsto
+      simpa only [e,add_zero,hS0] using! he'.continuousAt.tendsto
     exact hh.eventually hres
   have hq := GenericReturnBaseDerivative.zero_amplitude_variational_curve_equation
     A0.mulVecLin.toContinuousLinearMap D.mulVecLin.toContinuousLinearMap B
@@ -177,7 +177,7 @@ theorem return_parameter_pairing (A0 D : Matrix ι ι ℝ)
   have hpder : HasDerivAt (fun s => returnPoint ψ τ (d s))
       ((fderiv ℝ (returnPoint ψ τ) ((0,r),x)) ((0,1),0)) 0 := by
     have hs := returnPoint_smooth ψ τ ((0,r),x) hτ
-      (by simpa only [returnArgument,x,hτ0] using hψ)
+      (by simpa only [returnArgument,x,hτ0] using! hψ)
     exact (hs.differentiableAt (by simp)).hasFDerivAt.comp_hasDerivAt_of_eq 0 hd (by simp [d])
   have heval : HasDerivAt (fun s => returnPoint ψ τ (d s)) (q ⟨1,by norm_num⟩) 0 :=
     (ContinuousMap.evalCLM (R := ℝ) (M := ι → ℝ)

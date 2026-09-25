@@ -52,7 +52,7 @@ theorem linearOrbit_derivative (A : ReducedState →L[ℝ] ReducedState)
     HasDerivAt (linearOrbit a b w) (A (linearOrbit a b w t)) t := by
   have hc := ((Real.hasDerivAt_cos (w*t)).comp t ((hasDerivAt_id t).const_mul w)).smul_const a
   have hs := ((Real.hasDerivAt_sin (w*t)).comp t ((hasDerivAt_id t).const_mul w)).smul_const b
-  convert hc.sub hs using 1
+  convert! hc.sub hs using 1
   simp only [linearOrbit,map_sub,map_smul,ha,hb,smul_smul]
   module
 
@@ -75,7 +75,7 @@ theorem referencePath_integral (A : ReducedState →L[ℝ] ReducedState)
   have hd (s : ℝ) : HasDerivAt (fun t => linearOrbit a b w (T*t))
       ((T • A) (linearOrbit a b w (T*s))) s := by
     have ht : HasDerivAt (fun t : ℝ => T*t) T s := by
-      simpa using ((hasDerivAt_id s).const_mul T)
+      simpa using! ((hasDerivAt_id s).const_mul T)
     exact (linearOrbit_derivative A a b w ha hb (T*s)).scomp s ht
   ext t i
   have hf := intervalIntegral.integral_eq_sub_of_hasDerivAt

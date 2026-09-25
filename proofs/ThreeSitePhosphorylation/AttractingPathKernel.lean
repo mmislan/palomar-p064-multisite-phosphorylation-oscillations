@@ -40,7 +40,7 @@ theorem source_periodic_variation_kernel (r w : ℝ) (hw : 0<w)
     linarith
   have hv := (source_root_eigenvector r z hp).2
   have hleft := (source_left_eigenfunctional r w roots b he).2
-  have hb0 : b (Sum.inr 0)=v := by simpa [v,z,spectralValues] using hb (Sum.inr 0)
+  have hb0 : b (Sum.inr 0)=v := by simpa [v,z,spectralValues] using! hb (Sum.inr 0)
   have hnorm : b.coord (Sum.inr 0) v=1 := by
     rw [← hb0]
     exact (source_left_eigenfunctional r w roots b he).1
@@ -54,8 +54,8 @@ theorem source_periodic_variation_kernel (r w : ℝ) (hw : 0<w)
   have hcross : (b.coord (Sum.inr 0) (sourceDelta.mulVec v)).re < 0 := by
     have hh := source_parameter_pairing_negative r w (ne_of_gt hw) hp
       (b.coord (Sum.inr 0)) hleft hnorm
-    simpa [sourceDelta,sourceOperator_apply,ContinuousLinearMap.sub_apply,
-      Matrix.sub_mulVec,v,z] using hh
+    simpa [sourceDelta,sourceOperator_apply,sub_apply,
+      Matrix.sub_mulVec,v,z] using! hh
   have hT : 0<2*Real.pi/w := by positivity
   have ht : ((2*Real.pi/w:ℝ):ℂ)*z=turnFrequency := by
     dsimp [z,turnFrequency]
@@ -70,7 +70,7 @@ theorem source_periodic_variation_kernel (r w : ℝ) (hw : 0<w)
     intro t ht'
     have hh := hu t ht'
     simp only [hdr,hdt,Complex.ofReal_zero,zero_smul,mul_zero,add_zero] at hh
-    convert hh using 1
+    convert! hh using 1
   exact ⟨hdr,hdt,periodic_homogeneous_source_kernel r w (2*Real.pi/w) hw hT roots hn b he
     u hhom hper hc hr⟩
 
@@ -81,7 +81,7 @@ noncomputable section
 
 theorem complexify_delta (y : ReducedState) :
     complexify ((linearPart 1-linearPart 0) y)=sourceDelta.mulVec (complexify y) := by
-  simp only [ContinuousLinearMap.sub_apply,map_sub,complexify_source,sourceDelta,Matrix.sub_mulVec]
+  simp only [sub_apply,map_sub,complexify_source,sourceDelta,Matrix.sub_mulVec]
 
 theorem periodic_path_kernel (r w : ℝ) (hw : 0<w)
     (hp : candidatePolynomial r (Complex.I*(w:ℂ))=0)
@@ -119,7 +119,7 @@ theorem periodic_path_kernel (r w : ℝ) (hw : 0<w)
     intro t ht
     have hh := hd t ht
     simp only [map_add,map_smul,complexify_source,complexify_delta,hbase] at hh
-    convert hh using 1
+    convert! hh using 1
     ext i
     simp [u,f,smul_smul,mul_assoc]
   obtain ⟨hdr,hdt,hzero⟩ := source_periodic_variation_kernel r w hw hp roots hn b hb he dr dT u hp' hr hc hu

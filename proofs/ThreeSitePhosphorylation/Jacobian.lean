@@ -56,7 +56,7 @@ theorem complexQuadratic_derivative_zero (r : ℝ) (j : Fin 6) :
   have hs := (speciesVariation (inputSpecies j)).hasFDerivAt (x := (0 : ReducedState))
   have he := (speciesVariation (enzymeSpecies j)).hasFDerivAt (x := (0 : ReducedState))
   have h := (hs.const_mul (bindingRates r j)).mul he
-  simpa [complexQuadratic] using h
+  simpa [complexQuadratic] using! h
 
 theorem quadratic_derivative_zero (r : ℝ) :
     HasFDerivAt (𝕜 := ℝ) (quadraticField r) 0 (0 : ReducedState) := by

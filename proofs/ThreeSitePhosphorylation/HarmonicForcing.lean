@@ -29,7 +29,7 @@ theorem periodic_harmonic_obstruction (A B : ℂ) (u : ℝ → ℂ)
     (hp : u 1=u 0) : A=0 := by
   have hh := scalar_periodic_forcing turnFrequency turnFrequency_exp u
     (fun t => Complex.exp (turnFrequency*(t:ℂ))*A+Complex.exp (-turnFrequency*(t:ℂ))*B)
-    (by simpa only [add_assoc] using hu) (by fun_prop) hp
+    (by simpa only [add_assoc] using! hu) (by fun_prop) hp
   rwa [weighted_harmonic_integral] at hh
 
 theorem crossing_obstruction_injective (c : ℂ) (hc : c.re<0) (T w : ℝ)

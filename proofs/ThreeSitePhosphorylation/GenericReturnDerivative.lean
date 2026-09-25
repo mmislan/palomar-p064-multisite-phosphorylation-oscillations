@@ -30,17 +30,17 @@ theorem return_scaling_euler (ψ : GenericShootingMap.FlowData (ι → ℝ) → 
       returnPoint ψ τ (scaleReturnData ((a,r),x) s)=s • returnPoint ψ τ ((a,r),x)) :
     fderiv ℝ (returnMap ψ τ) (a,(r,x)) (-a,(0,x))=returnMap ψ τ (a,(r,x)) := by
   have ha : HasDerivAt (fun s : ℝ => a/s) (-a) 1 := by
-    simpa using (hasDerivAt_const (1:ℝ) a).div (hasDerivAt_id (1:ℝ)) (by norm_num)
+    simpa using! (hasDerivAt_const (1:ℝ) a).div (hasDerivAt_id (1:ℝ)) (by norm_num)
   have hx : HasDerivAt (fun s : ℝ => s • x) x 1 := by
-    simpa using (hasDerivAt_id (1:ℝ)).smul_const x
+    simpa using! (hasDerivAt_id (1:ℝ)).smul_const x
   have hl := ha.prodMk ((hasDerivAt_const (1:ℝ) r).prodMk hx)
   have hD' : HasFDerivAt (returnMap ψ τ) (fderiv ℝ (returnMap ψ τ) (a,(r,x)))
-      (a/1,(r,(1:ℝ) • x)) := by simpa using hD.hasFDerivAt
+      (a/1,(r,(1:ℝ) • x)) := by simpa using! hD.hasFDerivAt
   have hd := hD'.comp_hasDerivAt (1:ℝ) hl
   have hr : HasDerivAt (fun s : ℝ => returnMap ψ τ (a/s,(r,s • x)))
       (returnMap ψ τ (a,(r,x))) 1 :=
     HasDerivAt.congr_of_eventuallyEq
-      (by simpa using (hasDerivAt_id (1:ℝ)).smul_const (returnMap ψ τ (a,(r,x)))) hscale
+      (by simpa using! (hasDerivAt_id (1:ℝ)).smul_const (returnMap ψ τ (a,(r,x)))) hscale
   exact hd.unique hr
 
 theorem return_euler_eventually (ψ : GenericShootingMap.FlowData (ι → ℝ) → ContinuousPath (ι → ℝ))

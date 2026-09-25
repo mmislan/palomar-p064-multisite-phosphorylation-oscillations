@@ -26,7 +26,7 @@ theorem zero_amplitude_variational_curve_equation {E : Type*}
   have hfield : HasDerivAt
       (fun s => T s • GenericAffinePathResidual.pathLinear A0 D (R s) (u s))
       (variationField (A0+(R 0) • D) D (T 0) dr dT (u 0) q) 0 := by
-    convert ht.smul hl using 1
+    convert! ht.smul hl using 1
     simp only [variationField,GenericAffinePathResidual.pathLinear]
     module
   have hc := (constantPath (E := E)).hasFDerivAt.comp_hasDerivAt 0 hx
@@ -36,7 +36,7 @@ theorem zero_amplitude_variational_curve_equation {E : Type*}
       (q-constantPath dx-linearPicard (ContinuousLinearMap.id ℝ E)
         (variationField (A0+(R 0) • D) D (T 0) dr dT (u 0) q)) 0 := by
     simpa only [GenericAffinePathResidual.pathResidual,zero_smul,add_zero,
-      Function.comp_def,map_smul] using (hu.sub hc).sub hf
+      Function.comp_def,map_smul] using! (hu.sub hc).sub hf
   have hz : HasDerivAt
       (fun s => GenericAffinePathResidual.pathResidual A0 D B (((0,(R s,T s)),x s),u s)) 0 0 :=
     (hasDerivAt_const (x := (0:ℝ)) (c := (0:ContinuousPath E))).congr_of_eventuallyEq he
@@ -77,13 +77,13 @@ theorem actual_return_state_derivative (A0 D : Matrix ι ι ℝ)
     GenericReturnTime.zero_amplitude_path_unique A0 D B r T (GenericComplexification.realPart v)
       _ _ hres.self_of_nhds (GenericReturnTime.critical_reference_solution A0 D B r w T v he)
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   have hd : HasDerivAt d (((0:ℝ),0),dx) 0 :=
     (hasDerivAt_const (0:ℝ) ((0:ℝ),r)).prodMk hx
   let dT := fderiv ℝ τ ((0,r),x) ((0,0),dx)
   have hS : HasDerivAt S dT 0 :=
     (hτ.differentiableAt (by simp)).hasFDerivAt.comp_hasDerivAt_of_eq 0 hd (by simp [d,x])
-  have hS0 : S 0=T := by simpa [S,d,x,T] using hτ0
+  have hS0 : S 0=T := by simpa [S,d,x,T] using! hτ0
   have hecurve : HasDerivAt e (((0:ℝ),(0,dT)),dx) 0 :=
     ((hasDerivAt_const (0:ℝ) (0:ℝ)).prodMk ((hasDerivAt_const (0:ℝ) r).prodMk hS)).prodMk hx
   let q := fderiv ℝ ψ ((0,(r,T)),x) ((0,(0,dT)),dx)
@@ -94,7 +94,7 @@ theorem actual_return_state_derivative (A0 D : Matrix ι ι ℝ)
       GenericAffinePathResidual.pathResidual A0.mulVecLin.toContinuousLinearMap
         D.mulVecLin.toContinuousLinearMap B (e s,u s)=0 := by
     have hh : Filter.Tendsto e (𝓝 0) (𝓝 ((0,(r,T)),x)) := by
-      simpa only [e,zero_smul,add_zero,hS0] using hecurve.continuousAt.tendsto
+      simpa only [e,zero_smul,add_zero,hS0] using! hecurve.continuousAt.tendsto
     exact hh.eventually hres
   have hq := zero_amplitude_variational_curve_equation
     A0.mulVecLin.toContinuousLinearMap D.mulVecLin.toContinuousLinearMap B
@@ -104,20 +104,20 @@ theorem actual_return_state_derivative (A0 D : Matrix ι ι ℝ)
       (variationField (A0+r • D).mulVecLin.toContinuousLinearMap 0 T 0 dT
         (GenericLinearOrbit.referencePath x (GenericComplexification.imagPart v) w T) q) := by
     simpa [u,e,hS0,hψ0,x,variationField,
-      GenericShootingInvertibility.matrix_operator_affine] using hq
+      GenericShootingInvertibility.matrix_operator_affine] using! hq
   have heval : HasDerivAt (fun s => returnPoint ψ τ (d s)) (q ⟨1,by norm_num⟩) 0 :=
     (ContinuousMap.evalCLM (R := ℝ) (M := ι → ℝ)
       (⟨1,by norm_num⟩ : UnitTime)).hasFDerivAt.comp_hasDerivAt 0 hu
   have hpder : HasDerivAt (fun s => returnPoint ψ τ (d s))
       ((fderiv ℝ (returnPoint ψ τ) ((0,r),x)) ((0,0),dx)) 0 := by
     have hs := returnPoint_smooth ψ τ ((0,r),x) hτ
-      (by simpa only [returnArgument,x,hτ0] using hψ)
+      (by simpa only [returnArgument,x,hτ0] using! hψ)
     exact (hs.differentiableAt (by simp)).hasFDerivAt.comp_hasDerivAt_of_eq 0 hd (by simp [d])
   have hz : H (q ⟨1,by norm_num⟩)=0 := by
     have hh := H.hasFDerivAt.comp_hasDerivAt 0 heval
     have hephase : ∀ᶠ s in 𝓝 (0:ℝ), H (returnPoint ψ τ (d s))=0 := by
       have ht : Filter.Tendsto d (𝓝 0) (𝓝 ((0,r),x)) := by
-        simpa [d] using hd.continuousAt.tendsto
+        simpa [d] using! hd.continuousAt.tendsto
       exact ht.eventually hphase
     exact hh.unique (HasDerivAt.congr_of_eventuallyEq (hasDerivAt_const (0:ℝ) (0:ℝ)) hephase)
   have htrans : H ((A0+r • D).mulVec x)=w/2 := by

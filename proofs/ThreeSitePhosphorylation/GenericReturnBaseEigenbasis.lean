@@ -53,7 +53,7 @@ theorem nonradial_value_abs_lt_one (T : ℝ) (hT : 0<T) (roots : σ → ℝ)
   cases i with
   | inl i =>
     have hb := stable_value_bounds T hT roots hn i
-    simpa only [abs_of_pos hb.1] using hb.2
+    simpa only [abs_of_pos hb.1] using! hb.2
   | inr i =>
     fin_cases i
     · exact (hi rfl).elim
@@ -103,7 +103,7 @@ theorem actual_return_base_eigenbasis (A0 D : Matrix ι ι ℝ)
       Function.Injective (returnValues (2*Real.pi/w) roots) := by
   let v := b (Sum.inr 0)
   have hev : (complexMatrix (A0+r • D)).mulVec v=(Complex.I*(w:ℂ)) • v := by
-    simpa only [v,GenericPeriodicKernel.spectralValues] using he (Sum.inr 0)
+    simpa only [v,GenericPeriodicKernel.spectralValues] using! he (Sum.inr 0)
   let c := GenericRealCriticalBasis.realBasis b hreal hpair
   have hc (i : σ ⊕ Fin 2) : c i=GenericRealCriticalBasis.vectors b i :=
     GenericRealCriticalBasis.realBasis_apply b hreal hpair i
@@ -115,15 +115,15 @@ theorem actual_return_base_eigenbasis (A0 D : Matrix ι ι ℝ)
     have hs : (A0+r • D).mulVec (GenericComplexification.realPart (b (Sum.inl i)))=
         roots i • GenericComplexification.realPart (b (Sum.inl i)) := by
       apply real_eigenvector
-      simpa only [GenericPeriodicKernel.spectralValues] using he (Sum.inl i)
-    simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using
+      simpa only [GenericPeriodicKernel.spectralValues] using! he (Sum.inl i)
+    simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using!
       actual_return_stable_mode A0 D B r w hw v p hev hleft hnorm ψ τ hψ hτ hτ0
         hres hphase (roots i) (hn i) (GenericComplexification.realPart (b (Sum.inl i))) hs
   | inr j =>
     fin_cases j
-    · simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using
+    · simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using!
         actual_return_radial_mode A0 D B r w hw v p hev hleft hnorm ψ τ hψ hτ hτ0 hres hphase
-    · simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using
+    · simpa [stateDerivative,GenericRealCriticalBasis.vectors,returnValues,v] using!
         actual_return_phase_mode A0 D B r w hw v p hev hleft hnorm ψ τ hψ hτ hτ0 hres hphase
 
 end

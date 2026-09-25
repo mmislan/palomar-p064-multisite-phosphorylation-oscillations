@@ -70,7 +70,7 @@ theorem split_decomposition {n : ℕ} (y : ReducedState n) (z : Fin 3 → ℝ) :
     splitEquiv n (y,z)=faceInclusion n y+normalInclusion n z := by
   change appendReduced y (z 0) (z 1) (z 2)=
     appendReduced y 0 0 0+appendReduced 0 (z 0) (z 1) (z 2)
-  simpa only [add_zero,zero_add] using appendReduced_add y 0 0 0 0 (z 0) (z 1) (z 2)
+  simpa only [add_zero,zero_add] using! appendReduced_add y 0 0 0 0 (z 0) (z 1) (z 2)
 
 theorem oldCoordinates_face {n : ℕ} (y : ReducedState n) :
     oldCoordinates (faceInclusion n y)=y := oldCoordinates_append y 0 0 0

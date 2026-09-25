@@ -14,7 +14,7 @@ theorem complexify_injective :
   intro x y h
   funext i
   have hi := congrArg Complex.re (congrFun h i)
-  simpa only [complexify_apply,Complex.ofReal_re] using hi
+  simpa only [complexify_apply,Complex.ofReal_re] using! hi
 
 /-- The actual real critical orbit has the normalized first-harmonic
 complexification used by the generic resonant kernel. -/

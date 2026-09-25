@@ -26,7 +26,7 @@ theorem periodic_mixed_resonant_balance
   have hf : Continuous f := by
     have hh : Continuous (GenericResonantKernel.harmonicVector v vm) := by unfold GenericResonantKernel.harmonicVector; fun_prop
     have hb := (B.toContinuousBilinearMap.continuous.comp hh).clm_apply hcont
-    exact continuous_const.mul (L.toContinuousLinearMap.continuous.comp hb)
+    exact continuous_const.fun_mul (L.toContinuousLinearMap.continuous.comp hb)
   let Lc := L.toContinuousLinearMap.restrictScalars ℝ
   have hd (t : ℝ) (ht : t ∈ Set.Icc (0:ℝ) 1) :
       HasDerivAt (fun s => L (u2 s))
@@ -34,7 +34,7 @@ theorem periodic_mixed_resonant_balance
           Complex.exp (turnFrequency*(t:ℂ))*((dT:ℂ)*z+(T:ℂ)*(dr:ℂ)*L (D v))/2+
           Complex.exp (-turnFrequency*(t:ℂ))*((T:ℂ)*(dr:ℂ)*L (D vm))/2+f t) t := by
     have hh := Lc.hasFDerivAt.comp_hasDerivAt t (hu t ht)
-    convert hh using 1
+    convert! hh using 1
     change _=L ((T:ℂ) • A (u2 t)+(dT:ℂ) • A (GenericResonantKernel.harmonicVector v vm t)+
       ((T:ℂ)*(dr:ℂ)) • D (GenericResonantKernel.harmonicVector v vm t)+
       (2*(T:ℂ)) • B (GenericResonantKernel.harmonicVector v vm t) (u1 t))
@@ -45,7 +45,7 @@ theorem periodic_mixed_resonant_balance
   have ho := periodic_harmonic_balance
     (((dT:ℂ)*z+(T:ℂ)*(dr:ℂ)*L (D v))/2)
     (((T:ℂ)*(dr:ℂ)*L (D vm))/2) f (fun t => L (u2 t)) hf
-    (congrArg L hp) (by simpa only [mul_div_assoc] using hd)
+    (congrArg L hp) (by simpa only [mul_div_assoc] using! hd)
   have hi : (∫ t in (0:ℝ)..1, Complex.exp (-turnFrequency*(t:ℂ))*f t)=
       (T:ℂ)*G/8 := by
     have he (t : ℝ) : Complex.exp (-turnFrequency*(t:ℂ))*f t=

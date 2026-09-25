@@ -32,9 +32,9 @@ theorem parameters_limits (C : ClosedPathFamily A0 D (GenericQuadraticTensor.pat
     rw [C.parameters_zero]
   constructor
   · have hh := (Complex.continuous_re.continuousAt.comp hc).tendsto
-    simpa [Function.comp_def,h0] using hh
+    simpa [Function.comp_def,h0] using! hh
   · have hh := (Complex.continuous_im.continuousAt.comp hc).tendsto
-    simpa [Function.comp_def,h0] using hh
+    simpa [Function.comp_def,h0] using! hh
 
 omit [Fintype σ] [DecidableEq σ] in
 /-- The actual rescaled velocity at the branch initial point is nonzero for
@@ -110,7 +110,7 @@ theorem periodicOrbit_shrinks
   have hM : 0<‖C.paths 0‖+1 := by positivity
   have hsmall : ∀ᶠ a in 𝓝 (0:ℝ), |a| * (‖C.paths 0‖+1)<ε := by
     have ht : Tendsto (fun a : ℝ => |a| * (‖C.paths 0‖+1)) (𝓝 0) (𝓝 0) := by
-      simpa using (continuous_abs.tendsto (0:ℝ)).mul_const (‖C.paths 0‖+1)
+      simpa using! (continuous_abs.tendsto (0:ℝ)).mul_const (‖C.paths 0‖+1)
     exact ht.eventually (Iio_mem_nhds hε)
   filter_upwards [hbound,hT,hsmall,C.residual,C.closed] with a hb hTa hs hres hcl t
   obtain ⟨hr,_,_,_⟩ := periodicOrbit_properties C a hTa hres hcl
@@ -202,7 +202,7 @@ theorem attracting_hopf_family
     r w hw roots hinj hn b hreal hpair he hcross hsym hA hS h11 h20 h11eq h20eq hG
   have hev : (GenericComplexification.complexMatrix (A0+r • D)).mulVec (b (Sum.inr 0))=
       (Complex.I*(w:ℂ)) • b (Sum.inr 0) := by
-    simpa [GenericPeriodicKernel.spectralValues] using he (Sum.inr 0)
+    simpa [GenericPeriodicKernel.spectralValues] using! he (Sum.inr 0)
   have hattr := closed_branch_rescaled_orbital_attraction hK hw R hstrict
   have hT := (parameters_limits C).2.eventually (Ioi_mem_nhds (show (0:ℝ)<2*Real.pi/w by positivity))
   refine ⟨C,(parameters_limits C).1,(parameters_limits C).2,periodicOrbit_shrinks C hw,?_⟩

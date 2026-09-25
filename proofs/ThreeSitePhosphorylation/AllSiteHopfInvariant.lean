@@ -172,8 +172,8 @@ theorem hessian_add (r : ℝ) (x y : ReducedState) :
 /-- The literal witness Hessian as a bilinear map. -/
 def hessianBilinear (r : ℝ) : (Fin 9 → ℝ) →ₗ[ℝ] (Fin 9 → ℝ) →ₗ[ℝ] (Fin 9 → ℝ) :=
   LinearMap.mk₂ ℝ (fun x y => AttractingWitness.hessian r x y)
-    (fun x y z => by dsimp only; rw [hessian_add,ContinuousLinearMap.add_apply])
-    (fun c x y => by dsimp only; rw [AttractingWitness.hessian_smul,ContinuousLinearMap.smul_apply])
+    (fun x y z => by dsimp only; rw [hessian_add,add_apply])
+    (fun c x y => by dsimp only; rw [AttractingWitness.hessian_smul,smul_apply])
     (fun x y z => map_add _ y z)
     (fun c x y => map_smul _ c y)
 
@@ -195,7 +195,7 @@ theorem base_separation (s : ℝ) (y : Fin 9 → ℝ) :
   have hq : AttractingWitness.quadraticPart s (t • y)=
       (t*t) • AttractingWitness.quadraticPart s y := by
     have h1 := AttractingWitness.hessian_diagonal s (t • y)
-    rw [AttractingWitness.hessian_smul,ContinuousLinearMap.smul_apply,map_smul,
+    rw [AttractingWitness.hessian_smul,smul_apply,map_smul,
       AttractingWitness.hessian_diagonal,smul_smul,smul_comm (t*t) (2:ℝ)] at h1
     exact (smul_right_injective _ (two_ne_zero : (2:ℝ) ≠ 0) h1).symm
   have e1 : chartMatrix.mulVec (t • y)=t • chartMatrix.mulVec y := Matrix.mulVec_smul _ _ _
@@ -299,7 +299,7 @@ theorem complexRect_one {ι : Type*} [DecidableEq ι] :
 
 /-- The complexified chart as a complex linear equivalence. -/
 def chartEquiv : (Fin 9 → ℂ) ≃ₗ[ℂ] (CoordinateIndex 3 → ℂ) :=
-  LinearEquiv.ofLinear (complexRect chartMatrix).mulVecLin (complexRect inverseMatrix).mulVecLin
+  LinearEquiv.ofLinearMap (complexRect chartMatrix).mulVecLin (complexRect inverseMatrix).mulVecLin
     (by
       apply LinearMap.ext
       intro v
@@ -391,7 +391,7 @@ theorem base_hopf_invariant : ∃ r0 : ℝ, 0<r0 ∧
     apply AttractingWitness.source_root_of_adjugate
     rw [← hq0]
     have h := he (Sum.inr 0)
-    simpa [AttractingWitness.spectralValues] using h
+    simpa [AttractingWitness.spectralValues] using! h
   have hleft : ∀ v, b.coord (Sum.inr 0) ((AttractingWitness.complexSource r).mulVec v)=
       (Complex.I*(w:ℂ))*b.coord (Sum.inr 0) v := by
     intro v
@@ -433,7 +433,7 @@ theorem base_hopf_invariant : ∃ r0 : ℝ, 0<r0 ∧
     rw [hd0q,complex_intertwining _ _ chartMatrix hslope,hΔ,hcoord,hq0]
     have h := AttractingWitness.source_parameter_pairing_negative r w (ne_of_gt hw) hp
       (b.coord (Sum.inr 0)) hleft hnorm
-    simpa [AttractingWitness.sourceOperator_apply,Matrix.sub_mulVec] using h
+    simpa [AttractingWitness.sourceOperator_apply,Matrix.sub_mulVec] using! h
   -- Lyapunov value
   have hlyap : (lyapunovValue d0 (sourceTensor (repackRates (AttractingWitness.rates r)))).re<0 := by
     obtain ⟨heven,hodd⟩ := AttractingWitness.frequency_equations_of_root r w (ne_of_gt hw) hp
@@ -479,7 +479,7 @@ theorem base_hopf_invariant : ∃ r0 : ℝ, 0<r0 ∧
     rw [hfun]
     exact affineRates_smooth _ _
   · have ht : Tendsto (fun t : ℝ => r+t) (𝓝 0) (𝓝 r) := by
-      simpa using (continuous_const.add continuous_id).tendsto' (0:ℝ) (r+0) rfl
+      simpa using! (continuous_const.fun_add continuous_id).tendsto' (0:ℝ) (r+0) rfl
     filter_upwards [ht.eventually (lt_mem_nhds hr)] with t htpos
     exact repack_rates_positive _ (AttractingWitness.rates_positive (r+t) htpos)
   · intro i j
@@ -490,7 +490,7 @@ theorem base_hopf_invariant : ∃ r0 : ℝ, 0<r0 ∧
       rw [hA]
       rfl
     rw [hfun]
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const
       (MultisiteTensor.sourceMatrix baseSlope baseState i j)).const_add
       (MultisiteTensor.sourceMatrix (repackRates (AttractingWitness.rates r)) baseState i j)
   · rw [crossing_transport]

@@ -47,7 +47,7 @@ theorem periodic_homogeneous_source_kernel (A : Matrix ι ι ℝ) (w T : ℝ)
         HasDerivAt (fun s => b.coord (Sum.inl i) (u s))
           (((T*roots i:ℝ):ℂ)*b.coord (Sum.inl i) (u t)) t := by
       have hh := L.hasFDerivAt.comp_hasDerivAt t (hu t ht)
-      convert hh using 1
+      convert! hh using 1
       change _=b.coord (Sum.inl i) (T • (complexMatrix A).mulVec (u t))
       change _=((b.coord (Sum.inl i)).restrictScalars ℝ) (T • (complexMatrix A).mulVec (u t))
       rw [map_smul]

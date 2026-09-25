@@ -29,7 +29,7 @@ theorem closed_family_solution_operator (r w : ℝ) (C : ClosedPathFamily A0 D B
       (𝓝 (((0,(r,2*Real.pi/w)),GenericComplexification.realPart v),
         referencePath (GenericComplexification.realPart v)
           (GenericComplexification.imagPart v) w (2*Real.pi/w))) := by
-    simpa [shootingArgument,C.parameters_zero,C.paths_zero] using hc.tendsto
+    simpa [shootingArgument,C.parameters_zero,C.paths_zero] using! hc.tendsto
   filter_upwards [ht.eventually huniq,C.residual] with a ha hr
   exact ha.mp hr
 
@@ -51,7 +51,7 @@ theorem closed_family_return_time (r w : ℝ) (hw : 0 < w)
   have ht : Filter.Tendsto (fun a : ℝ =>
       (((a,(C.parameters a).2.re),(C.parameters a).1),(C.parameters a).2.im)) (𝓝 0)
       (𝓝 (((0,r),GenericComplexification.realPart v),2*Real.pi/w)) := by
-    simpa [C.parameters_zero] using hc.tendsto
+    simpa [C.parameters_zero] using! hc.tendsto
   have hbase := GenericReturnTime.normalized_eigen_real_pairing (A0+r • D) w (ne_of_gt hw)
     v C.left he
     C.left_eigen C.left_normalized
@@ -62,7 +62,7 @@ theorem closed_family_return_time (r w : ℝ) (hw : 0 < w)
     rw [hpatha,hclosed]
     have hn : sourceGauge C.left (C.parameters a).1 =
         sourceGauge C.left (GenericComplexification.realPart v) := by
-      exact sub_eq_zero.mp (by simpa only [map_sub] using hnorm)
+      exact sub_eq_zero.mp (by simpa only [map_sub] using! hnorm)
     rw [hn]
     change (C.left (complexify (GenericComplexification.realPart v))).im=0
     rw [hbase]
@@ -102,7 +102,7 @@ theorem closed_family_return_map_exists (r w : ℝ) (hw : 0 < w)
   have hfixed := closed_family_return_time A0 D B v r w hw he C ψ τ hpath hτunique
   have hs : ContDiffAt ℝ ⊤ (returnPoint ψ τ) ((0,r),GenericComplexification.realPart v) := by
     apply returnPoint_smooth ψ τ _ hτ
-    simpa only [hτ0,returnArgument] using hψ
+    simpa only [hτ0,returnArgument] using! hψ
   exact ⟨ψ,τ,hψ,hτ,hs,hτ0,hfixed,hunique,hτunique⟩
 
 end

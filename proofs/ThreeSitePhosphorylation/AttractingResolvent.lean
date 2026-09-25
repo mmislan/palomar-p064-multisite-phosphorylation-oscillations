@@ -106,7 +106,7 @@ theorem source_left_eigenfunctional (r w : ℝ) (x : Fin 7 → ℝ)
   constructor
   · simp [Module.Basis.coord_apply]
   · intro v
-    simpa [spectralValues] using
+    simpa [spectralValues] using!
       eigenbasis_coordinate (complexSource r).mulVecLin b (spectralValues x w) he
         (Sum.inr 0) v
 

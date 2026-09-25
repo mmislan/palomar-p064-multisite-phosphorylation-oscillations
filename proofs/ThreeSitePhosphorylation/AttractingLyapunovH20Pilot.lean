@@ -113,7 +113,7 @@ theorem source_scaled_h20_real_row6 (r w : ℝ)
       (sourceMatrix r).mulVec (h20RealInt (w^2)) 6 -
       h20Scale*((1+r)/24)*(h20SpeciesReal (w^2)*h20EnzymeReal (w^2) -
         w^2*h20SpeciesImag (w^2)*h20EnzymeImag (w^2)) = 0 :=
-    (mul_eq_zero.mp (by simpa using hi)).resolve_left he
+    (mul_eq_zero.mp (by simpa using! hi)).resolve_left he
   rw [h20_action_real,h20_hessian_real]
   linear_combination hz
 

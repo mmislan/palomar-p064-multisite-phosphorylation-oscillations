@@ -101,7 +101,7 @@ theorem eigenpairResidual_slice_derivative (A : ℝ → E →L[ℝ] E)
   have hm := (sndL.hasFDerivAt (x := (b i,eig))).smul (fstL.hasFDerivAt (x := (b i,eig)))
   have hc := ((b.coord i).toContinuousLinearMap.hasFDerivAt.comp (b i,eig)
     fstL.hasFDerivAt).sub_const (1:ℝ)
-  convert (ha.sub hm).prodMk hc using 1
+  convert! (ha.sub hm).prodMk hc using 1
   apply ContinuousLinearMap.ext
   intro y
   apply Prod.ext
@@ -127,8 +127,8 @@ theorem smooth_normalized_eigenpair (A : ℝ → E →L[ℝ] E)
   have hs : ContDiffAt ℝ ⊤ F (0,z0) := eigenpairResidual_smooth A hA b i z0
   have hpart : fderiv ℝ F (0,z0) ∘L ContinuousLinearMap.inr ℝ ℝ (E × ℝ)=L := by
     have hd : HasFDerivAt (fun z : E × ℝ => ((0:ℝ),z))
-        (ContinuousLinearMap.inr ℝ ℝ (E × ℝ)) z0 := by
-      convert (hasFDerivAt_const (0:ℝ) z0).prodMk (hasFDerivAt_id z0) using 1
+        (ContinuousLinearMap.inr ℝ ℝ (E × ℝ)) z0 :=
+      hasFDerivAt_prodMk_right (0:ℝ) z0
     have hc := (hs.differentiableAt (by simp)).hasFDerivAt.comp z0 hd
     exact hc.unique (eigenpairResidual_slice_derivative A b (eig i) i)
   have hInv : (fderiv ℝ F (0,z0) ∘L ContinuousLinearMap.inr ℝ ℝ (E × ℝ)).IsInvertible := by

@@ -37,7 +37,7 @@ theorem assemble_zero {n : ℕ} : assemble (0 : Fin n → ℝ) 0 0 0 = 0 := by
 theorem assemble_add_smul {n : ℕ} (a b c d a' b' c' d' : Fin n → ℝ) (t : ℝ) :
     assemble (a+t • a') (b+t • b') (c+t • c') (d+t • d') =
       assemble a b c d + t • assemble a' b' c' d' := by
-  simpa only [add_zero,assemble_zero] using
+  simpa only [add_zero,assemble_zero] using!
     assemble_affine a b c d 0 0 0 0 a' b' c' d' t
 
 theorem project_field {n : ℕ} (k : Rates n) (x : PhosphorylationSharpness.State n) :
@@ -159,7 +159,7 @@ theorem bilinearTerm_add_smul_right {n : ℕ} (k : Rates n)
     ring
   unfold bilinearTerm
   rw [ha,hb]
-  simpa only [smul_zero,add_zero] using assemble_add_smul
+  simpa only [smul_zero,add_zero] using! assemble_add_smul
     (bilinearKinase k u v) (bilinearPhosphatase k u v) 0 0
     (bilinearKinase k u z) (bilinearPhosphatase k u z) 0 0 t
 
@@ -214,7 +214,7 @@ theorem bilinearTerm_affine_rates {n : ℕ} (k0 k1 : Rates n)
     ring
   unfold bilinearTerm
   rw [ha,hb]
-  simpa only [smul_zero,add_zero] using assemble_add_smul
+  simpa only [smul_zero,add_zero] using! assemble_add_smul
     (bilinearKinase k0 u v) (bilinearPhosphatase k0 u v) 0 0
     (bilinearKinase k1 u v) (bilinearPhosphatase k1 u v) 0 0 r
 

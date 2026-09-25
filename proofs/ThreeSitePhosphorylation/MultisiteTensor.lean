@@ -15,14 +15,14 @@ def linearMapOfAddSmul {E F : Type*} [AddCommGroup E] [Module ℝ E]
     [AddCommGroup F] [Module ℝ F] (f : E → F)
     (h : ∀ (u v : E) (t : ℝ), f (u+t • v)=f u+t • f v) : E →ₗ[ℝ] F where
   toFun := f
-  map_add' u v := by simpa only [one_smul] using h u v 1
+  map_add' u v := by simpa only [one_smul] using! h u v 1
   map_smul' t v := by
     have hzero : f 0=0 := by
       have hh := h 0 0 1
       simp only [one_smul,add_zero] at hh
-      have hc : f 0+f 0=f 0+0 := by simpa only [add_zero] using hh.symm
+      have hc : f 0+f 0=f 0+0 := by simpa only [add_zero] using! hh.symm
       exact add_left_cancel hc
-    simpa only [zero_add,hzero] using h 0 v t
+    simpa only [zero_add,hzero] using! h 0 v t
 
 def sourceLinear {n : ℕ} (k : Rates n) (x : PhosphorylationSharpness.State n) :
     ReducedState n →ₗ[ℝ] ReducedState n :=

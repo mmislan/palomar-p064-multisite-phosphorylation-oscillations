@@ -29,37 +29,37 @@ theorem jointRates_smooth {n : ℕ} (k : ℝ → Rates n)
     refine Fin.lastCases ?_ (fun j => ?_) i
     · simp only [jointRates,appendScaledRates,Fin.lastCases_last]
       exact (contDiff_const.mul contDiff_fst).div_const _
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (ha j).comp contDiff_snd
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using!
         (contDiff_const : ContDiff ℝ ⊤ (fun _ : ℝ × ℝ => κ))
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (hb j).comp contDiff_snd
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using!
         (contDiff_const : ContDiff ℝ ⊤ (fun _ : ℝ × ℝ => κ))
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (hc j).comp contDiff_snd
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using!
         (contDiff_const : ContDiff ℝ ⊤ (fun _ : ℝ × ℝ => κ/x.F))
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (hα j).comp contDiff_snd
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using!
         (contDiff_const : ContDiff ℝ ⊤ (fun _ : ℝ × ℝ => κ))
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (hβ j).comp contDiff_snd
   · intro i
     refine Fin.lastCases ?_ (fun j => ?_) i
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_last] using!
         (contDiff_const : ContDiff ℝ ⊤ (fun _ : ℝ × ℝ => κ))
-    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using
+    · simpa only [jointRates,appendScaledRates,Fin.lastCases_castSucc] using!
         (hγ j).comp contDiff_snd
 
 theorem center_smooth {n : ℕ} (x : PhosphorylationSharpness.State n) :

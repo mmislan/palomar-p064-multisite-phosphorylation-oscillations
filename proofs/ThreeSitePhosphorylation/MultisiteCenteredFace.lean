@@ -68,7 +68,7 @@ reduced spaces. No structure is introduced on full structured states. -/
 def faceInclusion (n : ℕ) : ReducedState n →ₗ[ℝ] ReducedState (n+1) where
   toFun y := appendReduced y 0 0 0
   map_add' x y := by simpa only [zero_add] using appendReduced_add x y 0 0 0 0 0 0
-  map_smul' a y := by simpa only [mul_zero] using appendReduced_smul a y 0 0 0
+  map_smul' a y := by simpa only [mul_zero,RingHom.id_apply] using appendReduced_smul a y 0 0 0
 
 /-- Translation of the actual reduced field to coordinates about zstar.
 No equilibrium equation is assumed or subtracted from the vector field. -/

@@ -29,7 +29,7 @@ theorem jacobian_face {n : ℕ} (Et Ft St : ℝ)
   have hG : HasFDerivAt G
       (centeredJacobian Et Ft St (appendScaledRates k κ 0 α) (faceInclusion n zstar))
       (faceCLM n 0) := by
-    simpa only [map_zero] using
+    simpa only [map_zero] using!
       ((centeredField_smooth Et Ft St (appendScaledRates k κ 0 α)
         (faceInclusion n zstar)).differentiable (by simp)).differentiableAt.hasFDerivAt (x := 0)
   have hleft := hG.comp 0 (faceCLM n).hasFDerivAt

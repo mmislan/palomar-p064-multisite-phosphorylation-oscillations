@@ -42,7 +42,7 @@ omit [Fintype ι] in
 theorem positive_of_dist_lt_margin (v z : S → ℝ) (m : ℝ)
     (hz : ∀ i, m≤z i) (hv : dist v z< m) : ∀ i, 0<v i := by
   intro i
-  have hv' : ‖v-z‖< m := by simpa only [dist_eq_norm] using hv
+  have hv' : ‖v-z‖< m := by simpa only [dist_eq_norm] using! hv
   have hn := (norm_le_pi_norm (v-z) i).trans_lt hv'
   have hlo := (abs_lt.mp hn).1
   change -m<v i-z i at hlo
@@ -116,7 +116,7 @@ theorem chart_orbital_attraction
   · have hb : ∀ t, Metric.infDist (Φ (v t)) (Φ '' Γ) ≤ ‖L‖*Metric.infDist (v t) Γ :=
       fun t => infDist_image_le Φ ‖L‖ hK (fun x y => chart_dist_le e L x y) Γ (v t)
     have hz : Tendsto (fun t => ‖L‖*Metric.infDist (v t) Γ) atTop (𝓝 0) := by
-      simpa using hva.const_mul ‖L‖
+      simpa using! hva.const_mul ‖L‖
     exact squeeze_zero (fun _ => Metric.infDist_nonneg) hb hz
   · intro W hW0 hWd t ht
     have hVd : ∀ s, 0 ≤ s → HasDerivWithinAt (fun s => Φ (v s)) (F (Φ (v s))) (Set.Ici 0) s := by

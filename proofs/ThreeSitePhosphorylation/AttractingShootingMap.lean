@@ -52,21 +52,21 @@ theorem shootingMap_direction (ψ : FlowData → SourcePath) (L : ReducedState �
       (0,(x+s • dx,((r+s*dr:ℝ):ℂ)+Complex.I*((T+s*dT:ℝ):ℂ))))
       (q ⟨1,by norm_num⟩-dx,L dx) 0 := by
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   have he := (ContinuousMap.evalCLM (R := ℝ) (M := ReducedState)
     (⟨1,by norm_num⟩:UnitTime)).hasFDerivAt.comp_hasDerivAt 0 hψ
   have hg := L.hasFDerivAt.comp_hasDerivAt 0 (hx.sub_const x)
-  simpa [shootingMap,shootingArgument,Function.comp_def] using (he.sub hx).prodMk hg
+  simpa [shootingMap,shootingArgument,Function.comp_def] using! (he.sub hx).prodMk hg
 
 theorem flowLine_derivative (r T dr dT : ℝ) (x dx : ReducedState) :
     HasDerivAt (fun s : ℝ => ((0,(r+s*dr,T+s*dT)),x+s • dx) : ℝ → FlowData)
       ((0,(dr,dT)),dx) 0 := by
   have hr : HasDerivAt (fun s : ℝ => r+s*dr) dr 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const dr).const_add r
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const dr).const_add r
   have ht : HasDerivAt (fun s : ℝ => T+s*dT) dT 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const dT).const_add T
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const dT).const_add T
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   exact ((hasDerivAt_const (x := (0:ℝ)) (c := (0:ℝ))).prodMk (hr.prodMk ht)).prodMk hx
 
 theorem shootingLine_derivative (r T : ℝ) (x : ReducedState) (d : ShootingState) :
@@ -74,17 +74,17 @@ theorem shootingLine_derivative (r T : ℝ) (x : ReducedState) (d : ShootingStat
       ((r+s*d.2.re:ℝ):ℂ)+Complex.I*((T+s*d.2.im:ℝ):ℂ))) : ℝ → ℝ × ShootingState)
       (0,d) 0 := by
   have hr : HasDerivAt (fun s : ℝ => r+s*d.2.re) d.2.re 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const d.2.re).const_add r
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const d.2.re).const_add r
   have ht : HasDerivAt (fun s : ℝ => T+s*d.2.im) d.2.im 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).mul_const d.2.im).const_add T
+    simpa using! ((hasDerivAt_id (0:ℝ)).mul_const d.2.im).const_add T
   have hx : HasDerivAt (fun s : ℝ => x+s • d.1) d.1 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const d.1).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const d.1).const_add x
   have hc := (Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt 0 hr).add
     ((Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt 0 ht).const_mul Complex.I)
   have hd : (d.2.re:ℂ)+Complex.I*(d.2.im:ℂ)=d.2 := by
-    simpa only [mul_comm Complex.I] using Complex.re_add_im d.2
+    simpa only [mul_comm Complex.I] using! Complex.re_add_im d.2
   have hc' : HasDerivAt (fun s : ℝ => ((r+s*d.2.re:ℝ):ℂ)+Complex.I*((T+s*d.2.im:ℝ):ℂ)) d.2 0 := by
-    simpa only [Function.comp_apply,Complex.ofRealCLM_apply,hd] using hc
+    simpa only [Function.comp_apply,Complex.ofRealCLM_apply,hd] using! hc
   exact (hasDerivAt_const (x := (0:ℝ)) (c := (0:ℝ))).prodMk (hx.prodMk hc')
 
 end

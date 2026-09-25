@@ -87,7 +87,7 @@ theorem return_arc_control (a r : ℝ) (p : ι → ℝ)
   refine ⟨hresx,hlo,hhi,?_⟩
   intro t
   have hh := (ContinuousMap.norm_coe_le_norm (g x-g p) t).trans hbound
-  simpa only [dist_eq_norm,ContinuousMap.sub_apply,g,e,d] using hh
+  simpa only [dist_eq_norm,ContinuousMap.sub_apply,g,e,d] using! hh
 
 /-- Strict multipliers of the actual return derivative give an invariant
 contracting-iterate neighborhood and uniform source-arc control. -/
@@ -179,9 +179,9 @@ theorem absoluteReturnArc_derivative (a r : ℝ) (x : ι → ℝ) (n : ℕ)
     (GenericQuadraticTensor.pathField K) (GenericQuadraticTensor.pathField_apply K)
     (returnFlowData ψ τ a r x n) (ψ (returnFlowData ψ τ a r x n)) hres ((t-S)/T) hs
   have hd : HasDerivAt (fun s : ℝ => (s-S)/T) (1/T) t := by
-    simpa using ((hasDerivAt_id t).sub_const S).div_const T
+    simpa using! ((hasDerivAt_id t).sub_const S).div_const T
   have h := hh.scomp t hd
-  simpa [absoluteReturnArc,returnFlowData,T,S,smul_smul,ne_of_gt hT] using h
+  simpa [absoluteReturnArc,returnFlowData,T,S,smul_smul,ne_of_gt hT] using! h
 
 def forwardReturnCurve (a r : ℝ) (x : ι → ℝ) (c : ℝ) (hc : 0<c)
     (hT : ∀ n, c≤returnTimes ψ τ a r x n) : ℝ → (ι → ℝ) :=
@@ -192,7 +192,7 @@ theorem forwardReturnCurve_initial (a r : ℝ) (x : ι → ℝ) (c : ℝ) (hc : 
     (hT : ∀ n, c≤returnTimes ψ τ a r x n) :
     forwardReturnCurve A0 D K ψ τ a r x c hc hT 0=x := by
   rw [forwardReturnCurve,ReturnArcConcatenation.curve_initial]
-  simpa [returnStates] using absoluteReturnArc_initial A0 D K ψ τ a r x 0
+  simpa [returnStates] using! absoluteReturnArc_initial A0 D K ψ τ a r x 0
 
 /-- The actual residual-defined return arcs concatenate to a global forward
 solution of the rescaled source under the stated non-Zeno and residual inputs. -/
@@ -225,7 +225,7 @@ theorem forwardReturnCurve_on_arc (a r : ℝ) (x : ι → ℝ) (c : ℝ) (hc : 0
   let T := returnTimes ψ τ a r x n
   have hTp : 0<T := hc.trans_le (hT n)
   have hlo : S≤t := count_lower _ c hc hT t ht
-  have hup : t<S+T := by simpa only [elapsed_succ] using count_upper _ c hc hT t
+  have hup : t<S+T := by simpa only [elapsed_succ] using! count_upper _ c hc hT t
   have hs : (t-S)/T ∈ Set.Icc (0:ℝ) 1 := by
     exact ⟨div_nonneg (sub_nonneg.mpr hlo) hTp.le,
       (div_le_one hTp).mpr (by linarith)⟩
@@ -267,7 +267,7 @@ theorem forwardReturnCurve_orbit_attraction (a r : ℝ) (x p : ι → ℝ)
   let n := count (returnTimes ψ τ a r x) c hc hT
   have hcount : Tendsto n atTop atTop := count_tendsto_atTop _ c hc hT
   have hz : Tendsto (fun t => C*dist (returnStates ψ τ a r x (n t)) p) atTop (𝓝 0) := by
-    simpa using ((hconv.comp hcount).dist (tendsto_const_nhds (x := p))).const_mul C
+    simpa using! ((hconv.comp hcount).dist (tendsto_const_nhds (x := p))).const_mul C
   have hb : ∀ᶠ t in atTop, Metric.infDist (forwardReturnCurve A0 D K ψ τ a r x c hc hT t)
       (Set.range u) ≤ C*dist (returnStates ψ τ a r x (n t)) p := by
     filter_upwards [eventually_ge_atTop (0:ℝ)] with t ht

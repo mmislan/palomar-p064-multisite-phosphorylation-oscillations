@@ -46,7 +46,7 @@ theorem pathContinuation_derivative (A0 D : E →L[ℝ] E) (Q : ℝ → E → E)
     change p.1.2.2 • affineLift A0 D B (p.1.1,p.1.2.1) u _=_
     rw [affineLift_apply A0 D Q B hpoint]
     rfl
-  simpa only [pathContinuation,he] using hd.const_add p.2
+  simpa only [pathContinuation,he] using! hd.const_add p.2
 
 /-- A literal residual solution satisfies the actual ODE, including the
 endpoint derivatives of its integral continuation. Periodicity is separate. -/
@@ -61,7 +61,7 @@ theorem pathContinuation_solves (A0 D : E →L[ℝ] E) (Q : ℝ → E → E)
   have he : pathExtension u t=pathContinuation A0 D B p u t := by
     rw [pathExtension,Set.projIcc_of_mem _ ht]
     exact pathContinuation_eq A0 D B p u hu ⟨t,ht⟩
-  simpa only [he] using pathContinuation_derivative A0 D Q B hpoint p u t
+  simpa only [he] using! pathContinuation_derivative A0 D Q B hpoint p u t
 
 end
 end ThreeSitePhosphorylation.GenericPathContinuation

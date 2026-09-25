@@ -55,7 +55,7 @@ theorem pathMap_smooth (a r T : ℝ) : ContDiff ℝ ⊤ (pathMap A0 D K a r T) :
   have hL := (GenericAffinePathResidual.pathLinear A0.mulVecLin.toContinuousLinearMap
     D.mulVecLin.toContinuousLinearMap r).contDiff (n := ⊤)
   rw [heq]
-  exact (contDiff_const (c := T)).smul (hL.add ((contDiff_const (c := a)).smul hB))
+  exact (contDiff_const (c := T)).fun_smul (hL.add ((contDiff_const (c := a)).fun_smul hB))
 
 theorem pathMap_apply (a r T : ℝ) (u : ContinuousPath (ι → ℝ)) (t : UnitTime) :
     pathMap A0 D K a r T u t=T • rescaledField A0 D K a r (u t) := by
@@ -76,7 +76,7 @@ include hK in
 def stateCoefficient (a r T : ℝ) (u : ContinuousPath (ι → ℝ)) :
     ContinuousPath ((ι → ℝ) →L[ℝ] (ι → ℝ)) :=
   ⟨fun t => T • fderiv ℝ (rescaledField A0 D K a r) (u t),
-    continuous_const.smul
+    continuous_const.fun_smul
       (((rescaledField_smooth A0 D K hK a r).continuous_fderiv (by simp)).comp u.continuous)⟩
 
 omit [DecidableEq ι] in
@@ -122,7 +122,7 @@ theorem variable_state_curve_equation (a r T : ℝ) (x dx : ι → ℝ)
     q=constantPath dx+linearPicard (ContinuousLinearMap.id ℝ (ι → ℝ))
       (coefficientAction (stateCoefficient A0 D K hK a r T (u 0)) q) := by
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   have hc := (constantPath (E := ι → ℝ)).hasFDerivAt.comp_hasDerivAt 0 hx
   have hi := (linearPicard (ContinuousLinearMap.id ℝ (ι → ℝ))).hasFDerivAt.comp_hasDerivAt 0
     (pathMap_state_direction A0 D K hK a r T u q hu)
@@ -149,16 +149,16 @@ theorem variable_state_path_equation (a r T : ℝ) (x dx : ι → ℝ)
   let u : ℝ → ContinuousPath (ι → ℝ) := fun s => ψ (e s)
   let q := fderiv ℝ ψ ((a,(r,T)),x) ((0,(0,0)),dx)
   have hx : HasDerivAt (fun s : ℝ => x+s • dx) dx 0 := by
-    simpa using ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
+    simpa using! ((hasDerivAt_id (0:ℝ)).smul_const dx).const_add x
   have he : HasDerivAt e (((0:ℝ),(0,0)),dx) 0 :=
     (hasDerivAt_const (0:ℝ) ((a:ℝ),(r,T))).prodMk hx
   have hu : HasDerivAt u q 0 :=
     (hψ.differentiableAt (by simp)).hasFDerivAt.comp_hasDerivAt_of_eq 0 he (by simp [e])
   have hev : ∀ᶠ s in 𝓝 (0:ℝ), residual A0 D K (((a,(r,T)),x+s • dx),u s)=0 := by
     have ht : Filter.Tendsto e (𝓝 0) (𝓝 ((a,(r,T)),x)) := by
-      simpa only [e,zero_smul,add_zero] using he.continuousAt.tendsto
+      simpa only [e,zero_smul,add_zero] using! he.continuousAt.tendsto
     exact ht.eventually hres
-  simpa only [u,e,zero_smul,add_zero] using
+  simpa only [u,e,zero_smul,add_zero] using!
     variable_state_curve_equation A0 D K hK a r T x dx u q hu hev
 
 include hK in
@@ -169,7 +169,7 @@ theorem variable_state_path_initial (a r T : ℝ) (x dx : ι → ℝ)
   have h := variable_state_path_equation A0 D K hK ψ a r T x dx hψ hres
   have he := congrArg (fun q : ContinuousPath (ι → ℝ) => q (⟨0,by norm_num⟩ : UnitTime)) h
   change _=dx+∫ s in (0:ℝ)..0, _ at he
-  simpa using he
+  simpa using! he
 
 omit [DecidableEq ι] in
 def statePathOperator (a r T : ℝ) (x : ι → ℝ) : (ι → ℝ) →L[ℝ] ContinuousPath (ι → ℝ) :=
@@ -213,7 +213,7 @@ theorem variableEndpoint_initial (a r T : ℝ) (x : ι → ℝ)
   apply ContinuousLinearMap.ext
   intro dx
   simpa [variableEndpoint,statePathOperator,Set.projIcc_of_mem]
-    using variable_state_path_initial A0 D K hK ψ a r T x dx hψ hres
+    using! variable_state_path_initial A0 D K hK ψ a r T x dx hψ hres
 
 theorem variableEndpoint_left_derivative (a r T : ℝ) (x : ι → ℝ)
     (hψ : ContDiffAt ℝ ⊤ ψ ((a,(r,T)),x))
@@ -250,11 +250,11 @@ theorem variableEndpoint_fderiv (a r T : ℝ) (x : ι → ℝ)
     (hψ : ContDiffAt ℝ ⊤ ψ ((a,(r,T)),x)) (s : UnitTime) :
     fderiv ℝ (fun y : ι → ℝ => ψ ((a,(r,T)),y) s) x=variableEndpoint ψ a r T x (s:ℝ) := by
   have hi : HasFDerivAt (fun y : ι → ℝ => ((a,(r,T)),y))
-      (ContinuousLinearMap.inr ℝ (ℝ × (ℝ × ℝ)) (ι → ℝ)) x := by
-    convert (hasFDerivAt_const (𝕜 := ℝ) (a,(r,T)) x).prodMk (hasFDerivAt_id x) using 1
+      (ContinuousLinearMap.inr ℝ (ℝ × (ℝ × ℝ)) (ι → ℝ)) x :=
+    hasFDerivAt_prodMk_right (a,(r,T)) x
   have hp := (hψ.differentiableAt (by simp)).hasFDerivAt.comp x hi
   have he := (ContinuousMap.evalCLM (R := ℝ) (M := ι → ℝ) s).hasFDerivAt.comp x hp
-  simpa only [variableEndpoint,statePathOperator,Set.projIcc_of_mem _ s.2] using he.fderiv
+  simpa only [variableEndpoint,statePathOperator,Set.projIcc_of_mem _ s.2] using! he.fderiv
 
 include hK in
 /-- The actual fixed-duration source maps send a neighborhood of the initial
@@ -306,9 +306,9 @@ theorem fixed_arc_matches_forward (a r T : ℝ) (x : ι → ℝ) (hT : 0<T)
       (GenericQuadraticTensor.pathField K) (GenericQuadraticTensor.pathField_apply K)
       p u hres (t/T) hs
     have ht' : HasDerivAt (fun t : ℝ => t/T) (1/T) t := by
-      simpa using (hasDerivAt_id t).div_const T
+      simpa using! (hasDerivAt_id t).div_const T
     have hh := hd.scomp t ht'
-    simpa only [g,pc,p,smul_smul,one_div,inv_mul_cancel₀ (ne_of_gt hT),one_smul] using hh
+    simpa only [g,pc,p,smul_smul,one_div,inv_mul_cancel₀ (ne_of_gt hT),one_smul] using! hh
   have hvc : ContinuousOn v (Set.Icc (0:ℝ) T) := by
     intro t ht
     exact (hv t ht.1).continuousWithinAt.mono (fun _ hs => hs.1)
@@ -324,7 +324,7 @@ theorem fixed_arc_matches_forward (a r T : ℝ) (x : ι → ℝ) (hT : 0<T)
     intro t ht
     exact (hg t ⟨ht.1,ht.2.le⟩).hasDerivWithinAt
   have hinit : v 0=g 0 := by
-    simpa [g,pc,GenericPathContinuation.pathContinuation_initial,p] using hv0
+    simpa [g,pc,GenericPathContinuation.pathContinuation_initial,p] using! hv0
   have he := SmoothForwardUniqueness.eqOn_Icc (rescaledField A0 D K a r)
     (rescaledField_smooth A0 D K hK a r) v g 0 T hvc hgc hvd hgd hinit
   intro s
@@ -365,7 +365,7 @@ theorem local_to_whole_orbit (a r T : ℝ) (p : ι → ℝ) (hT : 0<T)
   have hmatch : v σ=z := by
     rw [fixed_arc_matches_forward A0 D K hK ψ a r T x hT hx.2 v hv0 hvd s,hxz]
   let vshift : ℝ → (ι → ℝ) := fun t => v (t+σ)
-  have hs0 : vshift 0=z := by simpa only [vshift,zero_add] using hmatch
+  have hs0 : vshift 0=z := by simpa only [vshift,zero_add] using! hmatch
   have hsd : ∀ t, 0≤t → HasDerivWithinAt vshift
       (rescaledField A0 D K a r (vshift t)) (Set.Ici 0) t :=
     ForwardSolutionShift.source (rescaledField A0 D K a r) v σ hσ hvd

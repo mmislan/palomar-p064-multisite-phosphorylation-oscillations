@@ -162,7 +162,7 @@ theorem shift_injective {E η : Type*} [AddCommGroup E] [Module ℂ E] [Fintype 
     rw [map_sub,map_smul,UpperTriangularEigenbasis.coordinate_eigen A b eig he i,map_zero,
       smul_eq_mul,← sub_mul] at hc
     have hz := (mul_eq_zero.mp hc).resolve_left (sub_ne_zero.mpr (hμ i))
-    simpa [Module.Basis.coord_apply] using hz
+    simpa [Module.Basis.coord_apply] using! hz
   intro v w hvw
   have h := hker (v-w) (by
     simp only at hvw

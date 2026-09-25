@@ -63,13 +63,13 @@ theorem returnFlow_exists (hK : ∀ i j k, ContDiff ℝ ⊤ (fun s => K s i j k)
     have ht : Filter.Tendsto (fun d : GenericShootingMap.FlowData (ι → ℝ) => (d,ψ d))
         (𝓝 ((0,(r,T)),x)) (𝓝 (((0,(r,T)),x),u)) := by
       have hψ' : ContinuousAt ψ ((0,(r,T)),x) := hψ.continuousAt
-      simpa only [id_eq,hψ0] using (continuousAt_id.prodMk hψ').tendsto
+      simpa only [id_eq,hψ0] using! (continuousAt_id.prodMk hψ').tendsto
     filter_upwards [ht.eventually huniq] with d hd
     exact hd.mpr rfl
   have hphase : ∀ᶠ d in 𝓝 ((0,r),x), endpointPhase ψ C.left (d,τ d)=0 := by
     have ht : Filter.Tendsto (fun d : ReturnData (ι → ℝ) => (d,τ d))
         (𝓝 ((0,r),x)) (𝓝 (((0,r),x),T)) := by
-      simpa only [hτ0] using (continuousAt_id.prodMk hτ.continuousAt).tendsto
+      simpa only [hτ0] using! (continuousAt_id.prodMk hτ.continuousAt).tendsto
     filter_upwards [ht.eventually htime] with d hd
     exact hd.mpr rfl
   exact ⟨⟨ψ,τ,hψ,hτ,hs,hψ0,hτ0,hres,huniq,hphase,htime,hfixed⟩⟩

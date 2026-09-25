@@ -37,19 +37,19 @@ theorem periodTimePath_integral (A : Matrix ι ι ℝ) (w T : ℝ) (v : ι → �
   obtain ⟨ha,hb⟩ := GenericComplexification.source_eigen_real_imag A w v he
   have hd (t : ℝ) : HasDerivAt g (T • L (g t)+L (b t)) t := by
     have ht : HasDerivAt (fun s : ℝ => T*s) T t := by
-      simpa using (hasDerivAt_id t).const_mul T
+      simpa using! (hasDerivAt_id t).const_mul T
     have hb' : HasDerivAt b (T • L (b t)) t :=
       (GenericLinearOrbit.linearOrbit_derivative L (GenericComplexification.realPart v) (GenericComplexification.imagPart v) w ha hb (T*t)).scomp t ht
     have hA := L.hasFDerivAt.comp_hasDerivAt t hb'
     have hh := (hasDerivAt_id t).smul hA
-    convert hh using 1
+    convert! hh using 1
     simp only [g,map_smul,smul_smul,one_smul,Function.comp_apply,id_eq]
     module
   have hc : Continuous (fun t => T • L (g t)+L (b t)) := by
     have hbc : Continuous b := (GenericLinearOrbit.linearOrbit_continuous (GenericComplexification.realPart v) (GenericComplexification.imagPart v) w).comp
-      (continuous_const.mul continuous_id)
-    exact (continuous_const.smul (L.continuous.comp
-      (continuous_id.smul (L.continuous.comp hbc)))).add (L.continuous.comp hbc)
+      (continuous_const.fun_mul continuous_id)
+    exact (continuous_const.fun_smul (L.continuous.comp
+      (continuous_id.fun_smul (L.continuous.comp hbc)))).fun_add (L.continuous.comp hbc)
   apply ContinuousMap.ext
   intro t
   apply funext
@@ -94,11 +94,11 @@ theorem parameter_free_variation_endpoint (A : Matrix ι ι ℝ) (w : ℝ) (hw :
       dT • linearPicard (ContinuousLinearMap.id ℝ (ι → ℝ)) (pathLinear A u0) := by
     have hh : q=constantPath dx+linearPicard (ContinuousLinearMap.id ℝ (ι → ℝ))
         (T • pathLinear A q+dT • pathLinear A u0) := by
-      simpa [GenericVariationalODE.variationField,pathLinear,T,u0] using hq
+      simpa [GenericVariationalODE.variationField,pathLinear,T,u0] using! hq
     rw [map_add,linearPicard_pathLinear] at hh
-    simpa only [map_smul,add_assoc] using hh
+    simpa only [map_smul,add_assoc] using! hh
   have hdiff : (1-linearPicard (T • A.mulVecLin.toContinuousLinearMap)) (q-(U+dT • V))=0 := by
-    simp only [ContinuousLinearMap.sub_apply,ContinuousLinearMap.one_apply,map_sub,map_add,map_smul]
+    simp only [sub_apply,one_apply_eq_self,map_sub,map_add,map_smul]
     linear_combination (norm := module) hq' - hU - dT • hV
   obtain ⟨b,hb⟩ := linearPicard_one_sub_isUnit (T • A.mulVecLin.toContinuousLinearMap)
   have hz : q-(U+dT • V)=0 := by
@@ -110,7 +110,7 @@ theorem parameter_free_variation_endpoint (A : Matrix ι ι ℝ) (w : ℝ) (hw :
   have hh := congrArg (fun f : (ContinuousPath (ι → ℝ)) => f ⟨1,by norm_num⟩) (sub_eq_zero.mp hz)
   have hend := (GenericLinearOrbit.referencePath_endpoints (GenericComplexification.realPart v) (GenericComplexification.imagPart v) w hw).2
   simpa only [ContinuousMap.add_apply,ContinuousMap.smul_apply,V,periodTimePath,
-    ContinuousMap.coe_mk,one_smul,u0,T,hend] using hh
+    ContinuousMap.coe_mk,one_smul,u0,T,hend] using! hh
 
 theorem corrected_variation_endpoint (A : Matrix ι ι ℝ) (w : ℝ) (hw : w ≠ 0)
     (v : ι → ℂ) (he : (GenericComplexification.complexMatrix A).mulVec v=(Complex.I*(w:ℂ)) • v)

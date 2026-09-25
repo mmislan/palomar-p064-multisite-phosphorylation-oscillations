@@ -67,7 +67,7 @@ theorem firstVariation_integral :
     hr ht hd.fst hu ((GenericQuadraticTensor.pathField_smooth H hH).differentiable (by simp) _)
     C.residual
   simpa [C.parameters_zero,firstVariationForcing,variationField,
-    GenericAffinePathResidual.pathLinear] using hq
+    GenericAffinePathResidual.pathLinear] using! hq
 
 theorem firstVariationCurve_periodic_endpoints :
     firstVariationCurve C 1=firstVariationCurve C 0 := by
@@ -107,7 +107,7 @@ theorem firstVariationCurve_ode (t : ℝ) (ht : t ∈ Set.Icc (0:ℝ) 1) :
     hlin,GenericQuadraticTensor.pathField_apply,GenericTensorBilinear.field_eq_half_bilinear,
     map_add,map_smul,GenericComplexification.complexify_action,
     GenericTensorBilinear.complexify_realBilinear,hb,h1] at hc
-  convert hc using 1
+  convert! hc using 1
   apply funext
   intro i
   simp [firstVariationCurve,Pi.smul_apply,Complex.real_smul]
@@ -124,13 +124,13 @@ theorem secondVariation_integral :
   have hR := Complex.reCLM.contDiff.contDiffAt.comp 0 C.parameters_smooth.snd
   have hT := Complex.imCLM.contDiff.contDiffAt.comp 0 C.parameters_smooth.snd
   have hsym' : ∀ i j k, H (C.parameters 0).2.re i j k=H (C.parameters 0).2.re i k j := by
-    simpa [C.parameters_zero] using hsym
+    simpa [C.parameters_zero] using! hsym
   have hh := GenericTensorSecondVariation.second_variational_curve_equation
     A0.mulVecLin.toContinuousLinearMap D.mulVecLin.toContinuousLinearMap H hH
     (fun a => (C.parameters a).2.re) (fun a => (C.parameters a).2.im)
     (fun a => (C.parameters a).1) C.paths hR hT C.parameters_smooth.fst C.paths_smooth
     hr.deriv ht.deriv hsym' C.residual
-  simpa [C.parameters_zero,secondVariationForcing] using hh
+  simpa [C.parameters_zero,secondVariationForcing] using! hh
 
 theorem secondVariationCurve_periodic_endpoints :
     secondVariationCurve C 1=secondVariationCurve C 0 := by
@@ -183,7 +183,7 @@ theorem secondVariationCurve_ode (t : ℝ) (ht : t ∈ Set.Icc (0:ℝ) 1) :
     GenericTensorDerivative.realContinuousBilinear_apply,map_add,map_smul,
     GenericComplexification.complexify_action,GenericTensorBilinear.complexify_realBilinear,
     hb,h1,h2] at hc
-  convert hc using 1
+  convert! hc using 1
   apply funext
   intro i
   simp [secondVariationCurve,Pi.smul_apply,Complex.real_smul,smul_smul]

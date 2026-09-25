@@ -63,7 +63,7 @@ theorem field_smooth_components {n : ℕ} (k : P → Rates n)
     apply ContDiff.sum
     intro i _
     by_cases h0 : i.castSucc=j <;> by_cases h1 : i.succ=j <;>
-      simp only [h0,h1,if_true,if_false] <;> fun_prop
+      simp only [h0,h1,ite_true,ite_false] <;> fun_prop
   · dsimp only [PhosphorylationSharpness.field]
     fun_prop
   · dsimp only [PhosphorylationSharpness.field]

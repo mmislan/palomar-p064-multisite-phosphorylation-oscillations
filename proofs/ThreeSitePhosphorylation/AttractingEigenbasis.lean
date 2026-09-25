@@ -82,7 +82,7 @@ theorem real_root_in_box (r : ℝ) (hl : (7/5:ℝ) ≤ r) (hu : r ≤ (3/2:ℝ))
   have hb : realRootLower i ≤ realRootUpper i := by
     fin_cases i <;> norm_num [realRootLower,realRootUpper]
   have hc : Continuous (fun x => (-1:ℝ)^(i:ℕ)*realCandidate r x) :=
-    continuous_const.mul (realCandidate_continuous r)
+    continuous_const.fun_mul (realCandidate_continuous r)
   have hs := real_root_box_signs r hl hu i
   obtain ⟨x,hx,hz⟩ := intermediate_value_Icc hb hc.continuousOn ⟨hs.1.le,hs.2.le⟩
   exact ⟨x,hx,(mul_eq_zero.mp hz).resolve_left (pow_ne_zero _ (by norm_num))⟩
@@ -164,7 +164,7 @@ theorem critical_source_eigenbasis : ∃ r w : ℝ, ∃ x : Fin 7 → ℝ,
         (adjugateVector (spectralValues x w i)) := by
     intro i
     obtain ⟨hv,he⟩ := source_root_eigenvector r (spectralValues x w i) (hroot i)
-    exact ⟨by simpa only [Module.End.mem_eigenspace_iff] using he,hv⟩
+    exact ⟨by simpa only [Module.End.mem_eigenspace_iff] using! he,hv⟩
   have hlin := Module.End.eigenvectors_linearIndependent' (complexSource r).mulVecLin
     (spectralValues x w) hi (fun i => adjugateVector (spectralValues x w i)) hev
   have hcard : Fintype.card SpectralIndex=Module.finrank ℂ (Fin 9 → ℂ) := by

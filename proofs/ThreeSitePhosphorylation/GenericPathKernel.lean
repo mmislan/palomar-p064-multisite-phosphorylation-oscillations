@@ -49,7 +49,7 @@ theorem periodic_path_kernel (A D : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w)
         T dr dT dx u0 q hq t ht)
     simp only [map_add,map_smul,LinearMap.coe_toContinuousLinearMap',
       Matrix.mulVecLin_apply,GenericComplexification.complexify_action,hbase] at hh
-    convert hh using 1
+    convert! hh using 1
     ext i
     simp [u,f,smul_smul,mul_assoc]
   have hT : 0<T := by dsimp [T]; positivity
@@ -63,7 +63,7 @@ theorem periodic_path_kernel (A D : Matrix ι ι ℝ) (w : ℝ) (hw : 0<w)
   refine ⟨hdr,hdt,?_⟩
   rw [hinit] at hzero
   apply GenericCriticalOrbit.complexify_injective
-  simpa only [map_zero] using hzero
+  simpa only [map_zero] using! hzero
 
 end
 end ThreeSitePhosphorylation.GenericPathKernel

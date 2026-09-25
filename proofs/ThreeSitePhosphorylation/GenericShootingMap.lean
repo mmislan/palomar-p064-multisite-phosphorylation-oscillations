@@ -92,7 +92,7 @@ theorem shootingLine_derivative (r T : ℝ) (x : E) (d : ShootingState E) :
   have hd : (d.2.re:ℂ)+Complex.I*(d.2.im:ℂ)=d.2 := by
     simpa only [mul_comm Complex.I] using Complex.re_add_im d.2
   have hc' : HasDerivAt (fun s : ℝ => ((r+s*d.2.re:ℝ):ℂ)+Complex.I*((T+s*d.2.im:ℝ):ℂ)) d.2 0 := by
-    simpa only [Function.comp_apply,Complex.ofRealCLM_apply,hd] using hc
+    simpa only [Function.comp_apply,Complex.ofRealCLM_apply,hd] using! hc
   exact (hasDerivAt_const (x := (0:ℝ)) (c := (0:ℝ))).prodMk (hx.prodMk hc')
 
 

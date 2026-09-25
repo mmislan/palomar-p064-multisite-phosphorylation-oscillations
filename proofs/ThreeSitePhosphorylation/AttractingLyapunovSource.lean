@@ -242,7 +242,7 @@ theorem explicitSourceCoefficient_real_eq (r w : ℝ)
   have hc := lyapunov_scalar_cross_identity (w^2)
   have hx : lyapunovDirectNumerator (w^2)*lyapunovDenominator (w^2) =
       lyapunovDirectDenominator (w^2)*lyapunovNumerator (w^2) :=
-    sub_eq_zero.mp (by simpa [hf] using hc)
+    sub_eq_zero.mp (by simpa [hf] using! hc)
   apply (eq_div_iff hd).mpr
   apply mul_left_cancel₀ (lyapunovDirectDenominator_ne_zero w he hn)
   calc

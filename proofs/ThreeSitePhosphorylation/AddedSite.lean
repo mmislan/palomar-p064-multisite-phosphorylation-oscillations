@@ -1,5 +1,5 @@
 import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
-import Mathlib.Data.Complex.Basic
+import Mathlib.Basic.Complex.Basic
 import Mathlib.Tactic.FinCases
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Positivity

@@ -21,29 +21,29 @@ theorem periodic_fourier_moment
     fun t ht => (hu t ht).continuousAt.continuousWithinAt
   have hw : Continuous (fourierWeight k) := by unfold fourierWeight; fun_prop
   have hwu : IntervalIntegrable (fun t => fourierWeight k t • u t) MeasureTheory.volume 0 1 :=
-    (hw.continuousOn.smul huc).intervalIntegrable_of_Icc (by norm_num)
+    (hw.continuousOn.fun_smul huc).intervalIntegrable_of_Icc (by norm_num)
   have hwf : IntervalIntegrable (fun t => fourierWeight k t • f t) MeasureTheory.volume 0 1 :=
-    (hw.smul hf).intervalIntegrable _ _
+    (hw.fun_smul hf).intervalIntegrable _ _
   have hwd : IntervalIntegrable
       (fun t => D.toContinuousLinearMap (fourierWeight k t • u t)) MeasureTheory.volume 0 1 :=
     (D.toContinuousLinearMap.continuous.comp_continuousOn
-      (hw.continuousOn.smul huc)).intervalIntegrable_of_Icc (by norm_num)
+      (hw.continuousOn.fun_smul huc)).intervalIntegrable_of_Icc (by norm_num)
   have hd (t : ℝ) (ht : t ∈ Set.Icc (0 : ℝ) 1) :
       HasDerivAt (fun s => fourierWeight k s • u s)
         (D.toContinuousLinearMap (fourierWeight k t • u t) + fourierWeight k t • f t) t := by
     have hi : HasDerivAt (fun s : ℝ => -a * (s : ℂ)) (-a) t := by
-      simpa only [mul_one] using ((hasDerivAt_id (t : ℂ)).const_mul (-a)).comp_ofReal
+      simpa only [mul_one] using! ((hasDerivAt_id (t : ℂ)).const_mul (-a)).comp_ofReal
     have he := (Complex.hasDerivAt_exp (-a * (t : ℂ))).scomp t hi
-    convert he.smul (hu t ht) using 1
+    convert! he.smul (hu t ht) using 1
     change D (fourierWeight k t • u t) + fourierWeight k t • f t = _
     simp only [D, LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.id_apply,
       map_smul, fourierWeight, a, Function.comp_apply, smul_eq_mul]
     module
   have hFTC := intervalIntegral.integral_eq_sub_of_hasDerivAt
-    (a := (0 : ℝ)) (b := 1) (by simpa using hd) (hwd.add hwf)
+    (a := (0 : ℝ)) (b := 1) (by simpa using! hd) (hwd.add hwf)
   rw [intervalIntegral.integral_add hwd hwf,
     D.toContinuousLinearMap.intervalIntegral_comp_comm hwu] at hFTC
-  simpa [D, a, GenericMixedFourierMoment.fourierMoment, fourierWeight, integer_turn_exp, hp] using hFTC
+  simpa [D, a, GenericMixedFourierMoment.fourierMoment, fourierWeight, integer_turn_exp, hp] using! hFTC
 
 
 theorem quadratic_harmonic_expansion
@@ -179,7 +179,7 @@ theorem quadratic_resolvent_moments
   obtain ⟨h0,h2⟩ := quadratic_fourier_equations A B w hw q qm hsym u hp hu
   constructor
   · apply hA
-    simpa only [map_smul,h11eq] using h0
+    simpa only [map_smul,h11eq] using! h0
   · apply hS
     change (2*Complex.I*(w:ℂ)) • GenericMixedFourierMoment.fourierMoment 2 u-
       A (GenericMixedFourierMoment.fourierMoment 2 u)=

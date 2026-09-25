@@ -80,7 +80,7 @@ theorem branchFDeriv_smooth (R : ReturnFlow C) :
     ContDiffAt ℝ ⊤ (fun a => fderiv ℝ (returnPoint R.ψ R.τ) (branchReturnData C a)) 0 := by
   have hs := R.point_smooth.fderiv_right (m := ⊤) (by simp)
   have hs' : ContDiffAt ℝ ⊤ (fderiv ℝ (returnPoint R.ψ R.τ)) (branchReturnData C 0) := by
-    simpa only [branchReturnData_zero] using hs
+    simpa only [branchReturnData_zero] using! hs
   exact hs'.comp 0 (branchReturnData_smooth C)
 
 theorem branchDerivative_smooth (R : ReturnFlow C) : ContDiffAt ℝ ⊤ (branchDerivative R) 0 := by
@@ -112,7 +112,7 @@ theorem radial_vector_identity (R : ReturnFlow C)
   have hp := (R.point_smooth.of_le (show (1:WithTop ℕ∞) ≤ ⊤ by simp)).eventually (by simp)
   have ht : Tendsto (branchReturnData C) (𝓝 (0:ℝ))
       (𝓝 ((0,r),GenericComplexification.realPart v)) := by
-    simpa only [branchReturnData_zero] using (branchReturnData_smooth C).continuousAt.tendsto
+    simpa only [branchReturnData_zero] using! (branchReturnData_smooth C).continuousAt.tendsto
   filter_upwards [hid,hC,ht.eventually hp] with a ha hca hpa
   have hdr : deriv (kineticParameter C) a=(deriv C.parameters a).2.re :=
     (Complex.reCLM.hasFDerivAt.comp_hasDerivAt a

@@ -43,7 +43,7 @@ def nonlinearPathCoefficient (F : P → E → E)
     (hF : ContDiff ℝ ⊤ (fun p : P × E => F p.1 p.2))
     (p : P) (T : ℝ) (u : ContinuousPath E) : ContinuousPath (E →L[ℝ] E) :=
   ⟨fun t => T • fderiv ℝ (F p) (u t),
-    continuous_const.smul
+    continuous_const.fun_smul
       (((nonlinearField_slice_smooth F hF p).continuous_fderiv (by simp)).comp u.continuous)⟩
 
 /-- Differentiate the supplied lift by composing with bounded evaluation.
@@ -82,7 +82,7 @@ theorem nonlinearPathPicard_derivative (F : P → E → E)
   apply intervalIntegral.integral_congr
   intro s _
   simp only [variablePicardIntegrand,pathExtension,nonlinearPathCoefficient,
-    ContinuousMap.coe_mk,ContinuousLinearMap.smul_apply]
+    ContinuousMap.coe_mk,smul_apply]
   rw [nonlinearPathField_derivative_eval F B hF hB hpoint]
 
 theorem nonlinearPathResidual_path_derivative (F : P → E → E)
@@ -95,8 +95,8 @@ theorem nonlinearPathResidual_path_derivative (F : P → E → E)
       ContinuousLinearMap.inr ℝ (NonlinearPathData P E) (ContinuousPath E) =
       1-variablePicard (nonlinearPathCoefficient F hF d.1.1 d.1.2 u) := by
   have hi : HasFDerivAt (fun v : ContinuousPath E => (d,v))
-      (ContinuousLinearMap.inr ℝ (NonlinearPathData P E) (ContinuousPath E)) u := by
-    convert (hasFDerivAt_const (𝕜 := ℝ) d u).prodMk (hasFDerivAt_id u) using 1
+      (ContinuousLinearMap.inr ℝ (NonlinearPathData P E) (ContinuousPath E)) u :=
+    hasFDerivAt_prodMk_right d u
   have hj := ((nonlinearPathResidual_smooth B hB).differentiable (by simp) (d,u)).hasFDerivAt.comp u hi
   have hbs : ContDiff ℝ ⊤ (B d.1.1) := hB.comp (contDiff_const.prodMk contDiff_id)
   have hb := (hbs.differentiable (by simp) u).hasFDerivAt

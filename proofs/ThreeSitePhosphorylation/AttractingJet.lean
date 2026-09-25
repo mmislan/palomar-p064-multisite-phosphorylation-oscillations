@@ -18,7 +18,7 @@ theorem quadraticPart_derivative (r : ℝ) (x : ReducedState) :
   have hj (j : Fin 6) : HasFDerivAt (quadraticRow r j) (hessianRow r j x) x := by
     have hs := (speciesVariation (inputSpecies j)).hasFDerivAt (x := x)
     have he := (speciesVariation (enzymeSpecies j)).hasFDerivAt (x := x)
-    convert (hs.const_mul (binding r j)).mul he using 1
+    convert! (hs.const_mul (binding r j)).mul he using 1
     ext y
     simp [hessianRow]
     ring
@@ -57,9 +57,9 @@ theorem hessian_diagonal (r : ℝ) (x : ReducedState) :
 theorem source_second_directional_derivative (r : ℝ) (u v : ReducedState) :
     HasDerivAt (fun t : ℝ => fderiv ℝ (reduced r) (t • u) v)
       (hessian r u v) 0 := by
-  simp only [reduced_fderiv,hessian_smul,ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.smul_apply]
-  simpa using ((hasDerivAt_id (0 : ℝ)).smul_const (hessian r u v)).const_add (linearPart r v)
+  simp only [reduced_fderiv,hessian_smul,add_apply,
+    smul_apply]
+  simpa using! ((hasDerivAt_id (0 : ℝ)).smul_const (hessian r u v)).const_add (linearPart r v)
 
 /-- Complexification of the same fixed compatibility-class chart. -/
 def complexSpecies (x : Fin 9 → ℂ) : Fin 12 → ℂ :=

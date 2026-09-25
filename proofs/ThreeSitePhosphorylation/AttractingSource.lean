@@ -117,7 +117,7 @@ theorem quadraticRow_derivative_zero (r : ℝ) (j : Fin 6) :
   have hs := (speciesVariation (inputSpecies j)).hasFDerivAt (x := (0 : ReducedState))
   have he := (speciesVariation (enzymeSpecies j)).hasFDerivAt (x := (0 : ReducedState))
   have h := (hs.const_mul (binding r j)).mul he
-  simpa [quadraticRow] using h
+  simpa [quadraticRow] using! h
 
 theorem quadraticPart_derivative_zero (r : ℝ) :
     HasFDerivAt (𝕜 := ℝ) (quadraticPart r) 0 (0 : ReducedState) := by
@@ -132,7 +132,7 @@ theorem source_jacobian (r : ℝ) :
   have he : (⇑(linearPart r) + quadraticPart r) = reduced r := by
     funext y
     exact (taylor_exact r y).symm
-  simpa only [add_zero,he] using h
+  simpa only [add_zero,he] using! h
 
 theorem smooth : ContDiff ℝ ⊤ (fun p : ℝ × ReducedState => reduced p.1 p.2) := by
   apply contDiff_pi.mpr

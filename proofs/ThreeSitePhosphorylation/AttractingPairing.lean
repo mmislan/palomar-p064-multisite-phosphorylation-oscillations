@@ -20,8 +20,8 @@ theorem complexSource_affine (r : ℝ) :
 theorem sourceOperator_affine (r : ℝ) :
     sourceOperator r = sourceOperator 0 + r • (sourceOperator 1-sourceOperator 0) := by
   ext v i
-  simp only [sourceOperator_apply,ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.sub_apply,ContinuousLinearMap.smul_apply]
+  simp only [sourceOperator_apply,add_apply,
+    sub_apply,smul_apply]
   rw [complexSource_affine r,Matrix.add_mulVec,Matrix.smul_mulVec,Matrix.sub_mulVec]
   simp
 
@@ -29,7 +29,7 @@ theorem sourceOperator_derivative (r : ℝ) :
     HasDerivAt sourceOperator (sourceOperator 1-sourceOperator 0) r := by
   have he : sourceOperator = (fun s => sourceOperator 0+s • (sourceOperator 1-sourceOperator 0)) :=
     funext sourceOperator_affine
-  convert ((hasDerivAt_id r).smul_const (sourceOperator 1-sourceOperator 0)).const_add
+  convert! ((hasDerivAt_id r).smul_const (sourceOperator 1-sourceOperator 0)).const_add
     (sourceOperator 0) using 1
   simp only [one_smul]
 
@@ -57,11 +57,11 @@ theorem source_parameter_pairing (r : ℝ) (z : ℂ)
     (by
       filter_upwards [hge] with s hsp
       exact (source_root_eigenvector s (g s) hsp).2)
-    (by simpa only [sourceOperator_apply,hgr] using hleft)
-    (by simpa only [hgr] using hn)
+    (by simpa only [sourceOperator_apply,hgr] using! hleft)
+    (by simpa only [hgr] using! hn)
   have hd := root_branch_derivative r g (hg.differentiableAt (by simp)) hge
-    (by simpa only [hgr] using hs)
-  simpa only [hgr,hd] using hpair
+    (by simpa only [hgr] using! hs)
+  simpa only [hgr,hd] using! hpair
 
 theorem source_parameter_pairing_negative (r w : ℝ) (hw : w ≠ 0)
     (hp : candidatePolynomial r (Complex.I*(w:ℂ))=0)

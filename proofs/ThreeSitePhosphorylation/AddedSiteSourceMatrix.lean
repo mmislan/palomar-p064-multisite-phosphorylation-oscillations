@@ -42,7 +42,7 @@ theorem centeredJacobian_eq {n : ℕ} (k : Rates n) (x : State n) :
         ((Matrix.toLin' (sourceMatrix k x)).toContinuousLinearMap.comp (toCoordinates n)) := by
   have hc : HasFDerivAt (coordinateField k x)
       (Matrix.toLin' (sourceMatrix k x)).toContinuousLinearMap (toCoordinates n 0) := by
-    simpa only [map_zero] using coordinateField_hasFDerivAt k x
+    simpa only [map_zero] using! coordinateField_hasFDerivAt k x
   have h := (fromCoordinates n).hasFDerivAt.comp (0 : ReducedState n)
     (hc.comp (0 : ReducedState n) (toCoordinates n).hasFDerivAt)
   have he : centeredField (totalE x) (totalF x) (totalS x) k (project x) =
@@ -84,7 +84,7 @@ theorem jointCoordinateField_smooth {n : ℕ} (k : ℝ → Rates n) (x : State n
   have h := jointField_smooth k x κ hk
   have h2 := (toCoordinates (n+1)).contDiff.comp
     (h.comp (contDiff_fst.prodMk ((fromCoordinates (n+1)).contDiff.comp contDiff_snd)))
-  convert h2 using 1
+  convert! h2 using 1
   funext q
   exact coordinateField_joint k x κ q.1 q.2
 

@@ -52,13 +52,13 @@ theorem scaling_euler_identity {E G : Type*}
     (hscale : ∀ᶠ s in 𝓝 (1 : ℝ), F (a/s,s • x) = s • F (a,x)) :
     D (-a,x) = F (a,x) := by
   have ha : HasDerivAt (fun s : ℝ => a/s) (-a) 1 := by
-    simpa using (hasDerivAt_const (1 : ℝ) a).div (hasDerivAt_id (1 : ℝ)) (by norm_num)
+    simpa using! (hasDerivAt_const (1 : ℝ) a).div (hasDerivAt_id (1 : ℝ)) (by norm_num)
   have hx : HasDerivAt (fun s : ℝ => s • x) x 1 := by
-    simpa using (hasDerivAt_id (1 : ℝ)).smul_const x
-  have hD' : HasFDerivAt F D (a/1,(1 : ℝ) • x) := by simpa using hD
+    simpa using! (hasDerivAt_id (1 : ℝ)).smul_const x
+  have hD' : HasFDerivAt F D (a/1,(1 : ℝ) • x) := by simpa using! hD
   have hh := hD'.comp_hasDerivAt (1 : ℝ) (ha.prodMk hx)
   have hr0 : HasDerivAt (fun s : ℝ => s • F (a,x)) (F (a,x)) 1 := by
-    simpa using (hasDerivAt_id (1 : ℝ)).smul_const (F (a,x))
+    simpa using! (hasDerivAt_id (1 : ℝ)).smul_const (F (a,x))
   have hr : HasDerivAt (fun s : ℝ => F (a/s,s • x)) (F (a,x)) 1 :=
     hr0.congr_of_eventuallyEq hscale
   exact hh.unique hr

@@ -19,7 +19,7 @@ set_option maxHeartbeats 700000
 theorem quadratic_coefficients {V : Type*} [AddCommGroup V] [Module ℝ V]
     (a b c a' b' c' : V)
     (h : ∀ t : ℝ, a+t • b+(t*t) • c=a'+t • b'+(t*t) • c') : b=b' ∧ c=c' := by
-  have h0 : a=a' := by simpa using h 0
+  have h0 : a=a' := by simpa using! h 0
   have hH (t : ℝ) : t • (b-b')+(t*t) • (c-c')=0 := by
     have ht := h t
     rw [h0,add_assoc,add_assoc] at ht
@@ -47,7 +47,7 @@ theorem zeroState_totals {n : ℕ} (x : PhosphorylationSharpness.State n) :
     totalE (zeroState x)=totalE x ∧ totalF (zeroState x)=totalF x ∧
       totalS (zeroState x)=totalS x := by
   obtain ⟨he,hf,hs⟩ := append_totals x 0 0 0
-  exact ⟨by simpa using he,by simpa using hf,by simpa using hs⟩
+  exact ⟨by simpa using! he,by simpa using! hf,by simpa using! hs⟩
 
 theorem project_zeroState {n : ℕ} (x : PhosphorylationSharpness.State n) :
     project (zeroState x)=faceInclusion n (project x) :=
@@ -106,12 +106,12 @@ theorem linear_diagonal_face {n : ℕ} (k : Rates n) (κ α : ℝ)
       rw [LinearMap.map_smul₂,map_smul,smul_smul]
     rw [hl1,hl2,hb1,hb2,map_add,map_add,map_smul,map_smul,map_smul] at ht
     rw [map_smul]
-    simpa only [smul_comm (1/2:ℝ) (t*t)] using ht
+    simpa only [smul_comm (1/2:ℝ) (t*t)] using! ht
   obtain ⟨hl,hb⟩ := quadratic_coefficients _ _ _ _ _ _ hp
   refine ⟨hl,?_⟩
   rw [map_smul] at hb
   have h2 := congrArg (fun z => (2:ℝ) • z) hb
-  simpa only [smul_smul,show (2:ℝ)*(1/2)=1 by norm_num,one_smul] using h2
+  simpa only [smul_smul,show (2:ℝ)*(1/2)=1 by norm_num,one_smul] using! h2
 
 /-- The literal Jacobian intertwines through the face (step 1). -/
 theorem linear_face {n : ℕ} (k : Rates n) (κ α : ℝ)

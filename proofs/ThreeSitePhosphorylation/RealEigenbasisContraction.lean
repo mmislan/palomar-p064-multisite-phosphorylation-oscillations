@@ -17,7 +17,7 @@ theorem power_eigenvector (A : E →L[ℝ] E) (v : E) (eig : ℝ)
     (hv : A v=eig • v) (n : ℕ) : (A^n) v=eig^n • v := by
   induction n with
   | zero => simp
-  | succ n ih => simp [pow_succ',ContinuousLinearMap.mul_apply,ih,hv,smul_smul,mul_comm]
+  | succ n ih => simp [pow_succ',ih,hv,smul_smul,mul_comm]
 
 theorem eigenbasis_power_bound (A : E →L[ℝ] E) (b : Module.Basis ι ℝ E)
     (eig : ι → ℝ) (he : ∀ i, A (b i)=eig i • b i) (n : ℕ) :

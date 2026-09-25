@@ -1,6 +1,6 @@
 import Mathlib.Topology.Order.IntermediateValue
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Data.Complex.Basic
+import Mathlib.Basic.Complex.Basic
 import Mathlib.Tactic.FunProp
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring

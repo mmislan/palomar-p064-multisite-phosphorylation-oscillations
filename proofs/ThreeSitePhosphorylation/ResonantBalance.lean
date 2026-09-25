@@ -14,7 +14,7 @@ theorem periodic_harmonic_balance (A B : ℂ) (f u : ℝ → ℂ)
   have h := scalar_periodic_forcing turnFrequency turnFrequency_exp u
     (fun t => Complex.exp (turnFrequency*(t:ℂ))*A+
       Complex.exp (-turnFrequency*(t:ℂ))*B+f t)
-    (by intro t ht; convert hu t ht using 1; ring) (by fun_prop) hp
+    (by intro t ht; convert! hu t ht using 1; ring) (by fun_prop) hp
   have he (t : ℝ) : Complex.exp (-turnFrequency*(t:ℂ))*
       (Complex.exp (turnFrequency*(t:ℂ))*A+Complex.exp (-turnFrequency*(t:ℂ))*B+f t) =
       Complex.exp (-turnFrequency*(t:ℂ))*
@@ -40,7 +40,7 @@ theorem periodic_quadratic_harmonic_obstruction (A C : ℂ)
     have hh : Continuous (harmonicVector q qm) := by unfold harmonicVector; fun_prop
     exact hL.comp ((hb.comp hh).clm_apply hh)
   have h := periodic_harmonic_balance A C _ u hcont hp hu
-  simpa only [quadratic_resonance_zero,add_zero] using h
+  simpa only [quadratic_resonance_zero,add_zero] using! h
 
 end
 end ThreeSitePhosphorylation

@@ -29,7 +29,7 @@ theorem field_smooth (e : ι → E) (c α β : ι → P → ℝ)
   have hs := ((hc i).comp (contDiff_fst : ContDiff ℝ ⊤ (Prod.fst : P × E → P))).mul
     ((((hα i).comp contDiff_fst).add ((ℓ i).contDiff.comp contDiff_snd)).mul
       (((hβ i).comp contDiff_fst).add ((m i).contDiff.comp contDiff_snd)))
-  exact hs.smul contDiff_const
+  exact hs.fun_smul contDiff_const
 
 theorem pathField_smooth (e : ι → E) (c α β : ι → P → ℝ)
     (ℓ m : ι → E →L[ℝ] ℝ) (hc : ∀ i, ContDiff ℝ ⊤ (c i))

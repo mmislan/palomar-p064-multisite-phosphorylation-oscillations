@@ -116,8 +116,8 @@ theorem continuousAt_secondShift {M : X → Matrix ι ι ℝ} {w : X → ℝ} {x
     ContinuousAt (fun a => secondShift (M a) (w a)) x := by
   unfold secondShift
   have hw' : ContinuousAt (fun a => 2*Complex.I*((w a:ℝ):ℂ)) x :=
-    continuousAt_const.mul (Complex.continuous_ofReal.continuousAt.comp hw)
-  exact (hw'.smul continuousAt_const).sub (continuousAt_complexMatrix hM)
+    continuousAt_const.fun_mul (Complex.continuous_ofReal.continuousAt.comp hw)
+  exact (hw'.fun_smul continuousAt_const).fun_sub (continuousAt_complexMatrix hM)
 
 theorem continuousAt_inv {F : X → Matrix ι ι ℂ} {x : X} (hF : ContinuousAt F x)
     (hdet : (F x).det ≠ 0) : ContinuousAt (fun a => (F a)⁻¹) x := by
@@ -175,7 +175,7 @@ theorem resolventCoefficient_continuousAt {p : X → (ι → ℂ) →L[ℂ] ℂ}
       (continuousAt_complexBilinear hT hq hq)
   unfold resolventCoefficient coefficient
   simp only [ContinuousLinearMap.coe_coe]
-  exact (continuousAt_const.mul (hp.clm_apply (continuousAt_complexBilinear hT hq h11))).add
+  exact (continuousAt_const.fun_mul (hp.clm_apply (continuousAt_complexBilinear hT hq h11))).fun_add
     (hp.clm_apply (continuousAt_complexBilinear hT hq' h20))
 
 /-- Both genuine resolvent operators remain invertible near the base point. -/

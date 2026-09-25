@@ -47,7 +47,7 @@ theorem shooting_partial_invertible (A0 D : Matrix ι ι ℝ)
   let J := fderiv ℝ F (0,s0) ∘L ContinuousLinearMap.inr ℝ ℝ (GenericShootingMap.ShootingState (ι → ℝ))
   have hs : ContDiffAt ℝ ⊤ F (0,s0) :=
     GenericShootingMap.shootingMap_smooth ψ (sourceGauge (basis.coord (Sum.inr 0))) x (0,s0)
-      (by simpa [GenericShootingMap.shootingArgument,s0] using hψ)
+      (by simpa [GenericShootingMap.shootingArgument,s0] using! hψ)
   have hker (d : GenericShootingMap.ShootingState (ι → ℝ)) (hjd : J d=0) : d=0 := by
     let q := fderiv ℝ ψ ((0,(r,T)),x) ((0,(d.2.re,d.2.im)),d.1)
     have hline := GenericShootingMap.flowLine_derivative r T d.2.re d.2.im x d.1

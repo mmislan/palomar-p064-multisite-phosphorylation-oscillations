@@ -153,7 +153,7 @@ theorem source_scaled_h20_resolvent (r w : ℝ)
       · subst i
         have h := h20_imag_residual_six r (w^2)
         rw [hf,hp] at h
-        exact (mul_eq_zero.mp (by simpa using h)).resolve_left he
+        exact (mul_eq_zero.mp (by simpa using! h)).resolve_left he
       · exact h20_imag_residual_off_six r (w^2) i hi
     rw [h20_action_im,h20_q_pair,h20_hessian_pair_im]
     linear_combination w*h

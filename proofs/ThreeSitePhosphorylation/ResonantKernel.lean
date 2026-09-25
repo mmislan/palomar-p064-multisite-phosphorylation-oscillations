@@ -26,7 +26,7 @@ theorem resonant_parameter_kernel
           Complex.exp (turnFrequency*(t:ℂ))*((dT:ℂ)*z+(T:ℂ)*(dr:ℂ)*L (D v))/2+
           Complex.exp (-turnFrequency*(t:ℂ))*((T:ℂ)*(dr:ℂ)*L (D vm))/2) t := by
     have hh := Lc.hasFDerivAt.comp_hasDerivAt t (hu t ht)
-    convert hh using 1
+    convert! hh using 1
     change _=L ((T:ℂ) • A (u t)+(dT:ℂ) • A (harmonicVector v vm t)+
       ((T:ℂ)*(dr:ℂ)) • D (harmonicVector v vm t))
     simp only [map_add,map_smul,smul_eq_mul,hL,harmonicVector,hv,hm,mul_one,mul_zero,add_zero]
@@ -34,7 +34,7 @@ theorem resonant_parameter_kernel
     ring
   have ho := periodic_harmonic_obstruction (((dT:ℂ)*z+(T:ℂ)*(dr:ℂ)*L (D v))/2)
     (((T:ℂ)*(dr:ℂ)*L (D vm))/2) (fun t => L (u t))
-    (by simpa only [mul_div_assoc] using hd) (congrArg L hp)
+    (by simpa only [mul_div_assoc] using! hd) (congrArg L hp)
   have hz0 : (T:ℂ)*(dr:ℂ)*L (D v)+(dT:ℂ)*(Complex.I*(w:ℂ))=0 := by
     rw [div_eq_zero_iff] at ho
     have hh := ho.resolve_right (by norm_num)

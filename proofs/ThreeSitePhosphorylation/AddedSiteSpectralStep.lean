@@ -93,7 +93,7 @@ theorem site_step {n : ℕ} {σ : Type*} [Fintype σ] [DecidableEq σ]
       h1.add continuousAt_snd
     have ht : Tendsto (fun q : ℝ × ℝ => R q.1+q.2) (𝓝 ((0:ℝ),(0:ℝ))) (𝓝 0) := by
       have h0 : R ((0:ℝ),(0:ℝ)).1+((0:ℝ),(0:ℝ)).2 = 0 := by simp [hR0]
-      simpa only [h0] using hc.tendsto
+      simpa only [h0] using! hc.tendsto
     have h2 := ht.eventually hpos
     rw [nhds_prod_eq] at h2
     exact h2.curry
@@ -128,7 +128,7 @@ theorem zero_not_eigenvalue {ι σ : Type*} [Fintype ι] [DecidableEq ι] {A : M
   intro h
   rcases i with s | a
   · have := d.stable_neg s
-    have h' : (d.stable s : ℂ) = 0 := by simpa using h.symm
+    have h' : (d.stable s : ℂ) = 0 := by simpa using! h.symm
     exact absurd (by exact_mod_cast h') (ne_of_lt this)
   · have hw := d.freq_pos
     have him := congrArg Complex.im h

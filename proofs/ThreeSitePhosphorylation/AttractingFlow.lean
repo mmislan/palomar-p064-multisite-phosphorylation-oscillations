@@ -196,7 +196,7 @@ theorem pathResidual_zero_amplitude (r T : ℝ) (x : ReducedState) (u : SourcePa
     pathResidual (((0,(r,T)),x),u) =
       (1-linearPicard (T • linearPart r)) u-constantPath x := by
   simp only [pathResidual,pathField,zero_smul,add_zero,linearPicard_pathLinear]
-  simp only [ContinuousLinearMap.sub_apply,ContinuousLinearMap.one_apply]
+  simp only [sub_apply,one_apply_eq_self]
   abel
 
 theorem pathResidual_path_derivative (r T : ℝ) (x : ReducedState) (u : SourcePath) :
@@ -204,9 +204,8 @@ theorem pathResidual_path_derivative (r T : ℝ) (x : ReducedState) (u : SourceP
       ContinuousLinearMap.inr ℝ FlowData SourcePath =
         1-linearPicard (T • linearPart r) := by
   have hi : HasFDerivAt (fun v : SourcePath => (((0,(r,T)),x),v))
-      (ContinuousLinearMap.inr ℝ FlowData SourcePath) u := by
-    convert (hasFDerivAt_const (𝕜 := ℝ) (((0,(r,T)),x) : FlowData) u).prodMk
-      (hasFDerivAt_id u) using 1
+      (ContinuousLinearMap.inr ℝ FlowData SourcePath) u :=
+    hasFDerivAt_prodMk_right (((0,(r,T)),x) : FlowData) u
   have hc := (pathResidual_smooth.differentiable (by simp)
     (((0,(r,T)),x),u)).hasFDerivAt.comp u hi
   have he : (fun v : SourcePath => pathResidual (((0,(r,T)),x),v)) =
@@ -233,7 +232,7 @@ theorem smooth_full_interval_paths (r T : ℝ) (x : ReducedState) (u : SourcePat
   let h := pathResidual_smooth.contDiffAt (x := (((0,(r,T)),x),u))
   refine ⟨h.implicitFunction (by simp) hi,h.contDiffAt_implicitFunction (by simp) hi,
     h.implicitFunction_apply_self (by simp) hi,?_⟩
-  simpa only [hu] using h.eventually_apply_implicitFunction (by simp) hi
+  simpa only [hu] using! h.eventually_apply_implicitFunction (by simp) hi
 
 end
 end ThreeSitePhosphorylation.AttractingWitness

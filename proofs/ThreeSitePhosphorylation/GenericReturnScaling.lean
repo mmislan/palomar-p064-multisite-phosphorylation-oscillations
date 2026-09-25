@@ -66,7 +66,7 @@ theorem selected_solution_scaling (A0 A1 : (ι → ℝ) →L[ℝ] (ι → ℝ))
         (show ContinuousAt (fun z : GenericShootingMap.FlowData (ι → ℝ) × ℝ => z.1) z0 from
           continuousAt_fst)
     have hh := hscaled.prodMk (continuousAt_snd.smul hψz)
-    simpa [scaleFlowData,z0,hψ0] using hh.tendsto
+    simpa [scaleFlowData,z0,hψ0] using! hh.tendsto
   have hr : ∀ᶠ z in 𝓝 z0,
       GenericAffinePathResidual.pathResidual A0 A1 (GenericQuadraticTensor.pathField H)
         (z.1,ψ z.1)=0 := by
@@ -128,11 +128,11 @@ theorem actual_return_scaling
   have hpair : Filter.Tendsto (fun z : ReturnData (ι → ℝ) × ℝ => (V z,z.2 • ψ (O z)))
       (𝓝 z0) (𝓝 (((0,(r,T)),x),u)) := by
     have hh := hVc.prodMk (continuousAt_snd.smul huc)
-    simpa [hV0,hO0,hψ0,z0] using hh.tendsto
+    simpa [hV0,hO0,hψ0,z0] using! hh.tendsto
   have hret : Filter.Tendsto (fun z : ReturnData (ι → ℝ) × ℝ => (D z,τ z.1))
       (𝓝 z0) (𝓝 (d0,T)) := by
     have hh := hDc.prodMk hτc
-    simpa [D,z0,d0,hτ0,scaleReturnData] using hh.tendsto
+    simpa [D,z0,d0,hτ0,scaleReturnData] using! hh.tendsto
   have horig : ∀ᶠ z in 𝓝 z0, GenericAffinePathResidual.pathResidual A0 A1 (GenericQuadraticTensor.pathField K) (O z,ψ (O z))=0 := by
     have ht := hOc.tendsto
     rw [hO0] at ht

@@ -49,7 +49,7 @@ theorem data_det {ι σ : Type*} [Fintype ι] [DecidableEq ι] [Fintype σ] [Dec
   · apply secondShift_det_ne_zero_of_injective
     intro u v huv
     apply h2
-    simpa only [LinearMap.sub_apply,LinearMap.smul_apply,LinearMap.id_apply] using huv
+    simpa only [LinearMap.sub_apply,LinearMap.smul_apply,LinearMap.id_apply] using! huv
 
 /-- The Lyapunov value is the normalized coefficient `G` of ANY genuine
 resolvent solutions (the form consumed by the curvature theorem). -/
@@ -224,7 +224,7 @@ theorem hopf_site_step {n : ℕ} {σ : Type*} [Fintype σ] [DecidableEq σ]
       h1.add continuousAt_snd
     have ht : Tendsto (fun q : ℝ × ℝ => R q.1+q.2) (𝓝 ((0:ℝ),(0:ℝ))) (𝓝 0) := by
       have h0 : R ((0:ℝ),(0:ℝ)).1+((0:ℝ),(0:ℝ)).2=0 := by simp [hR0]
-      simpa only [h0] using hc.tendsto
+      simpa only [h0] using! hc.tendsto
     have h2 := ht.eventually hpos
     rw [nhds_prod_eq] at h2
     exact h2.curry

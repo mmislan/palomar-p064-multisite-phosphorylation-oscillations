@@ -1,4 +1,5 @@
 import Mathlib.Analysis.ODE.Gronwall
+import Mathlib.Analysis.ODE.ExistUnique
 import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.Normed.Operator.Banach
 
@@ -26,7 +27,7 @@ theorem endpoint_injective (A L : ℝ → E →L[ℝ] E) (T : ℝ) (hT : 0≤T)
     (fun t ht => hderiv x t ht) (fun _ _ => Set.mem_univ _) (hcont y)
     (fun t ht => hderiv y t ht) (fun _ _ => Set.mem_univ _) hxy
   have hz := he (show (0:ℝ) ∈ Set.Icc (0:ℝ) T from ⟨le_rfl,hT⟩)
-  simpa only [hL0,ContinuousLinearMap.one_apply] using hz
+  simpa only [hL0,one_apply_eq_self] using hz
 
 /-- In finite dimension, backward uniqueness supplies the invertible
 endpoint derivative needed for an open fixed-time solution map. -/

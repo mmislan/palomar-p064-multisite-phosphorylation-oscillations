@@ -45,7 +45,7 @@ theorem all_multipliers_eventually_abs_lt_one {ι : Type*} [Finite ι]
   apply Filter.eventually_all.mpr
   intro i
   by_cases hi : i=i₀
-  · simpa only [hi] using hrad
+  · simpa only [hi] using! hrad
   · exact ((hμ i).abs.tendsto.eventually (Iio_mem_nhds (hbase i hi))).filter_mono
       nhdsWithin_le_nhds
 

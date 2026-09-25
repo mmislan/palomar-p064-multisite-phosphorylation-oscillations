@@ -18,7 +18,7 @@ theorem pathResidual_zero_amplitude (A0 D : Matrix ι ι ℝ)
   simp only [GenericAffinePathResidual.pathResidual,zero_smul,add_zero,
     GenericAffinePathResidual.pathLinear]
   rw [GenericClosedPaths.picard_lift,← GenericShootingInvertibility.matrix_operator_affine]
-  simp only [ContinuousLinearMap.sub_apply,ContinuousLinearMap.one_apply]
+  simp only [sub_apply,one_apply_eq_self]
   abel
 
 theorem zero_amplitude_path_unique (A0 D : Matrix ι ι ℝ)
@@ -48,7 +48,7 @@ theorem critical_reference_solution (A0 D : Matrix ι ι ℝ)
         GenericLinearOrbit.referencePath (GenericComplexification.realPart v)
           (GenericComplexification.imagPart v) w T)=0 := by
   rw [pathResidual_zero_amplitude]
-  simp only [ContinuousLinearMap.sub_apply,ContinuousLinearMap.one_apply]
+  simp only [sub_apply,one_apply_eq_self]
   have hh := GenericCriticalOrbit.critical_reference_integral (A0+r • D) w T v he
   change _=GenericVariationalODE.constantPath (GenericComplexification.realPart v)+_ at hh
   exact sub_eq_zero.mpr (sub_eq_iff_eq_add.mpr hh)
@@ -70,7 +70,7 @@ theorem normalized_eigen_real_pairing (A : Matrix ι ι ℝ) (w : ℝ) (hw : w �
     apply (mul_eq_zero.mp (show ((-Complex.I*(w:ℂ))-(Complex.I*(w:ℂ)))*
       p (GenericComplexification.conjugateVector v)=0 by linear_combination hh)).resolve_left hz
   have hh := congrArg p (GenericComplexification.complexify_orbit v 0)
-  simpa [map_add,map_smul,hnorm,hm] using hh
+  simpa [map_add,map_smul,hnorm,hm] using! hh
 
 /-- The endpoint derivative follows from the residual and exact orbit.
 No derivative or smoothness of the supplied path selector is assumed. -/
@@ -94,7 +94,7 @@ theorem endpoint_phase_time_derivative (A0 D : Matrix ι ι ℝ)
       (GenericComplexification.imagPart v) w T0=GenericComplexification.realPart v := by
     have hh := (GenericLinearOrbit.referencePath_endpoints (GenericComplexification.realPart v)
       (GenericComplexification.imagPart v) w (ne_of_gt hw)).2
-    simpa [GenericLinearOrbit.referencePath,T0] using hh
+    simpa [GenericLinearOrbit.referencePath,T0] using! hh
   have hphase : L ((A0+r • D).mulVec (GenericComplexification.realPart v))=w/2 := by
     change (p (GenericComplexification.complexify
       ((A0+r • D).mulVec (GenericComplexification.realPart v)))).im=w/2

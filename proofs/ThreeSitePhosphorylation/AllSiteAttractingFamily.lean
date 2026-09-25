@@ -128,7 +128,7 @@ theorem chartCLM_injective (n : ℕ) : Function.Injective (chartCLM n) := by
   have h := congrArg (fun w => MultisiteChart.project (ofSpecies w)) huv
   simp only [ofSpecies_speciesVec,MultisiteChart.project_tangent] at h
   have h2 := congrArg (toCoordinates n) h
-  simpa only [toCoordinates_fromCoordinates] using h2
+  simpa only [toCoordinates_fromCoordinates] using! h2
 
 theorem ofSpecies_chart {n : ℕ} (x : PhosphorylationSharpness.State n) (z : CoordinateState n) :
     ofSpecies (speciesVec x+chartCLM n z)=
@@ -234,7 +234,7 @@ theorem hopf_attracting_family {n : ℕ} {σ : Type} [Fintype σ] [DecidableEq �
         rw [haff,sourceMatrix_affine]
         rfl
       rw [hfun]
-      simpa using ((hasDerivAt_id (0:ℝ)).mul_const (D i j)).const_add (A0 i j)
+      simpa using! ((hasDerivAt_id (0:ℝ)).mul_const (D i j)).const_add (A0 i j)
     exact (hM1 i j).unique hd
   have hcross' : (crossing dd D).re<0 := by
     rw [crossing_transport,← hM1D]
@@ -260,7 +260,7 @@ theorem hopf_attracting_family {n : ℕ} {σ : Type} [Fintype σ] [DecidableEq �
     have hi := shift_injective_of_data dd (2*Complex.I*(dd.freq:ℂ)) (double_freq_not_eigenvalue dd)
     intro u v huv
     apply hi
-    simpa only [LinearMap.sub_apply,LinearMap.smul_apply,LinearMap.id_apply] using huv
+    simpa only [LinearMap.sub_apply,LinearMap.smul_apply,LinearMap.id_apply] using! huv
   have hsym : ∀ i j l, K 0 i j l=K 0 i l j := by
     intro i j l
     simp only [K,Pi.add_apply,Pi.smul_apply,smul_eq_mul]

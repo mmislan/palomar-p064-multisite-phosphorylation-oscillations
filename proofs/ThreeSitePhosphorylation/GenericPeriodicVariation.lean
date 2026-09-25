@@ -28,10 +28,10 @@ theorem periodic_variation_kernel (A : Matrix ι ι ℝ) (D : Matrix ι ι ℂ)
   let z : ℂ := Complex.I*(w:ℂ)
   let v := b (Sum.inr (0:Fin 2))
   have hv : (complexMatrix A).mulVec v=z • v := by
-    simpa [v,z,spectralValues] using he (Sum.inr (0:Fin 2))
+    simpa [v,z,spectralValues] using! he (Sum.inr (0:Fin 2))
   have hleft (y : ι → ℂ) : b.coord (Sum.inr 0) ((complexMatrix A).mulVec y)=
       z*b.coord (Sum.inr 0) y := by
-    simpa [z,spectralValues] using GenericPeriodicKernel.basis_coord_eigen b (complexMatrix A) _ he (Sum.inr 0) y
+    simpa [z,spectralValues] using! GenericPeriodicKernel.basis_coord_eigen b (complexMatrix A) _ he (Sum.inr 0) y
   have hnorm : b.coord (Sum.inr 0) v=1 := by simp [v,Module.Basis.coord_apply]
   have hz : z ≠ -Complex.I*(w:ℂ) := by
     intro hh
@@ -52,7 +52,7 @@ theorem periodic_variation_kernel (A : Matrix ι ι ℝ) (D : Matrix ι ι ℂ)
     intro t ht
     have hh := hu t ht
     simp only [hdr,hdt,Complex.ofReal_zero,zero_smul,mul_zero,add_zero] at hh
-    convert hh using 1
+    convert! hh using 1
   exact ⟨hdr,hdt,GenericPeriodicKernel.periodic_homogeneous_source_kernel A w T hw hT roots hn b he
     u hhom hper hc hr⟩
 

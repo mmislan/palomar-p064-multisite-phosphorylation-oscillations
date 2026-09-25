@@ -41,7 +41,7 @@ theorem affineField_smooth (A0 D : E →L[ℝ] E) (Q : ℝ → E → E)
     ContDiff ℝ ⊤ (fun p : (ℝ × ℝ) × E => affineField A0 D Q p.1 p.2) := by
   have hq : ContDiff ℝ ⊤ (fun p : (ℝ × ℝ) × E => Q p.1.2 p.2) :=
     hQ.comp (contDiff_fst.snd.prodMk contDiff_snd)
-  simpa only [affineField,ContinuousLinearMap.add_apply,ContinuousLinearMap.smul_apply] using
+  simpa only [affineField,add_apply,smul_apply] using!
     ((A0.contDiff.comp contDiff_snd).add
       (contDiff_fst.snd.smul (D.contDiff.comp contDiff_snd))).add
       (contDiff_fst.fst.smul hq)
@@ -52,8 +52,8 @@ theorem affineLift_smooth (A0 D : E →L[ℝ] E)
     ContDiff ℝ ⊤ (fun p : (ℝ × ℝ) × ContinuousPath E => affineLift A0 D B p.1 p.2) := by
   have hb : ContDiff ℝ ⊤ (fun p : (ℝ × ℝ) × ContinuousPath E => B p.1.2 p.2) :=
     hB.comp (contDiff_fst.snd.prodMk contDiff_snd)
-  simpa only [affineLift,pathLinear_decompose,ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.smul_apply] using
+  simpa only [affineLift,pathLinear_decompose,add_apply,
+    smul_apply] using!
     (((A0.compLeftContinuous ℝ UnitTime).contDiff.comp contDiff_snd).add
       (contDiff_fst.snd.smul ((D.compLeftContinuous ℝ UnitTime).contDiff.comp contDiff_snd))).add
       (contDiff_fst.fst.smul hb)
@@ -96,7 +96,7 @@ theorem smooth_full_interval_paths [CompleteSpace E] (A0 D : E →L[ℝ] E) (Q :
     hχ.comp d toNonlinear_smooth.contDiffAt,hχ0,?_⟩
   have ht := toNonlinear_smooth.continuous.continuousAt.tendsto.eventually hres
   filter_upwards [ht] with z hz
-  simpa only [residual_correspondence] using hz
+  simpa only [residual_correspondence] using! hz
 
 end
 end ThreeSitePhosphorylation.GenericAffinePathExistence

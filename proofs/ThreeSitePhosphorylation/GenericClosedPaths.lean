@@ -63,7 +63,7 @@ theorem closed_path_family_exists (A0 D : Matrix ι ι ℝ)
   let s0 : GenericShootingMap.ShootingState (ι → ℝ) := (x,(r:ℂ)+Complex.I*(T:ℂ))
   let u0 := GenericLinearOrbit.referencePath x (GenericComplexification.imagPart v) w T
   have hev : (GenericComplexification.complexMatrix (A0+r • D)).mulVec v=(Complex.I*(w:ℂ)) • v := by
-    simpa [v,GenericPeriodicKernel.spectralValues] using heigen (Sum.inr 0)
+    simpa [v,GenericPeriodicKernel.spectralValues] using! heigen (Sum.inr 0)
   have hint := GenericCriticalOrbit.critical_reference_integral (A0+r • D) w T v hev
   have hzeroPath : GenericAffinePathResidual.pathResidual
       A0.mulVecLin.toContinuousLinearMap D.mulVecLin.toContinuousLinearMap B
@@ -81,7 +81,7 @@ theorem closed_path_family_exists (A0 D : Matrix ι ι ℝ)
     hQ hB hpoint ((0,(r,T)),x) u0 hzeroPath
   have hi := GenericShootingInvertibility.shooting_partial_invertible A0 D B r w hw roots hn basis heigen hcross ψ hψ hψ0 hres
   have hs := GenericShootingMap.shootingMap_smooth ψ (GenericShootingInvertibility.sourceGauge (basis.coord (Sum.inr 0))) x (0,s0)
-    (by simpa [GenericShootingMap.shootingArgument,s0] using hψ)
+    (by simpa [GenericShootingMap.shootingArgument,s0] using! hψ)
   have hzero : GenericShootingMap.shootingMap ψ (GenericShootingInvertibility.sourceGauge (basis.coord (Sum.inr 0))) x (0,s0)=0 := by
     apply GenericShootingMap.shootingMap_zero
     rw [hψ0]
@@ -91,7 +91,7 @@ theorem closed_path_family_exists (A0 D : Matrix ι ι ℝ)
   have hb0 : b 0=s0 := hs.implicitFunction_apply_self (by simp) hi
   have hclosed : ∀ᶠ a in 𝓝 (0:ℝ),
       GenericShootingMap.shootingMap ψ (GenericShootingInvertibility.sourceGauge (basis.coord (Sum.inr 0))) x (a,b a)=0 := by
-    simpa only [hzero] using hs.eventually_apply_implicitFunction (by simp) hi
+    simpa only [hzero] using! hs.eventually_apply_implicitFunction (by simp) hi
   have harg : ContDiffAt ℝ ⊤ (fun a => GenericShootingMap.shootingArgument (a,b a)) 0 :=
     GenericShootingMap.shootingArgument_smooth.contDiffAt.comp 0 (contDiffAt_id.prodMk hb)
   have harg0 : GenericShootingMap.shootingArgument (0,b 0)=((0,(r,T)),x) := by
@@ -114,7 +114,7 @@ theorem closed_path_family_exists (A0 D : Matrix ι ι ℝ)
     closed := ?_
     normalized := ?_ }⟩
   · intro y
-    simpa [GenericPeriodicKernel.spectralValues] using GenericPeriodicKernel.basis_coord_eigen basis _ _ heigen (Sum.inr 0) y
+    simpa [GenericPeriodicKernel.spectralValues] using! GenericPeriodicKernel.basis_coord_eigen basis _ _ heigen (Sum.inr 0) y
   · have ht := harg.continuousAt.tendsto
     rw [harg0] at ht
     exact ht.eventually hres

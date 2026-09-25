@@ -44,9 +44,9 @@ theorem moment_add (k : ℤ) (u v : ℝ → E)
   simp_rw [smul_add]
   apply intervalIntegral.integral_add
   · apply Continuous.intervalIntegrable
-    exact hw.smul hu
+    exact hw.fun_smul hu
   · apply Continuous.intervalIntegrable
-    exact hw.smul hv
+    exact hw.fun_smul hv
 
 
 theorem mixed_harmonic_fourier_moment
@@ -63,13 +63,13 @@ theorem mixed_harmonic_fourier_moment
   have hw (k : ℤ) : Continuous (fourierWeight k) := by unfold fourierWeight; fun_prop
   have hi (k : ℤ) : IntervalIntegrable (fun t => fourierWeight k t • u t)
       MeasureTheory.volume 0 1 :=
-    ((hw k).continuousOn.smul hu).intervalIntegrable_of_Icc (by norm_num)
+    ((hw k).continuousOn.fun_smul hu).intervalIntegrable_of_Icc (by norm_num)
   have hA : IntervalIntegrable (fun t => A (fourierWeight 0 t • u t))
       MeasureTheory.volume 0 1 :=
-    (A.continuous.comp_continuousOn ((hw 0).continuousOn.smul hu)).intervalIntegrable_of_Icc (by norm_num)
+    (A.continuous.comp_continuousOn ((hw 0).continuousOn.fun_smul hu)).intervalIntegrable_of_Icc (by norm_num)
   have hD : IntervalIntegrable (fun t => D (fourierWeight 2 t • u t))
       MeasureTheory.volume 0 1 :=
-    (D.continuous.comp_continuousOn ((hw 2).continuousOn.smul hu)).intervalIntegrable_of_Icc (by norm_num)
+    (D.continuous.comp_continuousOn ((hw 2).continuousOn.fun_smul hu)).intervalIntegrable_of_Icc (by norm_num)
   have he (t : ℝ) : Complex.exp (-turnFrequency*(t:ℂ))*L (B (GenericResonantKernel.harmonicVector q qm t) (u t)) =
       (1/2:ℂ)*A (fourierWeight 0 t • u t)+(1/2:ℂ)*D (fourierWeight 2 t • u t) := by
     have hplus : Complex.exp (-turnFrequency*(t:ℂ))*Complex.exp (turnFrequency*(t:ℂ))=1 := by

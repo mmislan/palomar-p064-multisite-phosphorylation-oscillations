@@ -105,7 +105,7 @@ def candidateSlope (r : ℝ) (z : ℂ) : ℂ :=
 
 theorem candidate_hasDerivAt (r : ℝ) (z : ℂ) :
     HasDerivAt (candidatePolynomial r) (candidateSlope r z) z := by
-  convert (((((((((((hasDerivAt_pow 9 z).const_mul (((1)+r*(0):ℝ):ℂ)).add ((hasDerivAt_pow 8 z).const_mul (((869379059/7038000)+r*(145/552):ℝ):ℂ))).add ((hasDerivAt_pow 7 z).const_mul (((1123287418214581/242811000000)+r*(535682119897/19424880000):ℝ):ℂ))).add ((hasDerivAt_pow 6 z).const_mul (((2268022646334229960049/33507918000000000)+r*(1328396252697850573/1340316720000000):ℝ):ℂ))).add ((hasDerivAt_pow 5 z).const_mul (((150436261805724529928987/418848975000000000)+r*(383465940690669782329/27923265000000000):ℝ):ℂ))).add ((hasDerivAt_pow 4 z).const_mul (((46614837240281630174067101/83769795000000000000)+r*(931837933283894317481801/16753959000000000000):ℝ):ℂ))).add ((hasDerivAt_pow 3 z).const_mul (((10386606547280019362335297/139616325000000000000)+r*(10804886710795876287254177/139616325000000000000):ℝ):ℂ))).add ((hasDerivAt_pow 2 z).const_mul (((-118846275934324197547273/34904081250000000000)+r*(1085025848693755537444247/34904081250000000000):ℝ):ℂ))).add ((hasDerivAt_pow 1 z).const_mul (((266708962258783276681/90896044921875000)+r*(390060029489815107481/90896044921875000):ℝ):ℂ))).add ((hasDerivAt_pow 0 z).const_mul (((533510085136988654/3787335205078125)+r*(533510085136988654/3787335205078125):ℝ):ℂ))) using 1
+  convert! (((((((((((hasDerivAt_pow 9 z).const_mul (((1)+r*(0):ℝ):ℂ)).add ((hasDerivAt_pow 8 z).const_mul (((869379059/7038000)+r*(145/552):ℝ):ℂ))).add ((hasDerivAt_pow 7 z).const_mul (((1123287418214581/242811000000)+r*(535682119897/19424880000):ℝ):ℂ))).add ((hasDerivAt_pow 6 z).const_mul (((2268022646334229960049/33507918000000000)+r*(1328396252697850573/1340316720000000):ℝ):ℂ))).add ((hasDerivAt_pow 5 z).const_mul (((150436261805724529928987/418848975000000000)+r*(383465940690669782329/27923265000000000):ℝ):ℂ))).add ((hasDerivAt_pow 4 z).const_mul (((46614837240281630174067101/83769795000000000000)+r*(931837933283894317481801/16753959000000000000):ℝ):ℂ))).add ((hasDerivAt_pow 3 z).const_mul (((10386606547280019362335297/139616325000000000000)+r*(10804886710795876287254177/139616325000000000000):ℝ):ℂ))).add ((hasDerivAt_pow 2 z).const_mul (((-118846275934324197547273/34904081250000000000)+r*(1085025848693755537444247/34904081250000000000):ℝ):ℂ))).add ((hasDerivAt_pow 1 z).const_mul (((266708962258783276681/90896044921875000)+r*(390060029489815107481/90896044921875000):ℝ):ℂ))).add ((hasDerivAt_pow 0 z).const_mul (((533510085136988654/3787335205078125)+r*(533510085136988654/3787335205078125):ℝ):ℂ))) using 1
   norm_num [candidatePolynomial,candidateSlope]
   ring
 
@@ -129,9 +129,9 @@ theorem candidate_imaginary_root_simple (r w : ℝ) (hw : w ≠ 0)
   have hi := congrArg Complex.im hz
   simp [pow_two,Complex.mul_re,Complex.mul_im,hw] at hr hi
   have hdo : odd0Slope (w^2)+r*odd1Slope (w^2)=0 := by
-    simpa only [pow_two] using hr
+    simpa only [pow_two] using! hr
   have hde : even0Slope (w^2)+r*even1Slope (w^2)=0 := by
-    simpa only [pow_two] using hi
+    simpa only [pow_two] using! hi
   rw [hdo,hde] at hpos
   norm_num at hpos
 
@@ -206,8 +206,8 @@ theorem spectralResidual_partial (r : ℝ) (z : ℂ) :
     fderiv ℝ spectralResidual (r,z) ∘L ContinuousLinearMap.inr ℝ ℝ ℂ =
       complexScalar (candidateSlope r z) := by
   have hi : HasFDerivAt (fun u : ℂ => (r,u))
-      (ContinuousLinearMap.inr ℝ ℝ ℂ) z := by
-    convert (hasFDerivAt_const r z).prodMk (hasFDerivAt_id z) using 1
+      (ContinuousLinearMap.inr ℝ ℝ ℂ) z :=
+    hasFDerivAt_prodMk_right r z
   have h := (spectralResidual_smooth.differentiable (by norm_num) (r,z)).hasFDerivAt
   have hc := h.comp z hi
   have hp := (candidate_hasDerivAt r z).hasFDerivAt.restrictScalars ℝ
@@ -229,7 +229,7 @@ theorem simple_root_branch (r : ℝ) (z : ℂ)
   let h := spectralResidual_smooth.contDiffAt (x := (r,z))
   refine ⟨h.implicitFunction (by simp) hi,h.contDiffAt_implicitFunction (by simp) hi,
     h.implicitFunction_apply_self (by simp) hi,?_⟩
-  simpa only [spectralResidual,hp] using h.eventually_apply_implicitFunction (by simp) hi
+  simpa only [spectralResidual,hp] using! h.eventually_apply_implicitFunction (by simp) hi
 
 
 theorem root_branch_derivative (r : ℝ) (g : ℝ → ℂ)
@@ -254,7 +254,7 @@ theorem root_branch_derivative (r : ℝ) (g : ℝ → ℂ)
   have hd : HasDerivAt (fun s => candidatePolynomial s (g s))
       (deriv g r*candidateSlope r (g r)+candidateParameter (g r)) r := by
     rw [hf]
-    simpa [Function.comp_def] using hsum
+    simpa [Function.comp_def] using! hsum
   have he' : (fun s => candidatePolynomial s (g s)) =ᶠ[𝓝 r] (fun _ => (0:ℂ)) := he
   have hz := (hd.congr_of_eventuallyEq he'.symm).unique
     (hasDerivAt_const (x := r) (c := (0:ℂ)))
@@ -272,7 +272,7 @@ theorem source_transverse_branch_at (r w : ℝ) (hw : 0 < w)
   obtain ⟨g,hg,hgr,hge⟩ := simple_root_branch r (Complex.I*(w:ℂ)) hp hs
   have hd := (hg.differentiableAt (by simp)).hasDerivAt
   have hq := root_branch_derivative r g (hg.differentiableAt (by simp)) hge
-    (by simpa only [hgr] using hs)
+    (by simpa only [hgr] using! hs)
   refine ⟨g,hg,hgr,?_,?_,?_⟩
   · exact Complex.reCLM.hasFDerivAt.comp_hasDerivAt r hd
   · rw [hq,hgr]
@@ -302,7 +302,7 @@ theorem source_stable_transverse_branch : ∃ r w : ℝ, ∃ x : Fin 7 → ℝ,
   rw [hb] at he0
   have hp : candidatePolynomial r (Complex.I*(w:ℂ))=0 := by
     apply source_root_of_adjugate
-    simpa [spectralValues] using he0
+    simpa [spectralValues] using! he0
   obtain ⟨g,hg,hgr,hd,hneg,hnear⟩ := source_transverse_branch_at r w hw hp
   exact ⟨r,w,x,b,g,hr,hw,hrl,hru,hwl,hwu,hx,hn,he,hg,hgr,hd,hneg,hnear⟩
 

@@ -35,13 +35,13 @@ theorem smooth_full_interval_paths_unique (A0 D : E →L[ℝ] E) (Q : ℝ → E 
     hχ.comp d toNonlinear_smooth.contDiffAt,hχ0,?_,?_⟩
   · have ht := toNonlinear_smooth.continuous.continuousAt.tendsto.eventually hres
     filter_upwards [ht] with z hz
-    simpa only [residual_correspondence] using hz
+    simpa only [residual_correspondence] using! hz
   · have hpair : ContinuousAt
         (fun z : GenericShootingMap.FlowData E × ContinuousPath E => (toNonlinear z.1,z.2))
         (d,u) :=
       (toNonlinear_smooth.continuous.continuousAt.comp continuousAt_fst).prodMk continuousAt_snd
     filter_upwards [hpair.tendsto.eventually hunique] with z hz
-    simpa only [residual_correspondence] using hz
+    simpa only [residual_correspondence] using! hz
 
 /-- Upgrade ANY previously chosen continuous residual solution map. This
 applies directly to a witness returned by GenericAffinePathExistence and
@@ -60,14 +60,14 @@ theorem selected_solution_unique (A0 D : E →L[ℝ] E) (Q : ℝ → E → E)
   obtain ⟨χ,_,_,_,hunique⟩ :=
     smooth_full_interval_paths_unique A0 D Q B hQ hB hpoint d u hu
   have hp : Tendsto (fun z => (z,ψ z)) (𝓝 d) (𝓝 (d,u)) := by
-    simpa only [hψ0] using (continuousAt_id.prodMk hψ).tendsto
+    simpa only [hψ0] using! (continuousAt_id.prodMk hψ).tendsto
   have heq : ∀ᶠ z in 𝓝 d, χ z=ψ z := by
     filter_upwards [hp.eventually hunique,hres] with z hz hzr
     exact hz.mp hzr
   have hf : Tendsto (fun z : GenericShootingMap.FlowData E × ContinuousPath E => z.1)
       (𝓝 (d,u)) (𝓝 d) := continuousAt_fst.tendsto
   filter_upwards [hunique,hf.eventually heq] with z hz he
-  simpa only [he] using hz
+  simpa only [he] using! hz
 
 omit [CompleteSpace E] in
 /-- A nearby parameterized residual curve is the SAME selected solution

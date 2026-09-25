@@ -56,7 +56,7 @@ theorem real_eigen (κ : ℝ) (i : Fin 3) :
 
 theorem realBasis_eigen (κ : ℝ) (i : Fin 3) :
     (κ • normalBlock) (realBasis i) = normalRoots κ i • realBasis i := by
-  simpa using real_eigen κ i
+  simpa using! real_eigen κ i
 
 /-- Explicit link between the real Jacobian normal map and the actual
 complex matrix used by the source spectral calculation. -/
@@ -80,7 +80,7 @@ theorem complex_eigen (κ : ℝ) (i : Fin 3) :
 theorem complexBasis_eigen (κ : ℝ) (i : Fin 3) :
     (scaledBlock κ).mulVecLin (complexBasis i) =
       (normalRoots κ i : ℂ) • complexBasis i := by
-  simpa only [complexBasis_apply,Matrix.mulVecLin_apply] using complex_eigen κ i
+  simpa only [complexBasis_apply,Matrix.mulVecLin_apply] using! complex_eigen κ i
 
 theorem complexBasis_ofReal (i j : Fin 3) :
     complexBasis i j = (realBasis i j : ℂ) := by

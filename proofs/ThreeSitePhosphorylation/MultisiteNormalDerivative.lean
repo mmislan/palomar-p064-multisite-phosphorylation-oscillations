@@ -28,7 +28,7 @@ theorem fixed_total_chart_path {n : ℕ} (Et Ft St : ℝ)
       appendReduced (zstar+t • u) (t*c) (t*s) (t*d) := by
     change appendReduced zstar 0 0 0 + t • appendReduced u c s d=_
     rw [← appendReduced_smul]
-    simpa only [zero_add] using
+    simpa only [zero_add] using!
       (appendReduced_add zstar (t • u) 0 0 0 (t*c) (t*s) (t*d)).symm
   rw [hy]
   have h := chart_appendReduced (Et-t*c) (Ft-t*d) (St-t*(c+s+d))
@@ -92,7 +92,7 @@ theorem centered_normal_hasDerivAt {n : ℕ} (Et Ft St : ℝ)
     funext (fun t => centered_normal_expansion Et Ft St k zstar u c s d t hf)
   rw [he]
   simpa only [id_eq, show (2 : ℕ)-1=1 from rfl, pow_one, mul_zero,
-    zero_mul, zero_smul, one_smul, add_zero] using ((hasDerivAt_id (0:ℝ)).smul_const
+    zero_mul, zero_smul, one_smul, add_zero] using! ((hasDerivAt_id (0:ℝ)).smul_const
     (![-2*c,c-s+d,s-2*d] : Fin 3 → ℝ)).add
     (((hasDerivAt_id (0:ℝ)).pow 2).smul_const
       (![0,-phosphataseVariation u d*s/referenceF Ft zstar,

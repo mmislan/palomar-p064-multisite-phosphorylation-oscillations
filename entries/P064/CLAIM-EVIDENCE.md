@@ -5,7 +5,7 @@ Source-reading review dated 2026-09-24. No Lean was executed for this review.
 This is an agent-assisted reading of four sources: `Registry/P064/Challenge.lean`, the
 research proof source `proofs/ThreeSitePhosphorylation/AllSiteAttractingFamily.lean` and
 its imported definitions, the research integration handoff and receipt, and the companion
-manuscript `papers/P064/paper.pdf`. It is not an independent human
+manuscript source `papers/P064/manuscript/main.tex`. It is not an independent human
 mathematical review. None of the following has been run on the Lean 4.35.0-rc2 target:
 the Challenge statement compilation, the Solution build, the Comparator comparison or
 the kernel checks.
@@ -57,7 +57,7 @@ From `AllSiteAttractingFamily`, it uses:
 
 Further, there exist `w > 0`, `par per : ℝ → ℝ` and `γ : ℝ → ℝ → Species n → ℝ` with:
 
-- `par → 0` and `per → 2π/w` as the family parameter `a → 0`;
+- `par → 0` and `per → 2π/w` as the amplitude `a → 0`;
 - for every `ε > 0`, eventually as `a → 0`, `dist (γ a t) (speciesVec x) < ε` for all `t`.
   This is uniform shrinking to the equilibrium.
 
@@ -84,13 +84,13 @@ of `x`.
 **Informal claim supported.** For every `n ≥ 3`, the mass-action sequential distributive
 n-site cycle has positive rate constants and totals at which a family of positive
 nonconstant periodic orbits bifurcates from a positive equilibrium. The bifurcation is on
-the side par < 0 of the translated critical parameter, the period tends to `2π/w`, and
+one side of the critical parameter only (supercritical), the period tends to `2π/w`, and
 each orbit is orbitally asymptotically stable within its compatibility class.
 
 **Manuscript correspondence.** The theorem gives the orbit conclusion of Corollary
-4.2 (`cor:alln`) ("Attracting oscillations for every n ≥ 3"). It is existential in the rates and
+`cor:alln` ("Attracting oscillations for every n ≥ 3"). It is existential in the rates and
 the totals, as the corollary is. Its proof path matches the manuscript's: first the
-three-site witness A (Theorem 3.1 (`thm:main`), via `AllSiteHopfInvariant.base_hopf_invariant`),
+three-site witness A (Theorem `thm:main`, via `AllSiteHopfInvariant.base_hopf_invariant`),
 then iterated site addition (`hopf_iterate`), then a Hopf/attraction argument on the
 compatibility chart (`hopf_attracting_family`). The critical parameter is translated to
 `0`. The onset side `par < 0` corresponds to the manuscript's `r < r_A`. The Lean indices
@@ -122,14 +122,16 @@ kernel check.
 The primary source is N. Vassena, *Sequential and distributive dual futile cycle: Hopf
 bifurcation can occur under parameter-rich kinetics but cannot occur under mass action
 kinetics*, preprint arXiv:2608.27081v2 (2026). The manuscript bibliography gives no DOI.
-According to the manuscript, Vassena proves there is no Hopf bifurcation for `n = 2`
-under mass action (his Theorem 5.8). His paper ends by leaving open whether `N_n` with
-`n ≥ 3` admits Hopf bifurcation.
+The title, author and locators were independently checked against the arXiv source on
+2026-09-25. Theorem 5.8 excludes nonzero purely imaginary eigenvalues and hence Hopf
+bifurcation for `n = 2` under mass action. The concluding discussion states that whether
+the sequential distributive `n`-site cycles with `n ≥ 3` admit Hopf bifurcation under
+parameter-rich or mass-action kinetics remains open.
 
 The entry settles the affirmative mass-action direction for every `n ≥ 3`. For some
 positive rate constants, periodic orbits bifurcate from a positive equilibrium, and they
 are attracting within the compatibility class. The entry does not formalize the
-"if and only if" threshold (Theorem 4.6 (`thm:threshold`)), which also uses the one-site
+"if and only if" threshold (Theorem `thm:threshold`), which also uses the one-site
 Hurwitz lemma and Vassena's `n = 2` theorem. It also leaves open whether `N_2` has
 periodic orbits that do not arise from a Hopf bifurcation.
 
@@ -137,15 +139,15 @@ periodic orbits that do not arise from a Hopf bifurcation.
 
 The following are not formalized in the selected declaration:
 
-- The manuscript's site-addition Theorem 4.1 (`thm:alln`). That theorem starts from an
+- The manuscript's site-addition Theorem `thm:alln`. That theorem starts from an
   arbitrary nondegenerate Hurwitz-complement Hopf parent with `n ≥ 1` and fixed added-site
   rates `(2ε/(S_n* E*), 1, 1)` and `(1/F*, 1, 1)`. The formal all-n construction instead
   picks a separating scale and a sufficiently small positive load at each step. It proves
   existence for some constructed affine family, not inheritance with these fixed unit
   rates.
 - The `n = 1` and `n = 2` exclusions and the threshold equivalence (Lemma `lem:onesite`,
-  Vassena's Theorem 5.8, Theorem 4.6 (`thm:threshold`)).
-- The explicit witness A data of Theorem 3.1 (`thm:main`): Table 1 rates, the class
+  Vassena's Theorem 5.8, Theorem `thm:threshold`).
+- The explicit witness A data of Theorem `thm:main`: Table 1 rates, the class
   `(119/25, 1379/50, 1106/25)`, the enclosures of `r_A`, `ω_A`, `Re λ'` and `l_1`, and the
   global stability counts for `r > r_A` and `0 < r < r_A`. The existential all-n statement
   at `n = 3` does not identify the family.
@@ -161,7 +163,7 @@ is `3 ≤ n`.
 The manuscript describes its formal coverage more weakly than the imported development.
 It says the only Lean result is the subcritical-witness existence theorem and that "we do
 not claim a formal proof of attraction". Its description of the site-addition step is
-stronger than the formal result. The
+stronger than the formal result. See `preparation/P064-MANUSCRIPT-NOTE.md`. The
 manuscript and PDF were not edited.
 
 Research proofs are Lean 4.30.0 receipts. Porting to the 4.35.0-rc2 target is unverified.

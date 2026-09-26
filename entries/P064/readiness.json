@@ -21,9 +21,7 @@
   "claim_evidence": "entries/P064/CLAIM-EVIDENCE.md",
   "target_repairs": "PREPARED_NOT_COMPILED",
   "target_repair_records": [
-    "preparation/repairs/2026-09-25/G9.json",
-    "preparation/repairs/2026-09-25/RUN-FIXES.json",
-    "preparation/repairs/2026-09-25/BUILD-P064.json"
+    "preparation/repairs/2026-09-25/LITERATURE-CORRESPONDENCE.json"
   ],
   "previous_target_run": "FAILED (preparation/verification/remaining-submit-ready)"
 }

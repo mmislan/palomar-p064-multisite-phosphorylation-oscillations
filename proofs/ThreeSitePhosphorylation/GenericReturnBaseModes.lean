@@ -77,7 +77,6 @@ theorem normalized_eigen_imag_pairing (A : Matrix ι ι ℝ) (w : ℝ) (hw : w �
     p (GenericComplexification.complexify (GenericComplexification.imagPart v))= -Complex.I/2 := by
   have hh := congrArg (fun z => p (GenericComplexification.complexify z))
     (GenericComplexification.source_eigen_real_imag A w v he).1
-  dsimp only at hh
   rw [GenericComplexification.complexify_action,hleft,
     GenericReturnTime.normalized_eigen_real_pairing A w hw v p he hleft hnorm,
     map_smul,LinearMap.map_smul_of_tower] at hh
@@ -92,7 +91,6 @@ theorem real_stable_pairing_zero (A : Matrix ι ι ℝ) (w : ℝ)
     (eig : ℝ) (heig : eig<0) (x : ι → ℝ) (hx : A.mulVec x=eig • x) :
     p (GenericComplexification.complexify x)=0 := by
   have hh := congrArg (fun y => p (GenericComplexification.complexify y)) hx
-  dsimp only at hh
   rw [GenericComplexification.complexify_action,hleft,map_smul,LinearMap.map_smul_of_tower] at hh
   have hn : (Complex.I*(w:ℂ))-(eig:ℂ) ≠ 0 := by
     intro hz

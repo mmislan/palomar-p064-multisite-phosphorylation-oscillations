@@ -14,7 +14,8 @@ def realVectors : Fin 3 → Fin 3 → ℝ :=
 def complexVectors (i j : Fin 3) : ℂ := (realVectors i j : ℂ)
 
 theorem realVectors_det : Matrix.det realVectors = Real.sqrt 5 := by
-  simp [realVectors,Matrix.det_fin_three]
+  refine (Matrix.det_fin_three (realVectors : Matrix (Fin 3) (Fin 3) ℝ)).trans ?_
+  simp [realVectors]
   ring
 
 theorem realVectors_independent : LinearIndependent ℝ realVectors := by
@@ -31,7 +32,8 @@ def realBasis : Module.Basis (Fin 3) ℝ (Fin 3 → ℝ) := by
   exact congrFun (coe_basisOfPiSpaceOfLinearIndependent realVectors_independent) i
 
 theorem complexVectors_det : Matrix.det complexVectors = (Real.sqrt 5 : ℂ) := by
-  simp [complexVectors,realVectors,Matrix.det_fin_three]
+  refine (Matrix.det_fin_three (complexVectors : Matrix (Fin 3) (Fin 3) ℂ)).trans ?_
+  simp [complexVectors,realVectors]
   ring
 
 theorem complexVectors_independent : LinearIndependent ℂ complexVectors := by

@@ -112,7 +112,6 @@ def chartLinear (n : ℕ) : CoordinateState n →ₗ[ℝ] (Species n → ℝ) :=
   linearMapOfAddSmul (fun z => speciesVec (MultisiteChart.tangent (fromCoordinates n z)))
     (by
       intro u v t
-      dsimp only
       rw [map_add,map_smul]
       exact speciesVec_tangent_add_smul _ _ t)
 

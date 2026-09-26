@@ -172,8 +172,8 @@ theorem hessian_add (r : ℝ) (x y : ReducedState) :
 /-- The literal witness Hessian as a bilinear map. -/
 def hessianBilinear (r : ℝ) : (Fin 9 → ℝ) →ₗ[ℝ] (Fin 9 → ℝ) →ₗ[ℝ] (Fin 9 → ℝ) :=
   LinearMap.mk₂ ℝ (fun x y => AttractingWitness.hessian r x y)
-    (fun x y z => by dsimp only; rw [hessian_add,add_apply])
-    (fun c x y => by dsimp only; rw [AttractingWitness.hessian_smul,smul_apply])
+    (fun x y z => by rw [hessian_add,add_apply])
+    (fun c x y => by rw [AttractingWitness.hessian_smul,smul_apply])
     (fun x y z => map_add _ y z)
     (fun c x y => map_smul _ c y)
 

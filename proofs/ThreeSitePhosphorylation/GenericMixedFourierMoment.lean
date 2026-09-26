@@ -18,7 +18,7 @@ theorem fourierMoment_fin {n : ℕ} (k : ℤ) (u : ℝ → (Fin n → ℂ)) :
 theorem pure_harmonic_moment (k m : ℤ) (v : E) :
     fourierMoment k (fun t => Complex.exp (((m : ℂ)*turnFrequency)*(t : ℂ)) • v) =
       if m = k then v else 0 := by
-  letI : CompleteSpace E := FiniteDimensional.complete ℂ E
+  let : CompleteSpace E := FiniteDimensional.complete ℂ E
   have he (t : ℝ) : fourierWeight k t * Complex.exp (((m : ℂ)*turnFrequency)*(t : ℂ)) =
       Complex.exp ((((m-k : ℤ) : ℂ)*turnFrequency)*(t : ℂ)) := by
     unfold fourierWeight
@@ -57,7 +57,7 @@ theorem mixed_harmonic_fourier_moment
       L (B (GenericResonantKernel.harmonicVector q qm t) (u t))) =
       (1/2:ℂ)*L (B q (fourierMoment 0 u))+
         (1/2:ℂ)*L (B qm (fourierMoment 2 u)) := by
-  letI : CompleteSpace E := FiniteDimensional.complete ℂ E
+  let : CompleteSpace E := FiniteDimensional.complete ℂ E
   let A := (L.comp (B q)).toContinuousLinearMap
   let D := (L.comp (B qm)).toContinuousLinearMap
   have hw (k : ℤ) : Continuous (fourierWeight k) := by unfold fourierWeight; fun_prop

@@ -45,7 +45,7 @@ omit [NormedSpace ℝ P] [CompleteSpace P] in
 theorem eventually_columnMap_isUnit (b : Module.Basis ι ℂ E) (v : P → ι → E)
     (hv : ∀ i, ContinuousAt (fun a => v a i) 0) (hzero : v 0=b) :
     ∀ᶠ a in 𝓝 (0:P), IsUnit (columnMap b (v a)) := by
-  haveI : CompleteSpace E := FiniteDimensional.complete ℂ E
+  have : CompleteSpace E := FiniteDimensional.complete ℂ E
   have hunit : IsUnit (columnMap b (v 0)) := by rw [hzero,columnMap_self]; exact isUnit_one
   exact (columnMap_continuousAt b v hv).eventually (Units.isOpen.mem_nhds hunit)
 
@@ -64,7 +64,7 @@ omit [NormedSpace ℝ P] [CompleteSpace P] in
 theorem inverseCoordinate_continuousAt (b : Module.Basis ι ℂ E) (v : P → ι → E)
     (hv : ∀ i, ContinuousAt (fun a => v a i) 0) (hzero : v 0=b) (i : ι) :
     ContinuousAt (fun a => inverseCoordinate b (v a) i) 0 := by
-  haveI : CompleteSpace E := FiniteDimensional.complete ℂ E
+  have : CompleteSpace E := FiniteDimensional.complete ℂ E
   have hi : ContinuousAt (Ring.inverse : (E →L[ℂ] E) → (E →L[ℂ] E))
       (columnMap b (v 0)) := by
     rw [hzero,columnMap_self]
@@ -86,7 +86,7 @@ theorem exists_basis_of_columnMap_isUnit (b : Module.Basis ι ℂ E) (v : ι →
     (hu : IsUnit (columnMap b v)) :
     ∃ c : Module.Basis ι ℂ E, (∀ i, c i=v i) ∧
       ∀ i, (c.coord i).toContinuousLinearMap=inverseCoordinate b v i := by
-  haveI : CompleteSpace E := FiniteDimensional.complete ℂ E
+  have : CompleteSpace E := FiniteDimensional.complete ℂ E
   let e := LinearEquiv.ofBijective (columnMap b v).toLinearMap
     (ContinuousLinearMap.isUnit_iff_bijective.mp hu)
   let c := b.map e

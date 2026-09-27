@@ -4,11 +4,11 @@
     19
   ],
   "historical_verification": "STRICT_LEAN_4_30_RESEARCH_RECEIPT",
-  "challenge": "PREPARED_NOT_CHECKED",
-  "solution": "DRAFT_NOT_VERIFIED",
-  "target_compilation": "NOT_RUN",
-  "comparator": "NOT_RUN",
-  "independent_kernels": "NOT_RUN",
+  "challenge": "COMPILES_TARGET_STATEMENT_ONLY",
+  "solution": "LOCALLY_VERIFIED_TARGET",
+  "target_compilation": "PASS",
+  "comparator": "PASS",
+  "independent_kernels": "PASS",
   "statement_fidelity": "SOURCE_READ_AGENT_REVIEWED_VERIFICATION_PENDING",
   "metadata_review": "AGENT_PREPARED",
   "scope_gap": false,
@@ -19,12 +19,14 @@
   ],
   "source_import": "preparation/P064-ALL-SITE-IMPORT.json",
   "claim_evidence": "entries/P064/CLAIM-EVIDENCE.md",
-  "target_repairs": "PREPARED_NOT_COMPILED",
+  "target_repairs": "VERIFIED_LOCALLY",
   "target_repair_records": [
     "preparation/repairs/2026-09-25/LITERATURE-CORRESPONDENCE.json",
     "preparation/repairs/2026-09-25/G9.json",
     "preparation/repairs/2026-09-25/RUN-FIXES.json",
     "preparation/repairs/2026-09-25/BUILD-P064.json"
   ],
-  "previous_target_run": "FAILED (preparation/verification/remaining-submit-ready)"
+  "previous_target_run": "FAILED (preparation/verification/remaining-submit-ready)",
+  "verification_receipt": "preparation/verification/P064-release-candidate-run/result.json",
+  "verified_commit": "fe224c802bfe08e4889f8187ae530c5b2def76fb"
 }

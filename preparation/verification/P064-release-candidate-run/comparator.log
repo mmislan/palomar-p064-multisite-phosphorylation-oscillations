@@ -1,0 +1,38 @@
+Resolving dependencies
+Building Registry.P064.Challenge
+⚠ [8931/8931] Replayed Registry.P064.Challenge
+warning: Registry/P064/Challenge.lean:171:8: declaration uses `sorry`
+Build completed successfully (8931 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P064.Challenge
+Building Registry.P064.Solution
+ℹ [8971/9073] Replayed proofs.ThreeSitePhosphorylation.HarmonicForcing
+info: proofs/ThreeSitePhosphorylation/HarmonicForcing.lean:13:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [9043/9073] Replayed proofs.ThreeSitePhosphorylation.AttractingComplexOrbit
+info: proofs/ThreeSitePhosphorylation/AttractingComplexOrbit.lean:49:84: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: proofs/ThreeSitePhosphorylation/AttractingComplexOrbit.lean:49:84: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Build completed successfully (9073 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Registry.P064.Solution
+Running con-ron kernel on solution
+con-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-ron: accepted 66550 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

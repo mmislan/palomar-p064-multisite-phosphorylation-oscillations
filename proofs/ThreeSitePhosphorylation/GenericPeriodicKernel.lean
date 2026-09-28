@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericComplexification
-import proofs.ThreeSitePhosphorylation.ScalarODE
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+public import proofs.ThreeSitePhosphorylation.ScalarODE
+
+@[expose] public section
 
 /-! Periodic homogeneous kernel elimination in arbitrary finite dimension.
 Stable modes are removed by their actual scalar ODE, and the remaining

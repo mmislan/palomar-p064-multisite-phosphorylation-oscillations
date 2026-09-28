@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ResonantBalance
+module
+
+public import proofs.ThreeSitePhosphorylation.ResonantBalance
+
+@[expose] public section
 
 /-! Dimension-independent harmonic and quadratic resonant kernel algebra.
 The scalar Fourier identities are reused from the existing modules. -/

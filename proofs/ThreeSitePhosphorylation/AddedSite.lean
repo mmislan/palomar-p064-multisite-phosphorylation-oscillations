@@ -1,12 +1,16 @@
-import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
-import Mathlib.Basic.Complex.Basic
-import Mathlib.Tactic.FinCases
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.LinearCombination
+module
+
+public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+public import Mathlib.Basic.Complex.Basic
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Positivity
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
 
 /-! Exact local source identities for the site-addition construction of P064.
 These establish equilibrium, conserved inventories and stability of the added

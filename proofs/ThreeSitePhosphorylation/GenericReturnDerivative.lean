@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnScaling
-import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnScaling
+public import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+
+@[expose] public section
 
 /-! Differentiating the actual return scaling and the fixed closed branch.
 Both differential identities are derived from verified local identities of

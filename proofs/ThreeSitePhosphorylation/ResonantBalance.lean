@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.QuadraticHarmonics
+module
+
+public import proofs.ThreeSitePhosphorylation.QuadraticHarmonics
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation
 noncomputable section

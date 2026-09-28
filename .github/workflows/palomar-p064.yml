@@ -5,11 +5,11 @@ permissions:
   contents: read
 jobs:
   verify:
-    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@1703d7babd984ccc3831cdf89c28221abe34808f
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@65f0154ed776cd26c224254aa57b379137f28b0d
     with:
       repository: ${{ github.repository }}
       commit: ${{ github.sha }}
-      pipeline_commit: 1703d7babd984ccc3831cdf89c28221abe34808f
+      pipeline_commit: 65f0154ed776cd26c224254aa57b379137f28b0d
       request_id: p064cloud001
       mode: full
       execution_profile: palomar-standard-v1

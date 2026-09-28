@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingSource
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingSource
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 /-! Smooth path-space solutions for the distinct P064 witness A.
 No periodicity or orbital attraction is asserted in this module. -/

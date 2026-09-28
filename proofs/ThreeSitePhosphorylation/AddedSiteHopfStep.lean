@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteCrossingTransport
-import proofs.ThreeSitePhosphorylation.AddedSiteSpectralStep
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteCrossingTransport
+public import proofs.ThreeSitePhosphorylation.AddedSiteSpectralStep
+
+@[expose] public section
 
 /-! Docking of the coefficient transport onto B's actual critical continuation.
 

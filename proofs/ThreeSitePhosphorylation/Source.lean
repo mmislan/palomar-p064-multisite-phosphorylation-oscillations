@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! Literal eighteen-reaction sequential distributive phosphorylation source.
 Species order: S0,S1,S2,S3,E,F,C1,C2,C3,D1,D2,D3.

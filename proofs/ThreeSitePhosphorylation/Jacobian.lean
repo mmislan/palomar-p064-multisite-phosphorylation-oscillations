@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Source
+module
+
+public import proofs.ThreeSitePhosphorylation.Source
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation
 noncomputable section

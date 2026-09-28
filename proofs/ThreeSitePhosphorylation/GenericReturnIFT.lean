@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnTime
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnTime
+
+@[expose] public section
 
 /-! Actual phase-return IFT for a selected smooth residual path operator.
 The derivative, base phase equation and base fixed point are derived. -/

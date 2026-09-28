@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.VariableVolterra
+module
+
+public import proofs.ThreeSitePhosphorylation.VariableVolterra
+
+@[expose] public section
 
 /-! A full-interval path IFT at a supplied nonlinear reference path.
 The smooth Nemytskii lift is an explicit input, not constructed here. -/

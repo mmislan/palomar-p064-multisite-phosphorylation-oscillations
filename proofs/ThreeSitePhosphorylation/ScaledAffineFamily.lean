@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ScaledMultisiteSource
+module
+
+public import proofs.ThreeSitePhosphorylation.ScaledMultisiteSource
+
+@[expose] public section
 
 /-! Componentwise affine rate families for the scaled existential induction.
 No module structure on Rates is presumed. -/

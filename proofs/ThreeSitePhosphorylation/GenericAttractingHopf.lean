@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericAttractingFamily
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAttractingFamily
+
+@[expose] public section
 
 /-! Source-level dimension-independent attracting Hopf theorem.
 

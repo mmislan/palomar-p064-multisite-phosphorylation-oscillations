@@ -1,5 +1,9 @@
-import Mathlib.Analysis.Calculus.FDeriv.Basic
-import proofs.ThreeSitePhosphorylation.OrbitalStability
+module
+
+public import Mathlib.Analysis.Calculus.FDeriv.Basic
+public import proofs.ThreeSitePhosphorylation.OrbitalStability
+
+@[expose] public section
 
 /-! An ordinary derivative at a fixed point suffices for radial contraction.
 The derivative bound is an explicit hypothesis, not a source stability claim. -/

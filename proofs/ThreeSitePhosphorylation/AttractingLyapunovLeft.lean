@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingPairing
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingPairing
+
+@[expose] public section
 
 /-! Explicit normalized source left eigenfunctional, using the rank-one
 parameter row. No h20 or source Lyapunov-scalar claim is made here. -/

@@ -1,7 +1,11 @@
-import proofs.ThreeSitePhosphorylation.AttractingComplexOrbit
-import proofs.ThreeSitePhosphorylation.AttractingVariationalODE
-import proofs.ThreeSitePhosphorylation.AttractingPairing
-import proofs.ThreeSitePhosphorylation.ResonantKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingComplexOrbit
+public import proofs.ThreeSitePhosphorylation.AttractingVariationalODE
+public import proofs.ThreeSitePhosphorylation.AttractingPairing
+public import proofs.ThreeSitePhosphorylation.ResonantKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedBranchCurvature
-import proofs.ThreeSitePhosphorylation.GenericResolvents
-import proofs.ThreeSitePhosphorylation.AddedSiteInverseTransport
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedBranchCurvature
+public import proofs.ThreeSitePhosphorylation.GenericResolvents
+public import proofs.ThreeSitePhosphorylation.AddedSiteInverseTransport
+
+@[expose] public section
 
 /-! Exact transport of the normalized resolvent coefficient and of the kinetic
 crossing pairing through a real face embedding `P`.

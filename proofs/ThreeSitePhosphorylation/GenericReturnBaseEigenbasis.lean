@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnBaseModes
-import proofs.ThreeSitePhosphorylation.GenericRealCriticalBasis
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnBaseModes
+public import proofs.ThreeSitePhosphorylation.GenericRealCriticalBasis
+
+@[expose] public section
 
 /-! Full real eigenbasis of the actual zero-amplitude return derivative.
 No return-mode formula or desired real basis is assumed. -/

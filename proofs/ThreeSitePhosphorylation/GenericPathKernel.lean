@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericPeriodicVariation
-import proofs.ThreeSitePhosphorylation.GenericVariationalODE
-import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericPeriodicVariation
+public import proofs.ThreeSitePhosphorylation.GenericVariationalODE
+public import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericPathKernel
 noncomputable section

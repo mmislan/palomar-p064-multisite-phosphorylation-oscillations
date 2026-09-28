@@ -1,8 +1,12 @@
-import proofs.ThreeSitePhosphorylation.GenericLocalAttraction
-import proofs.ThreeSitePhosphorylation.LinearEndpointInjective
-import proofs.ThreeSitePhosphorylation.PhaseImageNeighborhood
-import proofs.ThreeSitePhosphorylation.SmoothForwardUniqueness
-import proofs.ThreeSitePhosphorylation.ForwardSolutionShift
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericLocalAttraction
+public import proofs.ThreeSitePhosphorylation.LinearEndpointInjective
+public import proofs.ThreeSitePhosphorylation.PhaseImageNeighborhood
+public import proofs.ThreeSitePhosphorylation.SmoothForwardUniqueness
+public import proofs.ThreeSitePhosphorylation.ForwardSolutionShift
+
+@[expose] public section
 
 /-! Upgrade of attraction at one actual return point to orbital asymptotic
 stability of the WHOLE exact orbit, for the actual finite-coordinate quadratic

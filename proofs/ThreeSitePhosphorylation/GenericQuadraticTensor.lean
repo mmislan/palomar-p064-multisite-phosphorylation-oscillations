@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericPolynomialFlow
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericPolynomialFlow
+
+@[expose] public section
 
 /-! Explicit finite-tensor quadratic fields and their smooth path lifts.
 The factor one half matches the Hessian convention F=Jx+(1/2)H(x,x).

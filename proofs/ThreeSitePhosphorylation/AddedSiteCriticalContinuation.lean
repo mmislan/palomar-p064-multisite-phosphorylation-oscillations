@@ -1,8 +1,12 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteZeroLoadBasis
-import proofs.ThreeSitePhosphorylation.ComplexNearbyEigenbasis
-import proofs.ThreeSitePhosphorylation.RealEigenpairPersistence
-import proofs.ThreeSitePhosphorylation.RealEigenfunctional
-import proofs.ThreeSitePhosphorylation.CriticalParameterCurve
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteZeroLoadBasis
+public import proofs.ThreeSitePhosphorylation.ComplexNearbyEigenbasis
+public import proofs.ThreeSitePhosphorylation.RealEigenpairPersistence
+public import proofs.ThreeSitePhosphorylation.RealEigenfunctional
+public import proofs.ThreeSitePhosphorylation.CriticalParameterCurve
+
+@[expose] public section
 
 /-! Continuation of the full spectral invariant of the actual loaded
 added-site source in the two real parameters (load, kinetic parameter),

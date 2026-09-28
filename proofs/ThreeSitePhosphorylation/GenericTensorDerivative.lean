@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
-import Mathlib.Analysis.Calculus.FDeriv.Bilinear
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
+public import Mathlib.Analysis.Calculus.FDeriv.Bilinear
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericTensorDerivative
 noncomputable section

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ReturnMapContraction
+module
+
+public import proofs.ThreeSitePhosphorylation.ReturnMapContraction
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.ReturnIterateControl
 noncomputable section

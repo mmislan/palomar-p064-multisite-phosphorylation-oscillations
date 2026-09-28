@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingCrossing
-import proofs.ThreeSitePhosphorylation.SpectralPairing
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingCrossing
+public import proofs.ThreeSitePhosphorylation.SpectralPairing
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

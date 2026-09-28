@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.ScaledNormalSpectrum
-import proofs.ThreeSitePhosphorylation.ScaledNormalJacobian
+module
+
+public import proofs.ThreeSitePhosphorylation.ScaledNormalSpectrum
+public import proofs.ThreeSitePhosphorylation.ScaledNormalJacobian
+
+@[expose] public section
 
 /-! Explicit real and complex eigenbases of the actual scaled normal block.
 The ordering agrees with ScaledNormalSpectrum.normalRoots. -/

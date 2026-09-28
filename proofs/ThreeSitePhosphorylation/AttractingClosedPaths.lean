@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingShootingMap
-import proofs.ThreeSitePhosphorylation.AttractingPathKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingShootingMap
+public import proofs.ThreeSitePhosphorylation.AttractingPathKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

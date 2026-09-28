@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericShootingMap
-import proofs.ThreeSitePhosphorylation.GenericVariationalODE
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericShootingMap
+public import proofs.ThreeSitePhosphorylation.GenericVariationalODE
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericAffinePathResidual
 noncomputable section

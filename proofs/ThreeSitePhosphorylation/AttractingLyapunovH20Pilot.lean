@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingJet
-import proofs.ThreeSitePhosphorylation.AttractingResolvent
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingJet
+public import proofs.ThreeSitePhosphorylation.AttractingResolvent
+
+@[expose] public section
 
 /-! A single representative h20 certificate: only real row 6 is proved. -/
 namespace ThreeSitePhosphorylation.AttractingWitness

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericPathContinuation
 noncomputable section

@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Calculus.ImplicitContDiff
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Analysis.Normed.Operator.Banach
+module
+
+public import Mathlib.Analysis.Calculus.ImplicitContDiff
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Analysis.Normed.Operator.Banach
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.CriticalParameterCurve
 noncomputable section

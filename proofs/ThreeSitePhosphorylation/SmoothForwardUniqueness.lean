@@ -1,9 +1,13 @@
-import Mathlib.Analysis.ODE.Gronwall
-import Mathlib.Analysis.ODE.ExistUnique
-import Mathlib.Analysis.Calculus.MeanValue
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.Topology.Order.Compact
+module
+
+public import Mathlib.Analysis.ODE.Gronwall
+public import Mathlib.Analysis.ODE.ExistUnique
+public import Mathlib.Analysis.Calculus.MeanValue
+public import Mathlib.Analysis.Calculus.ContDiff.Basic
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Topology.Order.Compact
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.SmoothForwardUniqueness
 noncomputable section

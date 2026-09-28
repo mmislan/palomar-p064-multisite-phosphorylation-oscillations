@@ -1,4 +1,8 @@
-import Mathlib.Algebra.Module.LinearMap.Basic
+module
+
+public import Mathlib.Algebra.Module.LinearMap.Basic
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AddedSiteInverseTransport
 

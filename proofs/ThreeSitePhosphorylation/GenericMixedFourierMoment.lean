@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.FourierMoment
-import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.FourierMoment
+public import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericMixedFourierMoment
 noncomputable section

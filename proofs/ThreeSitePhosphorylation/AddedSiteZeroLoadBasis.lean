@@ -1,8 +1,12 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteSourceMatrix
-import proofs.ThreeSitePhosphorylation.CriticalSpectrum
-import proofs.ThreeSitePhosphorylation.NormalEigenbasis
-import proofs.ThreeSitePhosphorylation.UpperTriangularEigenbasis
-import proofs.ThreeSitePhosphorylation.RealResolventSolution
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteSourceMatrix
+public import proofs.ThreeSitePhosphorylation.CriticalSpectrum
+public import proofs.ThreeSitePhosphorylation.NormalEigenbasis
+public import proofs.ThreeSitePhosphorylation.UpperTriangularEigenbasis
+public import proofs.ThreeSitePhosphorylation.RealResolventSolution
+
+@[expose] public section
 
 /-! The complete complex eigenbasis of the actual zero-load added-site source
 at the parent critical parameter. The complex upper-right coupling is the

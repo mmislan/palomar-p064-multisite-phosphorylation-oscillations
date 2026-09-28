@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ResonantKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.ResonantKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation
 noncomputable section

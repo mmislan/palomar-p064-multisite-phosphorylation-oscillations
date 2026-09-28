@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnIFT
-import proofs.ThreeSitePhosphorylation.GenericReturnBaseVariation
-import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnIFT
+public import proofs.ThreeSitePhosphorylation.GenericReturnBaseVariation
+public import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
+
+@[expose] public section
 
 /-! Actual base derivative of the phase-corrected return map. The
 homogeneous endpoint formula is derived from the selected path residual. -/

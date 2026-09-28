@@ -1,10 +1,14 @@
-import Mathlib.Analysis.Calculus.ImplicitContDiff
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.Analysis.Normed.Operator.Banach
-import Mathlib.Analysis.Calculus.FDeriv.RestrictScalars
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Tactic.Module
-import Mathlib.Tactic.LinearCombination
+module
+
+public import Mathlib.Analysis.Calculus.ImplicitContDiff
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Analysis.Normed.Operator.Banach
+public import Mathlib.Analysis.Calculus.FDeriv.RestrictScalars
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Tactic.Module
+public import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.SimpleComplexEigenpair
 noncomputable section

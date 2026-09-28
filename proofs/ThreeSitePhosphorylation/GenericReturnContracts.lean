@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnDerivative
-import proofs.ThreeSitePhosphorylation.GenericReturnParameterPairing
-import proofs.ThreeSitePhosphorylation.GenericReturnBranch
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnDerivative
+public import proofs.ThreeSitePhosphorylation.GenericReturnParameterPairing
+public import proofs.ThreeSitePhosphorylation.GenericReturnBranch
+
+@[expose] public section
 
 /-! The actual local solution and return-time maps of a closed quadratic
 branch, retaining smoothness, residual, phase, both uniqueness statements,

@@ -1,14 +1,4 @@
-# P064: claim-to-evidence correspondence
-
-Source-reading review dated 2026-09-24. No Lean was executed for this review.
-
-This is an agent-assisted reading of four sources: `Registry/P064/Challenge.lean`, the
-research proof source `proofs/ThreeSitePhosphorylation/AllSiteAttractingFamily.lean` and
-its imported definitions, the research integration handoff and receipt, and the companion
-manuscript source `papers/P064/manuscript/main.tex`. It is not an independent human
-mathematical review. None of the following has been run on the Lean 4.35.0-rc2 target:
-the Challenge statement compilation, the Solution build, the Comparator comparison or
-the kernel checks.
+# P064: theorem and literature correspondence
 
 ## Setting
 
@@ -84,7 +74,7 @@ of `x`.
 **Informal claim supported.** For every `n ≥ 3`, the mass-action sequential distributive
 n-site cycle has positive rate constants and totals at which a family of positive
 nonconstant periodic orbits bifurcates from a positive equilibrium. The bifurcation is on
-one side of the critical parameter only (supercritical), the period tends to `2π/w`, and
+the parameter side `par < 0`, the period tends to `2π/w`, and
 each orbit is orbitally asymptotically stable within its compatibility class.
 
 **Manuscript correspondence.** The theorem gives the orbit conclusion of Corollary
@@ -98,32 +88,19 @@ compatibility chart (`hopf_attracting_family`). The critical parameter is transl
 
 The formal statement exposes the bifurcating orbit family and its stability. It does not
 restate the linearization data: the simple pair `±iω`, the stable complement, the
-transversal crossing and `l_1 < 0`. The receipt shows that the proof establishes those
-data internally (`HopfInvariant`), but they are not part of the compared type.
+transversal crossing and `l_1 < 0`. The proof establishes those
+data internally (`AddedSiteHopfStep.HopfInvariant`), including explicit negative crossing and Lyapunov-value conditions, but they are not part of the compared type.
 
-**Evidence.** Historical strict receipt only:
-`all_site_attracting_family.verify.json` in the research workspace. It records
-`verified=true`, exit 0, warnings as errors, Lean 4.30.0, lake manifest `a8df0b60…`, and
-requested declarations `hopf_attracting_family` and `all_site_attracting_hopf`. The
-reported axioms are `propext`, `Classical.choice` and `Quot.sound`. The target source hash
-is `355bdf10…1333c`. All 142 modules in the receipt's closure (141 dependencies plus the
-target) are byte-identical in this repository; see
-`preparation/P064-ALL-SITE-IMPORT.json`. The receipt's `dependency_materialization`
-block reports `proof_admissible: false` and `node_status_effect: none`. The top-level
-`verified` field is true. The first field appears to be the research workflow's
-authority flag, not a compilation failure, but this has not been confirmed.
+## Verification evidence
 
-No target-toolchain evidence exists. Nothing has been compiled on Lean 4.35.0-rc2 with
-Mathlib `065356127b`: not the Challenge statement, not the Solution, and no Comparator or
-kernel check.
+The recorded Comparator run on Lean 4.35.0-rc2 accepted the selected theorem with con-ron, NanoDa and the Lean default kernel. Its receipt, logs and exact source hashes are preserved in `preparation/verification/P064-release-candidate-run/`. The permitted axioms are `propext`, `Quot.sound` and `Classical.choice`.
 
 ## Literature correspondence
 
 The primary source is N. Vassena, *Sequential and distributive dual futile cycle: Hopf
 bifurcation can occur under parameter-rich kinetics but cannot occur under mass action
 kinetics*, preprint arXiv:2608.27081v2 (2026). The manuscript bibliography gives no DOI.
-The title, author and locators were independently checked against the arXiv source on
-2026-09-25. Theorem 5.8 excludes nonzero purely imaginary eigenvalues and hence Hopf
+The primary source is [arXiv:2608.27081v2, Section 8](https://arxiv.org/html/2608.27081v2#S8). Theorem 5.8 excludes nonzero purely imaginary eigenvalues and hence Hopf
 bifurcation for `n = 2` under mass action. The concluding discussion states that whether
 the sequential distributive `n`-site cycles with `n ≥ 3` admit Hopf bifurcation under
 parameter-rich or mass-action kinetics remains open.
@@ -159,13 +136,3 @@ The following are not formalized in the selected declaration:
 No conventional analytic premise appears as a hypothesis. The Hopf and attraction
 arguments are proved in the imported development, and the statement's only hypothesis
 is `3 ≤ n`.
-
-The manuscript describes its formal coverage more weakly than the imported development.
-It says the only Lean result is the subcritical-witness existence theorem and that "we do
-not claim a formal proof of attraction". Its description of the site-addition step is
-stronger than the formal result. See `preparation/P064-MANUSCRIPT-NOTE.md`. The
-manuscript and PDF were not edited.
-
-Research proofs are Lean 4.30.0 receipts. Porting to the 4.35.0-rc2 target is unverified.
-Challenge/Solution definitional identity has been checked by source text only (see
-`entries/P064/README.md`).

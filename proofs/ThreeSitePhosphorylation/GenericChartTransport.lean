@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericWholeOrbit
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericWholeOrbit
+
+@[expose] public section
 
 /-! Transport of reduced-coordinate orbital attraction through an affine
 injective compatibility chart `z ↦ e + L z` into full species coordinates.

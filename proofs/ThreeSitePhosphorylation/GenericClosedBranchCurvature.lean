@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedBranchVariations
-import proofs.ThreeSitePhosphorylation.GenericQuadraticFourier
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedBranchVariations
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticFourier
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericClosedBranchCurvature
 noncomputable section

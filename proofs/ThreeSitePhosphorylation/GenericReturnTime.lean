@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericReturnTime
 noncomputable section

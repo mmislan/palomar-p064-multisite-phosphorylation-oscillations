@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedPaths
-import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
-import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+public import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
+public import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericClosedBranchFirstVariation
 noncomputable section

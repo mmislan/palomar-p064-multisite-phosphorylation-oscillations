@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingSource
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingSource
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

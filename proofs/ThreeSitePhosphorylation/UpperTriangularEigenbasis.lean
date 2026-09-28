@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! Explicit eigenbasis of a coupled upper-triangular block. The Sylvester
 equation is solved by finite basis coordinates, not assumed as a hypothesis. -/

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.HarmonicForcing
+module
+
+public import proofs.ThreeSitePhosphorylation.HarmonicForcing
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation
 noncomputable section

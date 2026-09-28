@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.PolynomialPathLift
-import proofs.ThreeSitePhosphorylation.NonlinearPathIFT
+module
+
+public import proofs.ThreeSitePhosphorylation.PolynomialPathLift
+public import proofs.ThreeSitePhosphorylation.NonlinearPathIFT
+
+@[expose] public section
 
 /-! Full-interval local paths for a literal finite quadratic polynomial field.
 The smooth path lift is constructed, rather than assumed as extra input. -/

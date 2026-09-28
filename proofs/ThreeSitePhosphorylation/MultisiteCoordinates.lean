@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteChart
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteChart
+
+@[expose] public section
 
 /-! A finite function-coordinate presentation of the actual reduced state.
 The three summands retain the S1,...,Sm, C, D order without arithmetic

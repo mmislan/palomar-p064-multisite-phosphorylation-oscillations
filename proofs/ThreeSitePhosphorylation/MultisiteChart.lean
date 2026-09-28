@@ -1,4 +1,8 @@
-import proofs.PhosphorylationSharpness.Source
+module
+
+public import proofs.PhosphorylationSharpness.Source
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.MultisiteChart
 noncomputable section

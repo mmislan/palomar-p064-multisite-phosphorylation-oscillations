@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericComplexification
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.RealResolventSolution
 noncomputable section

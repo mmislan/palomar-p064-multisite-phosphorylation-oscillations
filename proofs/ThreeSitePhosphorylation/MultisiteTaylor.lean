@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.MultisiteCenteredFace
-import proofs.ThreeSitePhosphorylation.ScaledAffineFamily
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteCenteredFace
+public import proofs.ThreeSitePhosphorylation.ScaledAffineFamily
+
+@[expose] public section
 
 /-! Literal exact quadratic expansion of the reduced chemical source.
 The full fixed-total tangent, including S0,E,F, is retained throughout. -/

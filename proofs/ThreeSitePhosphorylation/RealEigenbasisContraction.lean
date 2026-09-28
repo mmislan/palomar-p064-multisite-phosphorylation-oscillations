@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.ReturnMapContraction
-import Mathlib
+module
+
+public import proofs.ThreeSitePhosphorylation.ReturnMapContraction
+public import Mathlib
+
+@[expose] public section
 
 /-! A real eigenbasis whose eigenvalues lie strictly inside the unit interval
 gives a contracting power. No complexification or spectrum identification is

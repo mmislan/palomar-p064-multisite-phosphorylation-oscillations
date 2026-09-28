@@ -1,7 +1,11 @@
-import Mathlib.Analysis.ODE.Gronwall
-import Mathlib.Analysis.ODE.ExistUnique
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.Analysis.Normed.Operator.Banach
+module
+
+public import Mathlib.Analysis.ODE.Gronwall
+public import Mathlib.Analysis.ODE.ExistUnique
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Analysis.Normed.Operator.Banach
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.LinearEndpointInjective
 noncomputable section

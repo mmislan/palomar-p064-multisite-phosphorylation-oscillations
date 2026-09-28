@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AddedSite
-import Mathlib
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSite
+public import Mathlib
+
+@[expose] public section
 
 /-! A uniform scale separating the three actual added-site normal roots
 from any finite parent list. This does not construct a full source basis. -/

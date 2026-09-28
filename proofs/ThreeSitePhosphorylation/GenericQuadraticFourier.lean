@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericMixedFourierMoment
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericMixedFourierMoment
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericQuadraticFourier
 noncomputable section

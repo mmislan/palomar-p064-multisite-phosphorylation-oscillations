@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 /-! Reference harmonic paths in an arbitrary real Banach space.
 The actual action of the supplied operator on the two vectors is explicit. -/

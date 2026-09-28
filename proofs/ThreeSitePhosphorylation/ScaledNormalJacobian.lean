@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.ScaledMultisiteCenteredFace
-import proofs.ThreeSitePhosphorylation.MultisiteSmoothField
-import proofs.ThreeSitePhosphorylation.MultisiteSplit
+module
+
+public import proofs.ThreeSitePhosphorylation.ScaledMultisiteCenteredFace
+public import proofs.ThreeSitePhosphorylation.MultisiteSmoothField
+public import proofs.ThreeSitePhosphorylation.MultisiteSplit
+
+@[expose] public section
 
 /-! The actual bottom block of the fixed-total, zero-load scaled source
 Jacobian. Differentiability is derived from the literal chemical field. -/

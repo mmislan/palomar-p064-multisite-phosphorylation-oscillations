@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteCoefficientTransport
-import Mathlib.Topology.Instances.Matrix
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteCoefficientTransport
+public import Mathlib.Topology.Instances.Matrix
+
+@[expose] public section
 
 /-! Continuity of the normalized resolvent coefficient built from GENUINE
 matrix inverses, and persistence of strict signs of the coefficient and of the

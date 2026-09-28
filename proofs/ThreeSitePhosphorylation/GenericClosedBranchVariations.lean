@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedBranchFirstVariation
-import proofs.ThreeSitePhosphorylation.GenericTensorSecondVariation
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedBranchFirstVariation
+public import proofs.ThreeSitePhosphorylation.GenericTensorSecondVariation
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericClosedBranchVariations
 noncomputable section

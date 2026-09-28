@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingSource
-import proofs.ThreeSitePhosphorylation.AttractingFrequency
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingSource
+public import proofs.ThreeSitePhosphorylation.AttractingFrequency
+
+@[expose] public section
 
 /-! Kernel-replayed imaginary eigenpair of the actual witness A Jacobian.
 No claim of attraction, simplicity or complementary stability is made here. -/

@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericWholeOrbit
-import proofs.ThreeSitePhosphorylation.GenericBranchMultipliers
-import proofs.ThreeSitePhosphorylation.GenericPeriodicExtension
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericWholeOrbit
+public import proofs.ThreeSitePhosphorylation.GenericBranchMultipliers
+public import proofs.ThreeSitePhosphorylation.GenericPeriodicExtension
+
+@[expose] public section
 
 /-! The dimension-independent attracting Hopf family. For an actual finite
 coordinate quadratic source with a full simple complex eigenbasis (real stable

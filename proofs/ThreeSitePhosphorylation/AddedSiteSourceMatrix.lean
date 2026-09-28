@@ -1,7 +1,11 @@
-import proofs.ThreeSitePhosphorylation.MultisiteTensor
-import proofs.ThreeSitePhosphorylation.GenericTensorDerivative
-import proofs.ThreeSitePhosphorylation.ScaledJacobianBlock
-import proofs.ThreeSitePhosphorylation.ScaledJointSource
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteTensor
+public import proofs.ThreeSitePhosphorylation.GenericTensorDerivative
+public import proofs.ThreeSitePhosphorylation.ScaledJacobianBlock
+public import proofs.ThreeSitePhosphorylation.ScaledJointSource
+
+@[expose] public section
 
 /-! The actual source matrix of the loaded added-site family, its joint
 smoothness in (load, kinetic parameter), and its zero-load block form.

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ScalarODE
+module
+
+public import proofs.ThreeSitePhosphorylation.ScalarODE
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation
 noncomputable section

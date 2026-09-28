@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.MultisiteChart
-import proofs.ThreeSitePhosphorylation.MultisiteSource
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteChart
+public import proofs.ThreeSitePhosphorylation.MultisiteSource
+
+@[expose] public section
 
 /-! Uniform actual reduced-source restriction on the added-site zero-load
 face. All conservation-class reconstruction corrections are retained. -/

@@ -1,8 +1,12 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnLinearization
-import proofs.ThreeSitePhosphorylation.NearbyEigenbasis
-import proofs.ThreeSitePhosphorylation.AttractingRadialMultiplier
-import proofs.ThreeSitePhosphorylation.GenericClosedBranchCurvature
-import proofs.ThreeSitePhosphorylation.GenericQuadraticClosedPaths
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnLinearization
+public import proofs.ThreeSitePhosphorylation.NearbyEigenbasis
+public import proofs.ThreeSitePhosphorylation.AttractingRadialMultiplier
+public import proofs.ThreeSitePhosphorylation.GenericClosedBranchCurvature
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticClosedPaths
+
+@[expose] public section
 
 /-! Strict multiplier bounds for the derivative of the actual residual-defined
 return map along the actual closed quadratic branch, for an arbitrary finite

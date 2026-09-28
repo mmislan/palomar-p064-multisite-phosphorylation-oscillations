@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnBaseDerivative
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnBaseDerivative
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericReturnBaseModes
 noncomputable section

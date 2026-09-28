@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Jacobian
+module
+
+public import proofs.ThreeSitePhosphorylation.Jacobian
+
+@[expose] public section
 
 /-! The distinct witness A of P064, using the same literal eighteen reactions.
 These are source and derivative lemmas, not a theorem of orbital attraction.

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 

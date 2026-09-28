@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Calculus.Deriv.Comp
-import Mathlib.Analysis.Calculus.Deriv.Add
-import Mathlib.Topology.MetricSpace.HausdorffDistance
-import Mathlib.Tactic.Linarith
+module
+
+public import Mathlib.Analysis.Calculus.Deriv.Comp
+public import Mathlib.Analysis.Calculus.Deriv.Add
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.ForwardSolutionShift
 open Filter

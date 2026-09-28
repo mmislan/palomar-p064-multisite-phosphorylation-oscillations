@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericAttractingHopf
-import proofs.ThreeSitePhosphorylation.GenericChartTransport
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAttractingHopf
+public import proofs.ThreeSitePhosphorylation.GenericChartTransport
+
+@[expose] public section
 
 /-! Full-species form of the dimension-independent attracting Hopf family.
 

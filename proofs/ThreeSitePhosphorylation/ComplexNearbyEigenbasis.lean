@@ -1,7 +1,11 @@
-import proofs.ThreeSitePhosphorylation.SimpleComplexEigenpair
-import Mathlib.Analysis.Normed.Ring.Units
-import Mathlib.Order.Filter.Finite
-import Mathlib.Tactic.Choose
+module
+
+public import proofs.ThreeSitePhosphorylation.SimpleComplexEigenpair
+public import Mathlib.Analysis.Normed.Ring.Units
+public import Mathlib.Order.Filter.Finite
+public import Mathlib.Tactic.Choose
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.ComplexNearbyEigenbasis
 noncomputable section

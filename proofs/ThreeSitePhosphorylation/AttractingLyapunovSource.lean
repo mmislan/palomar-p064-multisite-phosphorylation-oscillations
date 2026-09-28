@@ -1,7 +1,11 @@
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovH11
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovLeft
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovScalarPilot
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovH11
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovLeft
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovScalarPilot
+
+@[expose] public section
 
 /-! Identify the actual source coefficient with the certified scalar ratio.
 No orbital-stability or attracting-orbit theorem is asserted here. -/

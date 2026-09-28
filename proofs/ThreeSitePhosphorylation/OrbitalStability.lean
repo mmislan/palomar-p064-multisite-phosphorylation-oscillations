@@ -1,6 +1,10 @@
-import Mathlib.Topology.MetricSpace.HausdorffDistance
-import Mathlib.Analysis.SpecificLimits.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
+public import Mathlib.Analysis.SpecificLimits.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! A local return-map criterion for attraction to an orbit as a set.
 The return map and its contraction estimate are hypotheses, not conclusions

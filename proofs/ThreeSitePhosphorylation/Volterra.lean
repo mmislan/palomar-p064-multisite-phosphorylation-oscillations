@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! Full-interval linear Picard operator. The factorial estimate follows the
 argument in Mathlib's PicardLindelof, on an unconstrained continuous path space.

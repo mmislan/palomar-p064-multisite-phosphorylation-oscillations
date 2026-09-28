@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
+
+@[expose] public section
 
 /-! A simple imaginary eigenvalue of the literal witness A crosses transversely.
 This remains a spectral theorem; it does not infer nonlinear orbit stability. -/

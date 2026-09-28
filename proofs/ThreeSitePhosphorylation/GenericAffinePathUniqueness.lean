@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
+
+@[expose] public section
 
 /-! Local uniqueness for the same affine-residual path solution already
 chosen by a shooting construction. No equality of independent choices is

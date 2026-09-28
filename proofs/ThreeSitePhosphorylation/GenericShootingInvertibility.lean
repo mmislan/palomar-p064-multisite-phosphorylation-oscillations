@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
-import proofs.ThreeSitePhosphorylation.GenericPathKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
+public import proofs.ThreeSitePhosphorylation.GenericPathKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericShootingInvertibility
 noncomputable section

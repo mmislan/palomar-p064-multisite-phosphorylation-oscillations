@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.LinearAlgebra.Matrix.ToLin
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.LinearAlgebra.Matrix.ToLin
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Literal complexification of an arbitrary finite real matrix.
 These lemmas do not supply a spectral hypothesis or a Hopf theorem. -/

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteSource
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteSource
+
+@[expose] public section
 
 /-! Scaled new-site source algebra for the existential all-n construction.
 This is not the manuscript's arbitrary-parent fixed-unit-rate inheritance

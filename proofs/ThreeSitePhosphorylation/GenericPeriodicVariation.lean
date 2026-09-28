@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericPeriodicKernel
-import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericPeriodicKernel
+public import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+
+@[expose] public section
 
 /-! Parameter, period and initial-state kernel elimination from the actual
 periodic variational ODE. The crossing and source eigenbasis remain inputs. -/

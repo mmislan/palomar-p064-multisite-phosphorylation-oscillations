@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20Pilot
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovSign
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20Pilot
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovSign
+
+@[expose] public section
 
 /-! A representative scalar cross identity. These coefficient polynomials
 must still be identified with the actual source contraction in Lean.

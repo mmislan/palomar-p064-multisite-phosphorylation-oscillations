@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.PolynomialPathLift
 noncomputable section

@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericTensorDerivative
-import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericTensorDerivative
+public import proofs.ThreeSitePhosphorylation.GenericAmplitudeVariation
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericTensorSecondVariation
 noncomputable section

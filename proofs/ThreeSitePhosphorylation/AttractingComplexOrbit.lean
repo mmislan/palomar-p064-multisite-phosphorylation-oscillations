@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.AttractingLinearFlow
-import proofs.ThreeSitePhosphorylation.AttractingResolvent
-import proofs.ThreeSitePhosphorylation.ScalarODE
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLinearFlow
+public import proofs.ThreeSitePhosphorylation.AttractingResolvent
+public import proofs.ThreeSitePhosphorylation.ScalarODE
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

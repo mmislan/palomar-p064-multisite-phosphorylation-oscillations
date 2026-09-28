@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedPaths
-import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericQuadraticClosedPaths
 noncomputable section

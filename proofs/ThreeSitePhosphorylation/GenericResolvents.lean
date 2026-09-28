@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericPeriodicKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericPeriodicKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericResolvents
 noncomputable section

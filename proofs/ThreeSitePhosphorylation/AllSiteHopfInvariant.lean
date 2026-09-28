@@ -1,9 +1,13 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteHopfStep
-import proofs.ThreeSitePhosphorylation.MultisiteThreeSiteBridge
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovSource
-import proofs.ThreeSitePhosphorylation.AttractingLeftUnique
-import proofs.ThreeSitePhosphorylation.AttractingCrossing
-import proofs.ThreeSitePhosphorylation.AttractingPairing
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteHopfStep
+public import proofs.ThreeSitePhosphorylation.MultisiteThreeSiteBridge
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovSource
+public import proofs.ThreeSitePhosphorylation.AttractingLeftUnique
+public import proofs.ThreeSitePhosphorylation.AttractingCrossing
+public import proofs.ThreeSitePhosphorylation.AttractingPairing
+
+@[expose] public section
 
 /-! Base case and induction for the strengthened all-site Hopf invariant.
 

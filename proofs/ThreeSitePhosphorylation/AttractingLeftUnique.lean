@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovLeft
-import proofs.ThreeSitePhosphorylation.AttractingClosedPaths
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovLeft
+public import proofs.ThreeSitePhosphorylation.AttractingClosedPaths
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

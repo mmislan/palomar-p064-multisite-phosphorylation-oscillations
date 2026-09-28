@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingJet
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingJet
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

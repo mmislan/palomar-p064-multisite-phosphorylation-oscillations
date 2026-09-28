@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.MultisiteTaylor
-import proofs.ThreeSitePhosphorylation.MultisiteCoordinates
-import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteTaylor
+public import proofs.ThreeSitePhosphorylation.MultisiteCoordinates
+public import proofs.ThreeSitePhosphorylation.GenericTensorBilinear
+
+@[expose] public section
 
 /-! Coordinate extraction of the actual chemical linear and quadratic terms.
 No identification with an arbitrary smooth quadratic field is assumed. -/

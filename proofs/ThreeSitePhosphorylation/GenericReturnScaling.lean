@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnIFT
-import proofs.ThreeSitePhosphorylation.GenericAffinePathUniqueness
-import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnIFT
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathUniqueness
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericReturnScaling
 noncomputable section

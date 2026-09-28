@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingFrequency
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingFrequency
+
+@[expose] public section
 
 /-! Fixed rational scalar sign pilot for A. This module does not yet identify
 these scalars with the source first Lyapunov expression. -/

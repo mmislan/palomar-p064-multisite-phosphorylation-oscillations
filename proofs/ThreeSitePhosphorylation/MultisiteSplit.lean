@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteNormalDerivative
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteNormalDerivative
+
+@[expose] public section
 
 /-! Exact old/normal reduced-coordinate split, with normal order C,S,D. -/
 namespace ThreeSitePhosphorylation.MultisiteSplit

@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 /-! Full-interval variational ODE from an explicit integral equation.
 No source-specific differentiation or spectral condition is assumed. -/

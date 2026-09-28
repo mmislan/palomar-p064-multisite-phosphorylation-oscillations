@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingLinearFlow
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLinearFlow
+
+@[expose] public section
 
 /-! Actual rescaled ODE paths and their first parameter/period variation for A.
 These equations alone do not establish Floquet stability. -/

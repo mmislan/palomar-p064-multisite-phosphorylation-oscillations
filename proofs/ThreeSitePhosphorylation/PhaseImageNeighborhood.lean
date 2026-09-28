@@ -1,5 +1,9 @@
-import Mathlib.Analysis.Calculus.InverseFunctionTheorem.FDeriv
-import Mathlib.Analysis.Normed.Operator.Banach
+module
+
+public import Mathlib.Analysis.Calculus.InverseFunctionTheorem.FDeriv
+public import Mathlib.Analysis.Normed.Operator.Banach
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.PhaseImageNeighborhood
 noncomputable section

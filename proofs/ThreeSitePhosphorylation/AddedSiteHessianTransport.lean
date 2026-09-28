@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteTensor
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteTensor
+
+@[expose] public section
 
 /-! Zero-load invariant-face identities for the actual scaled site addition.
 The Jacobian, the symmetric Hessian and the kinetic-parameter derivative of

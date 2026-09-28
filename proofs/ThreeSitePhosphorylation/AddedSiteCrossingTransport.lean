@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteHessianTransport
-import proofs.ThreeSitePhosphorylation.AddedSiteCoefficientContinuity
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteHessianTransport
+public import proofs.ThreeSitePhosphorylation.AddedSiteCoefficientContinuity
+
+@[expose] public section
 
 /-! Actual chemical docking of the added-site coefficient and crossing transport.
 

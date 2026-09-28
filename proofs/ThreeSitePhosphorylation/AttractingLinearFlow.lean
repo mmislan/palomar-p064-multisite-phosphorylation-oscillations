@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
-import proofs.ThreeSitePhosphorylation.AttractingFlow
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingEigenbasis
+public import proofs.ThreeSitePhosphorylation.AttractingFlow
+
+@[expose] public section
 
 /-! Smooth interval solutions at a specified critical eigenpair of witness A.
 The input parameter is preserved for docking with the nonlinear coefficient. -/

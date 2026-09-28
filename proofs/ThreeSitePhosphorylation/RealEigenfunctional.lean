@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.RealEigenpairPersistence
-import Mathlib.LinearAlgebra.Basis.Basic
-import Mathlib.Tactic.LinearCombination
+module
+
+public import proofs.ThreeSitePhosphorylation.RealEigenpairPersistence
+public import Mathlib.LinearAlgebra.Basis.Basic
+public import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.RealEigenfunctional
 noncomputable section

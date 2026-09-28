@@ -1,5 +1,9 @@
-import proofs.PhosphorylationSharpness.Source
-import proofs.ThreeSitePhosphorylation.AddedSite
+module
+
+public import proofs.PhosphorylationSharpness.Source
+public import proofs.ThreeSitePhosphorylation.AddedSite
+
+@[expose] public section
 
 /-! Literal uniform site addition for P064. This is source algebra, not a
 theorem of Hopf persistence or orbital attraction. -/

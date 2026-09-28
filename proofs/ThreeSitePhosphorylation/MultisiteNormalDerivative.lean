@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteCenteredFace
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteCenteredFace
+
+@[expose] public section
 
 /-! Actual fixed-inventory normal directional derivative at zero site load.
 The normal order is C,S,D; no assertion is made about the upper-right block. -/

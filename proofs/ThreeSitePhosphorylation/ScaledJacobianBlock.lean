@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.ScaledNormalJacobian
+module
+
+public import proofs.ThreeSitePhosphorylation.ScaledNormalJacobian
+
+@[expose] public section
 
 /-! Actual block assembly for the scaled zero-load source Jacobian.
 The upper-right coupling is retained as an actual derivative block. -/

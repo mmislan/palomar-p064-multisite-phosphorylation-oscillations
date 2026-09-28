@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericComplexification
-import proofs.ThreeSitePhosphorylation.GenericLinearOrbit
-import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+public import proofs.ThreeSitePhosphorylation.GenericLinearOrbit
+public import proofs.ThreeSitePhosphorylation.GenericResonantKernel
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericCriticalOrbit
 noncomputable section

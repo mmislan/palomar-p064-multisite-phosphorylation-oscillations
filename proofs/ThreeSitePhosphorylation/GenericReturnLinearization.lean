@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnContracts
-import proofs.ThreeSitePhosphorylation.GenericReturnBaseEigenbasis
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnContracts
+public import proofs.ThreeSitePhosphorylation.GenericReturnBaseEigenbasis
+
+@[expose] public section
 
 /-! Linearization of the actual return map along the actual closed branch:
 branch return data, the radial vector x+a*x', the state derivative family,

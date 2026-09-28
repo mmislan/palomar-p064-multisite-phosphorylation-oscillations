@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingSource
-import proofs.ThreeSitePhosphorylation.MultisiteChart
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingSource
+public import proofs.ThreeSitePhosphorylation.MultisiteChart
+
+@[expose] public section
 
 /-! Literal coordinate equivalence for the three-site base of the all-site
 construction. No topology or norm is placed on the structured full state. -/

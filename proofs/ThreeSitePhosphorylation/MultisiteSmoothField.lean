@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.MultisiteChart
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteChart
+
+@[expose] public section
 
 /-! Actual reduced-source smoothness from scalar mass-action components.
 No topological or module structure on full State or Rates is assumed. -/

@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericComplexification
-import Mathlib
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+public import Mathlib
+
+@[expose] public section
 
 /-! Spectral part of the strengthened site-addition invariant for an actual
 real source matrix: a full complex eigenbasis whose stable columns are real

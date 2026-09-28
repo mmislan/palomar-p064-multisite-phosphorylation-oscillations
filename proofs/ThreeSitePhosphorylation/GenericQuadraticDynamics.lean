@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
-import Mathlib.LinearAlgebra.Matrix.ToLin
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+public import Mathlib.LinearAlgebra.Matrix.ToLin
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericQuadraticDynamics
 noncomputable section

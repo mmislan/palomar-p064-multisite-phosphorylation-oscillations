@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericClosedPaths
-import proofs.ThreeSitePhosphorylation.GenericReturnIFT
-import proofs.ThreeSitePhosphorylation.GenericAffinePathUniqueness
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericClosedPaths
+public import proofs.ThreeSitePhosphorylation.GenericReturnIFT
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathUniqueness
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericReturnBranch
 noncomputable section

@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.ScaledMultisiteCenteredFace
-import proofs.ThreeSitePhosphorylation.MultisiteSmoothField
+module
+
+public import proofs.ThreeSitePhosphorylation.ScaledMultisiteCenteredFace
+public import proofs.ThreeSitePhosphorylation.MultisiteSmoothField
+
+@[expose] public section
 
 /-! The actual joint load/kinetic-parameter source family for scaled site
 addition. Algebra and smoothness hold for signed loads; positivity is separate. -/

@@ -1,12 +1,16 @@
-import Mathlib.Topology.Order.IntermediateValue
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Basic.Complex.Basic
-import Mathlib.Tactic.FunProp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.GCongr
+module
+
+public import Mathlib.Topology.Order.IntermediateValue
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Basic.Complex.Basic
+public import Mathlib.Tactic.FunProp
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.GCongr
+
+@[expose] public section
 
 /-! Exact scalar certificate for witness A. Source docking is in
 AttractingSpectral; this file alone makes no source eigenvalue claim. -/

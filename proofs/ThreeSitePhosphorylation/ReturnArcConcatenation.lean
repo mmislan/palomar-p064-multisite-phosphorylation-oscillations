@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.NonZenoReturns
-import Mathlib.Analysis.Calculus.Deriv.Basic
+module
+
+public import proofs.ThreeSitePhosphorylation.NonZenoReturns
+public import Mathlib.Analysis.Calculus.Deriv.Basic
+
+@[expose] public section
 
 /-! Joining source arcs over a non-Zeno partition. The source equations for
 the individual arcs are explicit inputs; no phosphorylation result is assumed. -/

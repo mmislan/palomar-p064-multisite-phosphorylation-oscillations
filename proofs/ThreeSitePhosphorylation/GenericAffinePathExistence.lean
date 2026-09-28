@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
-import proofs.ThreeSitePhosphorylation.NonlinearPathIFT
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
+public import proofs.ThreeSitePhosphorylation.NonlinearPathIFT
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericAffinePathExistence
 noncomputable section

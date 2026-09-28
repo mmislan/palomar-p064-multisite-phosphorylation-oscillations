@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingFlow
-import proofs.ThreeSitePhosphorylation.AttractingComplexOrbit
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingFlow
+public import proofs.ThreeSitePhosphorylation.AttractingComplexOrbit
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.AttractingWitness
 noncomputable section

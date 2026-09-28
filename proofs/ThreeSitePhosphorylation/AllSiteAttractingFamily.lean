@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AllSiteHopfInvariant
-import proofs.ThreeSitePhosphorylation.GenericChartAttractingHopf
+module
+
+public import proofs.ThreeSitePhosphorylation.AllSiteHopfInvariant
+public import proofs.ThreeSitePhosphorylation.GenericChartAttractingHopf
+
+@[expose] public section
 
 /-! Attracting Hopf families of the literal sequential distributive phosphorylation
 cycle for every number of sites `n ≥ 3`.

@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingJet
-import proofs.ThreeSitePhosphorylation.AttractingSpectral
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingJet
+public import proofs.ThreeSitePhosphorylation.AttractingSpectral
+
+@[expose] public section
 
 /-! First actual-source Lyapunov resolvent certificate for A.
 This proves J h11 = B(q,conj q), not the full Lyapunov scalar or attraction. -/

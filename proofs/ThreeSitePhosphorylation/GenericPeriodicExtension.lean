@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! Periodic extension in an arbitrary real normed space, including the
 actual seam derivative and exact range after rescaling physical time. -/

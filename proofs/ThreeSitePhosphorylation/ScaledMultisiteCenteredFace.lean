@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.MultisiteNormalDerivative
-import proofs.ThreeSitePhosphorylation.ScaledMultisiteSource
+module
+
+public import proofs.ThreeSitePhosphorylation.MultisiteNormalDerivative
+public import proofs.ThreeSitePhosphorylation.ScaledMultisiteSource
+
+@[expose] public section
 
 /-! Actual fixed-total centered source identities for the scaled existential
 site-addition route. Full Frechet block assembly is a separate obligation. -/

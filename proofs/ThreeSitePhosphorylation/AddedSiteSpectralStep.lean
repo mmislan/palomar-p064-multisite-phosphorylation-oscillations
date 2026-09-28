@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AddedSiteCriticalContinuation
-import proofs.ThreeSitePhosphorylation.ScaledAffineFamily
+module
+
+public import proofs.ThreeSitePhosphorylation.AddedSiteCriticalContinuation
+public import proofs.ThreeSitePhosphorylation.ScaledAffineFamily
+
+@[expose] public section
 
 /-! The spectral part of the uniform site-addition step for the actual
 chemical family. Fix the separating scale, pick any sufficiently small

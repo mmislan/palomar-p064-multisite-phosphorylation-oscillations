@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AllSiteAttractingFamily
+module
+
+public import proofs.ThreeSitePhosphorylation.AllSiteAttractingFamily
+
+@[expose] public section
 
 /-! The imported theorem
 `ThreeSitePhosphorylation.AllSiteAttractingFamily.all_site_attracting_hopf` is the

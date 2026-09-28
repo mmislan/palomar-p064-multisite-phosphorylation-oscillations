@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
-import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
-import proofs.ThreeSitePhosphorylation.GenericShootingInvertibility
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathExistence
+public import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
+public import proofs.ThreeSitePhosphorylation.GenericShootingInvertibility
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericClosedPaths
 noncomputable section

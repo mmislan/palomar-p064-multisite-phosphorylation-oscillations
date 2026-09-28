@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
-import proofs.ThreeSitePhosphorylation.GenericComplexification
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticTensor
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericTensorBilinear
 noncomputable section

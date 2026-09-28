@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20Pilot
-import proofs.ThreeSitePhosphorylation.AttractingHessian
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingLyapunovH20Pilot
+public import proofs.ThreeSitePhosphorylation.AttractingHessian
+
+@[expose] public section
 
 /-! Actual h20 resolvent vector. No Lyapunov scalar sign or attraction claim. -/
 namespace ThreeSitePhosphorylation.AttractingWitness

@@ -1,9 +1,13 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnIFT
-import proofs.ThreeSitePhosphorylation.GenericPathContinuation
-import proofs.ThreeSitePhosphorylation.GenericQuadraticDynamics
-import proofs.ThreeSitePhosphorylation.RealEigenbasisContraction
-import proofs.ThreeSitePhosphorylation.ReturnIterateControl
-import proofs.ThreeSitePhosphorylation.ReturnArcConcatenation
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnIFT
+public import proofs.ThreeSitePhosphorylation.GenericPathContinuation
+public import proofs.ThreeSitePhosphorylation.GenericQuadraticDynamics
+public import proofs.ThreeSitePhosphorylation.RealEigenbasisContraction
+public import proofs.ThreeSitePhosphorylation.ReturnIterateControl
+public import proofs.ThreeSitePhosphorylation.ReturnArcConcatenation
+
+@[expose] public section
 
 /-! Continuous-time local attraction for the actual residual-defined return
 map of a finite-coordinate quadratic source. From an actual derivative

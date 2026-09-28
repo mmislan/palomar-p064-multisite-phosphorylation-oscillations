@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 /-! Full-interval variable-coefficient Volterra inversion. The operator is
 linear in the path, while its coefficient is an arbitrary continuous path

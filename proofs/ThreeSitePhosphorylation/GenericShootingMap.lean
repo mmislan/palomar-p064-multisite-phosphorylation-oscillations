@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.Volterra
+module
+
+public import proofs.ThreeSitePhosphorylation.Volterra
+
+@[expose] public section
 
 /-! Shooting residuals and actual line derivatives in a real Banach space.
 No shooting derivative invertibility or periodic-family existence is assumed. -/

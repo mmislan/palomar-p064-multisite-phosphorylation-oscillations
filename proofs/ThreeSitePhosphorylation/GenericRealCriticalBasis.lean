@@ -1,5 +1,9 @@
-import proofs.ThreeSitePhosphorylation.GenericComplexification
-import Mathlib
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericComplexification
+public import Mathlib
+
+@[expose] public section
 
 /-! A real basis from real stable columns and one conjugate critical pair.
 No operator, return map, eigenvalue separation or real basis is assumed. -/

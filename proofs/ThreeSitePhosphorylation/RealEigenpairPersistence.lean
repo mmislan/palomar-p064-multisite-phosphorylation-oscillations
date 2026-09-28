@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap
-import Mathlib.Tactic.FunProp
+module
+
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap
+public import Mathlib.Tactic.FunProp
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.RealEigenpairPersistence
 noncomputable section

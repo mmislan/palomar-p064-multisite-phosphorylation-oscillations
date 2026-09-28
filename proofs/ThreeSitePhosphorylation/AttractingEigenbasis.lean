@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.AttractingSpectral
+module
+
+public import proofs.ThreeSitePhosphorylation.AttractingSpectral
+
+@[expose] public section
 
 /-! Full eigenbasis at witness A's critical point, by nine distinct roots.
 A single dual-vector certificate proves all adjugate vectors nonzero; no

@@ -1,6 +1,10 @@
-import proofs.ThreeSitePhosphorylation.GenericReturnBaseDerivative
-import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
-import proofs.ThreeSitePhosphorylation.HarmonicForcing
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericReturnBaseDerivative
+public import proofs.ThreeSitePhosphorylation.GenericCriticalOrbit
+public import proofs.ThreeSitePhosphorylation.HarmonicForcing
+
+@[expose] public section
 
 /-! Actual zero-amplitude parameter pairing of the phase-corrected return
 map. The pairing is derived from the selected path residual, including the

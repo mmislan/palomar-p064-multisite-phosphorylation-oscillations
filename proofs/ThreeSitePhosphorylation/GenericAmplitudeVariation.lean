@@ -1,4 +1,8 @@
-import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
+module
+
+public import proofs.ThreeSitePhosphorylation.GenericAffinePathResidual
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.GenericAmplitudeVariation
 noncomputable section

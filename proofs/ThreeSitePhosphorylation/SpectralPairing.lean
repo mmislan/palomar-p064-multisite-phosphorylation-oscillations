@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Calculus.Deriv.Mul
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Calculus.Deriv.Mul
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 namespace ThreeSitePhosphorylation.SpectralPairing
 open Filter
